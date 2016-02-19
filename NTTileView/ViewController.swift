@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  NTTileView
+//  TileViewDemo
 //
 //  Created by Nathan Tornquist on 2/18/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.
