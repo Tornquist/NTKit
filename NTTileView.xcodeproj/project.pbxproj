@@ -15,6 +15,10 @@
 		D8DFD66B1C76AF2D0028B8A5 /* NTTileView.h in Headers */ = {isa = PBXBuildFile; fileRef = D8DFD66A1C76AF2D0028B8A5 /* NTTileView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8DFD66F1C76AF2D0028B8A5 /* NTTileView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DFD6681C76AF2D0028B8A5 /* NTTileView.framework */; };
 		D8DFD6761C76B4BD0028B8A5 /* NTTileViewDemo.app in Resources */ = {isa = PBXBuildFile; fileRef = D8DFD64E1C76AEC70028B8A5 /* NTTileViewDemo.app */; };
+		D8DFD6781C7C12AA0028B8A5 /* NTTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */; };
+		D8DFD67A1C7C12B70028B8A5 /* NTTileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */; };
+		D8DFD67C1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */; };
+		D8DFD67E1C7C143B0028B8A5 /* NTTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		D8DFD6681C76AF2D0028B8A5 /* NTTileView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NTTileView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DFD66A1C76AF2D0028B8A5 /* NTTileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTTileView.h; sourceTree = "<group>"; };
 		D8DFD66C1C76AF2D0028B8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
+		D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDelegate.swift; sourceTree = "<group>"; };
+		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewLayoutProtocol.swift; sourceTree = "<group>"; };
+		D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,10 @@
 			children = (
 				D8DFD66A1C76AF2D0028B8A5 /* NTTileView.h */,
 				D8DFD66C1C76AF2D0028B8A5 /* Info.plist */,
+				D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */,
+				D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */,
+				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
+				D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */,
 			);
 			path = NTTileView;
 			sourceTree = SOURCE_ROOT;
@@ -237,6 +249,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DFD6781C7C12AA0028B8A5 /* NTTileView.swift in Sources */,
+				D8DFD67A1C7C12B70028B8A5 /* NTTileViewDelegate.swift in Sources */,
+				D8DFD67C1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift in Sources */,
+				D8DFD67E1C7C143B0028B8A5 /* NTTile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +396,7 @@
 		D8DFD6721C76AF2D0028B8A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -391,6 +408,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -399,6 +417,7 @@
 		D8DFD6731C76AF2D0028B8A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
