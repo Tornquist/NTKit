@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol NTTileViewDelegate {
-    
+public protocol NTTileViewDelegate {
+    func numberOfTiles(tileView: NTTileView) -> Int
+    func tileAt(indexPath indexPath: NSIndexPath) -> NTTile
 }

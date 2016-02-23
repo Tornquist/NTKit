@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  NTTileViewDemo
 //
-//  Created by Nathan Tornquist on 2/18/16.
+//  Created by Nathan Tornquist on 2/22/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.
 //
 
@@ -40,5 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+
+
 }
 

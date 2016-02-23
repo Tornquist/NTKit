@@ -7,84 +7,87 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D8DFD6521C76AEC70028B8A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6511C76AEC70028B8A5 /* AppDelegate.swift */; };
-		D8DFD6541C76AEC70028B8A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6531C76AEC70028B8A5 /* ViewController.swift */; };
-		D8DFD6571C76AEC70028B8A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DFD6551C76AEC70028B8A5 /* Main.storyboard */; };
-		D8DFD6591C76AEC70028B8A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DFD6581C76AEC70028B8A5 /* Assets.xcassets */; };
-		D8DFD65C1C76AEC70028B8A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DFD65A1C76AEC70028B8A5 /* LaunchScreen.storyboard */; };
-		D8DFD66B1C76AF2D0028B8A5 /* NTTileView.h in Headers */ = {isa = PBXBuildFile; fileRef = D8DFD66A1C76AF2D0028B8A5 /* NTTileView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D8DFD66F1C76AF2D0028B8A5 /* NTTileView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DFD6681C76AF2D0028B8A5 /* NTTileView.framework */; };
-		D8DFD6761C76B4BD0028B8A5 /* NTTileViewDemo.app in Resources */ = {isa = PBXBuildFile; fileRef = D8DFD64E1C76AEC70028B8A5 /* NTTileViewDemo.app */; };
-		D8DFD6781C7C12AA0028B8A5 /* NTTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */; };
-		D8DFD67A1C7C12B70028B8A5 /* NTTileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */; };
-		D8DFD67C1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */; };
-		D8DFD67E1C7C143B0028B8A5 /* NTTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */; };
+		D87593AB1C7C23D900918AB4 /* NTTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */; };
+		D87593AC1C7C23D900918AB4 /* NTTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */; };
+		D87593AD1C7C23D900918AB4 /* NTTileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */; };
+		D87593AE1C7C23D900918AB4 /* NTTileViewLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */; };
+		D87593AF1C7C23E000918AB4 /* NTTileView.h in Headers */ = {isa = PBXBuildFile; fileRef = D87593781C7C1B7100918AB4 /* NTTileView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D87593B71C7C25D500918AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B61C7C25D500918AB4 /* AppDelegate.swift */; };
+		D87593B91C7C25D500918AB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B81C7C25D500918AB4 /* ViewController.swift */; };
+		D87593BC1C7C25D500918AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BA1C7C25D500918AB4 /* Main.storyboard */; };
+		D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87593BD1C7C25D500918AB4 /* Assets.xcassets */; };
+		D87593C11C7C25D500918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
+		D87593C61C7C262E00918AB4 /* NTTileView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTTileView.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D8DFD66D1C76AF2D0028B8A5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D8DFD6461C76AEC70028B8A5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8DFD6671C76AF2D0028B8A5;
-			remoteInfo = NTTileView;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D8DFD6741C76AF2D0028B8A5 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		D8DFD64E1C76AEC70028B8A5 /* NTTileViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTTileViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8DFD6511C76AEC70028B8A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8DFD6531C76AEC70028B8A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D8DFD6561C76AEC70028B8A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D8DFD6581C76AEC70028B8A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D8DFD65B1C76AEC70028B8A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D8DFD65D1C76AEC70028B8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8DFD6681C76AF2D0028B8A5 /* NTTileView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NTTileView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8DFD66A1C76AF2D0028B8A5 /* NTTileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTTileView.h; sourceTree = "<group>"; };
-		D8DFD66C1C76AF2D0028B8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D87593781C7C1B7100918AB4 /* NTTileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTTileView.h; sourceTree = "<group>"; };
+		D875937A1C7C1B7100918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D87593A31C7C23A500918AB4 /* NTTileView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NTTileView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D87593B41C7C25D500918AB4 /* NTTileViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTTileViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D87593B61C7C25D500918AB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D87593B81C7C25D500918AB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D87593BB1C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D87593BD1C7C25D500918AB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D87593C21C7C25D500918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
-		D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDelegate.swift; sourceTree = "<group>"; };
-		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewLayoutProtocol.swift; sourceTree = "<group>"; };
+		D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTTileViewDelegate.swift; path = /Users/nathan/Documents/Development/iOS/NTTileView/NTTileView/NTTileViewDelegate.swift; sourceTree = "<absolute>"; };
+		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTTileViewLayoutProtocol.swift; path = /Users/nathan/Documents/Development/iOS/NTTileView/NTTileView/NTTileViewLayoutProtocol.swift; sourceTree = "<absolute>"; };
 		D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D8DFD64B1C76AEC70028B8A5 /* Frameworks */ = {
+		D875939F1C7C23A500918AB4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DFD66F1C76AF2D0028B8A5 /* NTTileView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8DFD6641C76AF2D0028B8A5 /* Frameworks */ = {
+		D87593B11C7C25D500918AB4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87593C61C7C262E00918AB4 /* NTTileView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D87593A41C7C23A500918AB4 /* NTTileView */ = {
+			isa = PBXGroup;
+			children = (
+				D87593781C7C1B7100918AB4 /* NTTileView.h */,
+				D875937A1C7C1B7100918AB4 /* Info.plist */,
+				D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */,
+				D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */,
+				D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */,
+				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
+			);
+			name = NTTileView;
+			path = /Users/nathan/Documents/Development/iOS/NTTileView/NTTileView;
+			sourceTree = "<absolute>";
+		};
+		D87593B51C7C25D500918AB4 /* NTTileViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D87593B61C7C25D500918AB4 /* AppDelegate.swift */,
+				D87593B81C7C25D500918AB4 /* ViewController.swift */,
+				D87593BA1C7C25D500918AB4 /* Main.storyboard */,
+				D87593BD1C7C25D500918AB4 /* Assets.xcassets */,
+				D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */,
+				D87593C21C7C25D500918AB4 /* Info.plist */,
+			);
+			path = NTTileViewDemo;
+			sourceTree = "<group>";
+		};
 		D8DFD6451C76AEC70028B8A5 = {
 			isa = PBXGroup;
 			children = (
-				D8DFD6501C76AEC70028B8A5 /* NTTileViewDemo */,
-				D8DFD6691C76AF2D0028B8A5 /* NTTileView */,
+				D87593A41C7C23A500918AB4 /* NTTileView */,
+				D87593B51C7C25D500918AB4 /* NTTileViewDemo */,
 				D8DFD64F1C76AEC70028B8A5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,79 +95,34 @@
 		D8DFD64F1C76AEC70028B8A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8DFD64E1C76AEC70028B8A5 /* NTTileViewDemo.app */,
-				D8DFD6681C76AF2D0028B8A5 /* NTTileView.framework */,
+				D87593A31C7C23A500918AB4 /* NTTileView.framework */,
+				D87593B41C7C25D500918AB4 /* NTTileViewDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D8DFD6501C76AEC70028B8A5 /* NTTileViewDemo */ = {
-			isa = PBXGroup;
-			children = (
-				D8DFD6511C76AEC70028B8A5 /* AppDelegate.swift */,
-				D8DFD6531C76AEC70028B8A5 /* ViewController.swift */,
-				D8DFD6551C76AEC70028B8A5 /* Main.storyboard */,
-				D8DFD6581C76AEC70028B8A5 /* Assets.xcassets */,
-				D8DFD65A1C76AEC70028B8A5 /* LaunchScreen.storyboard */,
-				D8DFD65D1C76AEC70028B8A5 /* Info.plist */,
-			);
-			path = NTTileViewDemo;
-			sourceTree = SOURCE_ROOT;
-		};
-		D8DFD6691C76AF2D0028B8A5 /* NTTileView */ = {
-			isa = PBXGroup;
-			children = (
-				D8DFD66A1C76AF2D0028B8A5 /* NTTileView.h */,
-				D8DFD66C1C76AF2D0028B8A5 /* Info.plist */,
-				D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */,
-				D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */,
-				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
-				D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */,
-			);
-			path = NTTileView;
-			sourceTree = SOURCE_ROOT;
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		D8DFD6651C76AF2D0028B8A5 /* Headers */ = {
+		D87593A01C7C23A500918AB4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DFD66B1C76AF2D0028B8A5 /* NTTileView.h in Headers */,
+				D87593AF1C7C23E000918AB4 /* NTTileView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D8DFD64D1C76AEC70028B8A5 /* NTTileViewDemo */ = {
+		D87593A21C7C23A500918AB4 /* NTTileView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8DFD6601C76AEC70028B8A5 /* Build configuration list for PBXNativeTarget "NTTileViewDemo" */;
+			buildConfigurationList = D87593A81C7C23A500918AB4 /* Build configuration list for PBXNativeTarget "NTTileView" */;
 			buildPhases = (
-				D8DFD64A1C76AEC70028B8A5 /* Sources */,
-				D8DFD64B1C76AEC70028B8A5 /* Frameworks */,
-				D8DFD64C1C76AEC70028B8A5 /* Resources */,
-				D8DFD6741C76AF2D0028B8A5 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D8DFD66E1C76AF2D0028B8A5 /* PBXTargetDependency */,
-			);
-			name = NTTileViewDemo;
-			productName = NTTileView;
-			productReference = D8DFD64E1C76AEC70028B8A5 /* NTTileViewDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
-		D8DFD6671C76AF2D0028B8A5 /* NTTileView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D8DFD6711C76AF2D0028B8A5 /* Build configuration list for PBXNativeTarget "NTTileView" */;
-			buildPhases = (
-				D8DFD6631C76AF2D0028B8A5 /* Sources */,
-				D8DFD6641C76AF2D0028B8A5 /* Frameworks */,
-				D8DFD6651C76AF2D0028B8A5 /* Headers */,
-				D8DFD6661C76AF2D0028B8A5 /* Resources */,
+				D875939E1C7C23A500918AB4 /* Sources */,
+				D875939F1C7C23A500918AB4 /* Frameworks */,
+				D87593A01C7C23A500918AB4 /* Headers */,
+				D87593A11C7C23A500918AB4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -172,8 +130,25 @@
 			);
 			name = NTTileView;
 			productName = NTTileView;
-			productReference = D8DFD6681C76AF2D0028B8A5 /* NTTileView.framework */;
+			productReference = D87593A31C7C23A500918AB4 /* NTTileView.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		D87593B31C7C25D500918AB4 /* NTTileViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D87593C31C7C25D600918AB4 /* Build configuration list for PBXNativeTarget "NTTileViewDemo" */;
+			buildPhases = (
+				D87593B01C7C25D500918AB4 /* Sources */,
+				D87593B11C7C25D500918AB4 /* Frameworks */,
+				D87593B21C7C25D500918AB4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NTTileViewDemo;
+			productName = NTTileViewDemo;
+			productReference = D87593B41C7C25D500918AB4 /* NTTileViewDemo.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -185,11 +160,11 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Nathan Tornquist";
 				TargetAttributes = {
-					D8DFD64D1C76AEC70028B8A5 = {
+					D87593A21C7C23A500918AB4 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = GJY7YYR5KL;
 					};
-					D8DFD6671C76AF2D0028B8A5 = {
+					D87593B31C7C25D500918AB4 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = GJY7YYR5KL;
 					};
@@ -208,77 +183,68 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8DFD64D1C76AEC70028B8A5 /* NTTileViewDemo */,
-				D8DFD6671C76AF2D0028B8A5 /* NTTileView */,
+				D87593A21C7C23A500918AB4 /* NTTileView */,
+				D87593B31C7C25D500918AB4 /* NTTileViewDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D8DFD64C1C76AEC70028B8A5 /* Resources */ = {
+		D87593A11C7C23A500918AB4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DFD65C1C76AEC70028B8A5 /* LaunchScreen.storyboard in Resources */,
-				D8DFD6591C76AEC70028B8A5 /* Assets.xcassets in Resources */,
-				D8DFD6571C76AEC70028B8A5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8DFD6661C76AF2D0028B8A5 /* Resources */ = {
+		D87593B21C7C25D500918AB4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DFD6761C76B4BD0028B8A5 /* NTTileViewDemo.app in Resources */,
+				D87593C11C7C25D500918AB4 /* LaunchScreen.storyboard in Resources */,
+				D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */,
+				D87593BC1C7C25D500918AB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D8DFD64A1C76AEC70028B8A5 /* Sources */ = {
+		D875939E1C7C23A500918AB4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DFD6541C76AEC70028B8A5 /* ViewController.swift in Sources */,
-				D8DFD6521C76AEC70028B8A5 /* AppDelegate.swift in Sources */,
+				D87593AB1C7C23D900918AB4 /* NTTile.swift in Sources */,
+				D87593AC1C7C23D900918AB4 /* NTTileView.swift in Sources */,
+				D87593AD1C7C23D900918AB4 /* NTTileViewDelegate.swift in Sources */,
+				D87593AE1C7C23D900918AB4 /* NTTileViewLayoutProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8DFD6631C76AF2D0028B8A5 /* Sources */ = {
+		D87593B01C7C25D500918AB4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DFD6781C7C12AA0028B8A5 /* NTTileView.swift in Sources */,
-				D8DFD67A1C7C12B70028B8A5 /* NTTileViewDelegate.swift in Sources */,
-				D8DFD67C1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift in Sources */,
-				D8DFD67E1C7C143B0028B8A5 /* NTTile.swift in Sources */,
+				D87593B91C7C25D500918AB4 /* ViewController.swift in Sources */,
+				D87593B71C7C25D500918AB4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		D8DFD66E1C76AF2D0028B8A5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8DFD6671C76AF2D0028B8A5 /* NTTileView */;
-			targetProxy = D8DFD66D1C76AF2D0028B8A5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		D8DFD6551C76AEC70028B8A5 /* Main.storyboard */ = {
+		D87593BA1C7C25D500918AB4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D8DFD6561C76AEC70028B8A5 /* Base */,
+				D87593BB1C7C25D500918AB4 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		D8DFD65A1C76AEC70028B8A5 /* LaunchScreen.storyboard */ = {
+		D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D8DFD65B1C76AEC70028B8A5 /* Base */,
+				D87593C01C7C25D500918AB4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -286,6 +252,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D87593A91C7C23A500918AB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = NTTileView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D87593AA1C7C23A500918AB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = NTTileView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D87593C41C7C25D600918AB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NTTileViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D87593C51C7C25D600918AB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NTTileViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D8DFD65E1C76AEC70028B8A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -369,97 +395,30 @@
 			};
 			name = Release;
 		};
-		D8DFD6611C76AEC70028B8A5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = NTTileViewDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileViewDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D8DFD6621C76AEC70028B8A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = NTTileViewDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileViewDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D8DFD6721C76AF2D0028B8A5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NTTileView/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D8DFD6731C76AF2D0028B8A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NTTileView/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NTTileView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D87593A81C7C23A500918AB4 /* Build configuration list for PBXNativeTarget "NTTileView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D87593A91C7C23A500918AB4 /* Debug */,
+				D87593AA1C7C23A500918AB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D87593C31C7C25D600918AB4 /* Build configuration list for PBXNativeTarget "NTTileViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D87593C41C7C25D600918AB4 /* Debug */,
+				D87593C51C7C25D600918AB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D8DFD6491C76AEC70028B8A5 /* Build configuration list for PBXProject "NTTileView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8DFD65E1C76AEC70028B8A5 /* Debug */,
 				D8DFD65F1C76AEC70028B8A5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D8DFD6601C76AEC70028B8A5 /* Build configuration list for PBXNativeTarget "NTTileViewDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D8DFD6611C76AEC70028B8A5 /* Debug */,
-				D8DFD6621C76AEC70028B8A5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D8DFD6711C76AF2D0028B8A5 /* Build configuration list for PBXNativeTarget "NTTileView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D8DFD6721C76AF2D0028B8A5 /* Debug */,
-				D8DFD6731C76AF2D0028B8A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

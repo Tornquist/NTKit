@@ -2,7 +2,7 @@
 //  NTTileView.h
 //  NTTileView
 //
-//  Created by Nathan Tornquist on 2/18/16.
+//  Created by Nathan Tornquist on 2/22/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.
 //
 

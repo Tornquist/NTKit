@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol NTTileViewLayoutProtocol {
-    
+public protocol NTTileViewLayoutProtocol {
+    func layoutTiles(tileView: NTTileView)
 }

@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NTTileViewDemo" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NTTileViewDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +16,26 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHm-wy-fAz" customClass="NTTileView" customModule="NTTileView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="PHm-wy-fAz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0jY-nv-7Qk"/>
+                            <constraint firstItem="PHm-wy-fAz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="1d2-He-GrP"/>
+                            <constraint firstAttribute="trailing" secondItem="PHm-wy-fAz" secondAttribute="trailing" id="ICA-Fq-bQL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PHm-wy-fAz" secondAttribute="bottom" id="dIy-Ef-TTU"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tileView" destination="PHm-wy-fAz" id="ABO-Rm-Wa7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="558" y="479"/>
         </scene>
     </scenes>
 </document>

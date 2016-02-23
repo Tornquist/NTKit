@@ -8,6 +8,6 @@
 
 import UIKit
 
-class NTTile: UIView {
+public class NTTile: UIView {
     
 }
