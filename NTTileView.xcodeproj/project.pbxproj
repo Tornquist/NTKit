@@ -18,7 +18,32 @@
 		D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87593BD1C7C25D500918AB4 /* Assets.xcassets */; };
 		D87593C11C7C25D500918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
 		D87593C61C7C262E00918AB4 /* NTTileView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTTileView.framework */; };
+		D87593CA1C7D63F300918AB4 /* NTTileView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTTileView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D87593C71C7D63E200918AB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8DFD6461C76AEC70028B8A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D87593A21C7C23A500918AB4;
+			remoteInfo = NTTileView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D87593C91C7D63E900918AB4 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D87593CA1C7D63F300918AB4 /* NTTileView.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D87593781C7C1B7100918AB4 /* NTTileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTTileView.h; sourceTree = "<group>"; };
@@ -32,8 +57,8 @@
 		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D87593C21C7C25D500918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
-		D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTTileViewDelegate.swift; path = /Users/nathan/Documents/Development/iOS/NTTileView/NTTileView/NTTileViewDelegate.swift; sourceTree = "<absolute>"; };
-		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTTileViewLayoutProtocol.swift; path = /Users/nathan/Documents/Development/iOS/NTTileView/NTTileView/NTTileViewLayoutProtocol.swift; sourceTree = "<absolute>"; };
+		D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDelegate.swift; sourceTree = "<group>"; };
+		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewLayoutProtocol.swift; sourceTree = "<group>"; };
 		D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,9 +91,8 @@
 				D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */,
 				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
 			);
-			name = NTTileView;
-			path = /Users/nathan/Documents/Development/iOS/NTTileView/NTTileView;
-			sourceTree = "<absolute>";
+			path = NTTileView;
+			sourceTree = "<group>";
 		};
 		D87593B51C7C25D500918AB4 /* NTTileViewDemo */ = {
 			isa = PBXGroup;
@@ -140,10 +164,12 @@
 				D87593B01C7C25D500918AB4 /* Sources */,
 				D87593B11C7C25D500918AB4 /* Frameworks */,
 				D87593B21C7C25D500918AB4 /* Resources */,
+				D87593C91C7D63E900918AB4 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D87593C81C7D63E200918AB4 /* PBXTargetDependency */,
 			);
 			name = NTTileViewDemo;
 			productName = NTTileViewDemo;
@@ -231,6 +257,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D87593C81C7D63E200918AB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D87593A21C7C23A500918AB4 /* NTTileView */;
+			targetProxy = D87593C71C7D63E200918AB4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D87593BA1C7C25D500918AB4 /* Main.storyboard */ = {
