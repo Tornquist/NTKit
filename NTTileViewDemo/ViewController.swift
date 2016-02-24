@@ -9,7 +9,7 @@
 import UIKit
 import NTTileView
 
-class ViewController: UIViewController, NTTileViewDelegate {
+class ViewController: UIViewController, NTTileViewDataSource {
 
     @IBOutlet weak var tileView: NTTileView!
     
@@ -24,17 +24,33 @@ class ViewController: UIViewController, NTTileViewDelegate {
     }
     
     func configureTileView() {
-        tileView.delegate = self
-        tileView.refreshTiles()
+        tileView.dataSource = self
     }
     
-    // MARK: - Tile View Delegate Methods
+    // MARK: - Tile View Data Source Methods
     func numberOfTiles(tileView: NTTileView) -> Int {
         return 5
     }
 
     func tileAt(indexPath indexPath: NSIndexPath) -> NTTile {
-        return NTTile()
+        let newTile = NTTile()
+        newTile.frame = CGRectMake(0, 0, tileView.frame.width, tileView.frame.height)
+        
+        switch indexPath.item {
+        case 0:
+            newTile.backgroundColor = UIColor.redColor()
+        case 1:
+            newTile.backgroundColor = UIColor.yellowColor()
+        case 2:
+            newTile.backgroundColor = UIColor.greenColor()
+        case 3:
+            newTile.backgroundColor = UIColor.blueColor()
+        case 4:
+            newTile.backgroundColor = UIColor.purpleColor()
+        default:
+            newTile.backgroundColor = UIColor.brownColor()
+        }
+        
+        return newTile
     }
 }
-

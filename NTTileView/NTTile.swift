@@ -9,5 +9,7 @@
 import UIKit
 
 public class NTTile: UIView {
-    
+    public func anchorPoint() -> CGPoint {
+        return CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+    }
 }

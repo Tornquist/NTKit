@@ -1,5 +1,5 @@
 //
-//  NTTileViewDelegate.swift
+//  NTTileViewDataSource.swift
 //  NTTileView
 //
 //  Created by Nathan Tornquist on 2/22/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol NTTileViewDelegate {
+public protocol NTTileViewDataSource {
     func numberOfTiles(tileView: NTTileView) -> Int
     func tileAt(indexPath indexPath: NSIndexPath) -> NTTile
 }

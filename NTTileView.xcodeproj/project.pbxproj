@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D87593AB1C7C23D900918AB4 /* NTTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */; };
 		D87593AC1C7C23D900918AB4 /* NTTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */; };
-		D87593AD1C7C23D900918AB4 /* NTTileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */; };
+		D87593AD1C7C23D900918AB4 /* NTTileViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */; };
 		D87593AE1C7C23D900918AB4 /* NTTileViewLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */; };
 		D87593AF1C7C23E000918AB4 /* NTTileView.h in Headers */ = {isa = PBXBuildFile; fileRef = D87593781C7C1B7100918AB4 /* NTTileView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D87593B71C7C25D500918AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B61C7C25D500918AB4 /* AppDelegate.swift */; };
@@ -19,6 +19,7 @@
 		D87593C11C7C25D500918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
 		D87593C61C7C262E00918AB4 /* NTTileView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTTileView.framework */; };
 		D87593CA1C7D63F300918AB4 /* NTTileView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTTileView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D87593CC1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +57,9 @@
 		D87593BD1C7C25D500918AB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D87593C21C7C25D500918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewRowLayout.swift; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
-		D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDelegate.swift; sourceTree = "<group>"; };
+		D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDataSource.swift; sourceTree = "<group>"; };
 		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewLayoutProtocol.swift; sourceTree = "<group>"; };
 		D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,8 +90,9 @@
 				D875937A1C7C1B7100918AB4 /* Info.plist */,
 				D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */,
 				D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */,
-				D8DFD6791C7C12B70028B8A5 /* NTTileViewDelegate.swift */,
+				D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */,
 				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
+				D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */,
 			);
 			path = NTTileView;
 			sourceTree = "<group>";
@@ -240,9 +243,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87593CC1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift in Sources */,
 				D87593AB1C7C23D900918AB4 /* NTTile.swift in Sources */,
 				D87593AC1C7C23D900918AB4 /* NTTileView.swift in Sources */,
-				D87593AD1C7C23D900918AB4 /* NTTileViewDelegate.swift in Sources */,
+				D87593AD1C7C23D900918AB4 /* NTTileViewDataSource.swift in Sources */,
 				D87593AE1C7C23D900918AB4 /* NTTileViewLayoutProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
