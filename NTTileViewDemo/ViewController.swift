@@ -27,6 +27,10 @@ class ViewController: UIViewController, NTTileViewDataSource {
         tileView.dataSource = self
     }
     
+    override func viewDidAppear(animated: Bool) {
+        tileView.arrangeTiles()
+    }
+    
     // MARK: - Tile View Data Source Methods
     func numberOfTiles(tileView: NTTileView) -> Int {
         return 5

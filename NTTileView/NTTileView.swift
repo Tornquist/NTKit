@@ -77,6 +77,10 @@ public class NTTileView: UIView {
             let indexPath = NSIndexPath(forItem: i, inSection: 0)
             addTile(dataSource!.tileAt(indexPath: indexPath))
         }
+        arrangeTiles()
+    }
+    
+    public func arrangeTiles() {
         layout.layoutTiles(self)
     }
     
