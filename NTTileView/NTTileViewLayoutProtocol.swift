@@ -9,5 +9,15 @@
 import Foundation
 
 public protocol NTTileViewLayoutProtocol {
-    func layoutTiles(tileView: NTTileView)
+    /**
+     Reset Tile Layout is used to relayout all the tiles
+     within a given tileView.  This will collapse all focused tiles.
+     */
+    func resetTileLayout(tileView: NTTileView)
+    
+    /**
+     This method will adjust the tiles to put focus
+     on a specific tile specified by it's index.
+     */
+    func focus(tileView: NTTileView, onTileWithIndex tileIndex: Int)
 }

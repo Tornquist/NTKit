@@ -11,6 +11,20 @@ import UIKit
 public class NTTile: UIView {
     public var parentTileView: NTTileView?
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureTile()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configureTile()
+    }
+    
+    func configureTile() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     public func anchorPoint() -> CGPoint {
         return CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
     }
@@ -18,7 +32,7 @@ public class NTTile: UIView {
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // TODO: Check to make sure single touch started and ended in visible part of tile
         if let tileIndex = parentTileView?.getTileIndex(withTile: self) {
-            parentTileView?.expand(tileWithIndex: tileIndex)
+            parentTileView?.focus(onTileWithIndex: tileIndex)
         }
     }
 }

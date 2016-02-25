@@ -81,12 +81,13 @@ public class NTTileView: UIView {
     }
     
     public func arrangeTiles() {
-        layout.layoutTiles(self)
+        layout.resetTileLayout(self)
     }
     
     func addTile(tile: NTTile) {
         let newView = UIView()
         newView.autoresizesSubviews = false
+        newView.translatesAutoresizingMaskIntoConstraints = false
         newView.clipsToBounds = true
         self.addSubview(newView)
         newView.addSubview(tile)
@@ -98,11 +99,12 @@ public class NTTileView: UIView {
     
     /**
      Given an internal index of a specific tile, this method is used
-     to expand that tile.  The actual action performed will depend
+     to focus on that tile.  The actual action performed will depend
      on the layouting engine used
      */
-    public func expand(tileWithIndex tileIndex: Int) {
+    public func focus(onTileWithIndex tileIndex: Int) {
         NSLog("Expand Tile \(tileIndex)")
+        layout.focus(self, onTileWithIndex: tileIndex)
     }
     
     /**
