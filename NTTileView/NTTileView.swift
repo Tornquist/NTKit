@@ -90,7 +90,7 @@ public class NTTileView: UIView {
         newView.translatesAutoresizingMaskIntoConstraints = false
         newView.clipsToBounds = true
         self.addSubview(newView)
-        newView.addSubview(tile)
+        newView.addSubview(tile.view)
         tile.parentTileView = self
         
         views.append(newView)
@@ -105,6 +105,14 @@ public class NTTileView: UIView {
     public func focus(onTileWithIndex tileIndex: Int) {
         NSLog("Expand Tile \(tileIndex)")
         layout.focus(self, onTileWithIndex: tileIndex)
+    }
+    
+    /**
+     Transition all tiles to a collapsed state, regardless of what the
+     current arrangement or state is.
+     */
+    public func collapseAllTiles() {
+        layout.collapseAll(self)
     }
     
     /**

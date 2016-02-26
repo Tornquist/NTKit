@@ -1,32 +1,23 @@
 //
-//  NTTile.swift
+//  NTTile
 //  NTTileView
 //
-//  Created by Nathan Tornquist on 2/22/16.
+//  Created by Nathan Tornquist on 2/25/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.
 //
 
 import UIKit
 
-public class NTTile: UIView {
-    public var parentTileView: NTTileView?
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureTile()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configureTile()
-    }
-    
-    func configureTile() {
-        self.translatesAutoresizingMaskIntoConstraints = false
+public class NTTile: UIViewController {
+    var parentTileView: NTTileView?
+        
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     public func anchorPoint() -> CGPoint {
-        return CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        return CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame))
     }
     
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {

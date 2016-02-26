@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D87593AB1C7C23D900918AB4 /* NTTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */; };
 		D87593AC1C7C23D900918AB4 /* NTTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */; };
 		D87593AD1C7C23D900918AB4 /* NTTileViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */; };
 		D87593AE1C7C23D900918AB4 /* NTTileViewLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */; };
@@ -20,6 +19,9 @@
 		D87593C61C7C262E00918AB4 /* NTTileView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTTileView.framework */; };
 		D87593CA1C7D63F300918AB4 /* NTTileView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTTileView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D87593CC1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */; };
+		D87593CF1C7FEE4500918AB4 /* NTTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593CE1C7FEE4500918AB4 /* NTTile.swift */; };
+		D87593D71C8012D200918AB4 /* NTBasicTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593D61C8012D200918AB4 /* NTBasicTile.swift */; };
+		D87593D91C80133500918AB4 /* NTBasicTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87593D81C80133500918AB4 /* NTBasicTile.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +60,12 @@
 		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D87593C21C7C25D500918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewRowLayout.swift; sourceTree = "<group>"; };
+		D87593CE1C7FEE4500918AB4 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
+		D87593D61C8012D200918AB4 /* NTBasicTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTBasicTile.swift; sourceTree = "<group>"; };
+		D87593D81C80133500918AB4 /* NTBasicTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTBasicTile.xib; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
 		D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDataSource.swift; sourceTree = "<group>"; };
 		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewLayoutProtocol.swift; sourceTree = "<group>"; };
-		D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,11 +92,10 @@
 			children = (
 				D87593781C7C1B7100918AB4 /* NTTileView.h */,
 				D875937A1C7C1B7100918AB4 /* Info.plist */,
-				D8DFD67D1C7C143B0028B8A5 /* NTTile.swift */,
 				D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */,
 				D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */,
-				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
-				D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */,
+				D87593D31C80102D00918AB4 /* Layout */,
+				D87593D21C800E6300918AB4 /* Tiles */,
 			);
 			path = NTTileView;
 			sourceTree = "<group>";
@@ -108,6 +111,33 @@
 				D87593C21C7C25D500918AB4 /* Info.plist */,
 			);
 			path = NTTileViewDemo;
+			sourceTree = "<group>";
+		};
+		D87593D21C800E6300918AB4 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				D87593CE1C7FEE4500918AB4 /* NTTile.swift */,
+				D87593D51C8012C700918AB4 /* Basic Tile */,
+			);
+			name = Tiles;
+			sourceTree = "<group>";
+		};
+		D87593D31C80102D00918AB4 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
+				D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		D87593D51C8012C700918AB4 /* Basic Tile */ = {
+			isa = PBXGroup;
+			children = (
+				D87593D61C8012D200918AB4 /* NTBasicTile.swift */,
+				D87593D81C80133500918AB4 /* NTBasicTile.xib */,
+			);
+			name = "Basic Tile";
 			sourceTree = "<group>";
 		};
 		D8DFD6451C76AEC70028B8A5 = {
@@ -224,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87593D91C80133500918AB4 /* NTBasicTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87593CC1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift in Sources */,
-				D87593AB1C7C23D900918AB4 /* NTTile.swift in Sources */,
+				D87593D71C8012D200918AB4 /* NTBasicTile.swift in Sources */,
 				D87593AC1C7C23D900918AB4 /* NTTileView.swift in Sources */,
 				D87593AD1C7C23D900918AB4 /* NTTileViewDataSource.swift in Sources */,
 				D87593AE1C7C23D900918AB4 /* NTTileViewLayoutProtocol.swift in Sources */,
+				D87593CF1C7FEE4500918AB4 /* NTTile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

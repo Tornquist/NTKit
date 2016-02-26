@@ -20,4 +20,9 @@ public protocol NTTileViewLayoutProtocol {
      on a specific tile specified by it's index.
      */
     func focus(tileView: NTTileView, onTileWithIndex tileIndex: Int)
+    
+    /**
+     Transition all tiles to a collapsed state
+     */
+    func collapseAll(tileView: NTTileView)
 }

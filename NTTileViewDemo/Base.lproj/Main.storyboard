@@ -30,7 +30,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tileView" destination="PHm-wy-fAz" id="ABO-Rm-Wa7"/>
+                        <outlet property="tileView" destination="PHm-wy-fAz" id="jxf-b6-nfS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

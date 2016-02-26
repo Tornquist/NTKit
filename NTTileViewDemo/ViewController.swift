@@ -31,28 +31,31 @@ class ViewController: UIViewController, NTTileViewDataSource {
         tileView.arrangeTiles()
     }
     
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        tileView.arrangeTiles()
+    }
+    
     // MARK: - Tile View Data Source Methods
     func numberOfTiles(tileView: NTTileView) -> Int {
         return 5
     }
 
     func tileAt(indexPath indexPath: NSIndexPath) -> NTTile {
-        let newTile = NTTile()
-        newTile.frame = CGRectMake(0, 0, tileView.frame.width, tileView.frame.height)
+        let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
         
         switch indexPath.item {
         case 0:
-            newTile.backgroundColor = UIColor.redColor()
+            newTile.view.backgroundColor = UIColor.redColor()
         case 1:
-            newTile.backgroundColor = UIColor.yellowColor()
+            newTile.view.backgroundColor = UIColor.yellowColor()
         case 2:
-            newTile.backgroundColor = UIColor.greenColor()
+            newTile.view.backgroundColor = UIColor.greenColor()
         case 3:
-            newTile.backgroundColor = UIColor.blueColor()
+            newTile.view.backgroundColor = UIColor.blueColor()
         case 4:
-            newTile.backgroundColor = UIColor.purpleColor()
+            newTile.view.backgroundColor = UIColor.purpleColor()
         default:
-            newTile.backgroundColor = UIColor.brownColor()
+            newTile.view.backgroundColor = UIColor.brownColor()
         }
         
         return newTile
