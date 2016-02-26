@@ -19,21 +19,21 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         for (index, view) in tileView.views.enumerate() {
             // Set View Position
             view.frame = CGRectMake(0, CGFloat(index)*tileHeight, tileWidth, tileHeight)
-            // Set Tile Position
-            tileView.tiles[index].view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
             // Adjust Tile based on anchor
-            NSLog("")
-            NSLog("view frame: \(view.frame)")
-            NSLog("Tile Frame: \(tileView.tiles[index].view.frame)")
-            NSLog("origin: \(tileView.tiles[index].view.frame.origin)")
+            let tile = tileView.tiles[index]
+            tile.view.frame.origin.x = 0
+            tile.view.frame.origin.y = 0
+            NSLog("frame: \(tile.view.frame)")
+            let anchor = tile.anchorPoint()
+            let viewCenter = CGPoint(x: CGRectGetMidX(view.frame), y: CGRectGetMidY(view.frame))
+            tile.view.frame.origin.x = viewCenter.x - anchor.x
+            tile.view.frame.origin.y = viewCenter.y - anchor.y
+
         }
-        tileView.setNeedsDisplay()
-        NSLog("Tile View Size: \(tileView.frame)")
-        NSLog("Tile View Origin: \(tileView.frame.origin)")
+        //tileView.setNeedsDisplay()
     }
     
     func focus(tileView: NTTileView, onTileWithIndex tileIndex: Int) {
-        // Do nothing
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
         
@@ -49,7 +49,7 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
             } else {
                 view.frame = CGRectMake(0, 0, collapsedTileWidth, collapsedTileHeight)
             }
-            tileView.tiles[index].view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+            //tileView.tiles[index].view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
         }
     }
     

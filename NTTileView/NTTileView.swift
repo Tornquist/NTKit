@@ -64,6 +64,21 @@ public class NTTileView: UIView {
      */
     var views: [UIView] = []
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureView()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configureView()
+    }
+    
+    func configureView() {
+        self.autoresizesSubviews = false
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     public func refreshTiles() {
         guard dataSource != nil else {
             NSLog("NTTileView - nil data source, cannot refresh tiles")
