@@ -11,6 +11,14 @@ import UIKit
 public class NTTileView: UIView {
     
     /**
+     This is used to track if an additional arrangement
+     of tiles is needed.  The main case when a second arrangement
+     is needed is after a frame change, so that the UI can be arranged
+     based on an actual frame instaed of just an IB frame
+     */
+    public var arrangeAfterFrameChange = true
+    
+    /**
      NTTileView Data Source.
      
      This object will provide the data for the tile view, and
@@ -147,5 +155,15 @@ public class NTTileView: UIView {
             }
         }
         return nil
+    }
+    
+    // MARK: - Layout Events for monitoring frame change
+    
+    public override func layoutSublayersOfLayer(layer: CALayer) {
+        super.layoutSublayersOfLayer(layer)
+        if (arrangeAfterFrameChange == true) {
+            self.arrangeTiles()
+            arrangeAfterFrameChange = false
+        }
     }
 }
