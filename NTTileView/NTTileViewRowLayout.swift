@@ -21,23 +21,13 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
             view.frame = CGRectMake(0, CGFloat(index)*tileHeight, tileWidth, tileHeight)
             // Adjust Tile based on anchor
             let tile = tileView.tiles[index]
-            
-            let anchor = tile.anchorPoint()
-            let viewCenter = CGPoint(x: CGRectGetMidX(view.frame), y: CGRectGetMidY(view.frame))
-            let newX = viewCenter.x - anchor.x - view.frame.origin.x
-            let newY = viewCenter.y - anchor.y - view.frame.origin.y
-            var newFrame = tile.view.frame
-            newFrame.origin.x = newX
-            newFrame.origin.y = newY
-            tile.view.frame = newFrame
+            position(tile: tile, inView: view)
         }
     }
     
     func focus(tileView: NTTileView, onTileWithIndex tileIndex: Int) {
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
-        
-        NSLog("Expand Size: \(tileView.frame)")
         
         let expandedTileWidth = viewWidth
         let expandedTileHeight = viewHeight
@@ -48,11 +38,11 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         for (index, view) in tileView.views.enumerate() {
             if (index == tileIndex) {
                 view.frame = CGRectMake(0, 0, expandedTileWidth, expandedTileHeight)
+                let tile = tileView.tiles[index]
+                position(tile: tile, inView: view)
             } else {
                 view.frame = CGRectMake(0, 0, collapsedTileWidth, collapsedTileHeight)
             }
-            
-            //tileView.tiles[index].updateSize()
         }
         tileView.setNeedsDisplay()
     }
@@ -60,5 +50,19 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
     func collapseAll(tileView: NTTileView) {
         // TODO: Actually collapse tiles instead of just resetting the arrangement
         resetTileLayout(tileView)
+    }
+    
+    func position(tile tile: NTTile, inView view: UIView) {
+        let anchor = tile.anchorPoint()
+        let viewCenter = CGPoint(x: CGRectGetMidX(view.frame), y: CGRectGetMidY(view.frame))
+        let newX = viewCenter.x - anchor.x - view.frame.origin.x
+        let newY = viewCenter.y - anchor.y - view.frame.origin.y
+        var newFrame: CGRect!
+        if (tile.targetTileSize != nil) {
+            newFrame = CGRectMake(newX, newY, tile.targetTileSize!.width, tile.targetTileSize!.height)
+        } else {
+            newFrame = CGRectMake(newX, newY, tile.view.frame.width, tile.view.frame.height)
+        }
+        tile.view.frame = newFrame
     }
 }

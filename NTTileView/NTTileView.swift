@@ -120,7 +120,6 @@ public class NTTileView: UIView {
      on the layouting engine used
      */
     public func focus(onTileWithIndex tileIndex: Int) {
-        NSLog("Expand Tile \(tileIndex)")
         layout.focus(self, onTileWithIndex: tileIndex)
     }
     

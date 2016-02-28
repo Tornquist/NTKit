@@ -11,10 +11,7 @@ import UIKit
 public class NTBasicTile: NTTile {
     public class func build(inRect rect: CGRect) -> NTBasicTile {
         let tile = NTBasicTile.init(nibName: "NTBasicTile", bundle: NSBundle(forClass: self))
-        let widthConstraint = NSLayoutConstraint(item: tile.view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: rect.width)
-        let heightConstraint = NSLayoutConstraint(item: tile.view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: rect.height)
-        tile.view.addConstraint(widthConstraint)
-        tile.view.addConstraint(heightConstraint)
+        tile.targetTileSize = CGSizeMake(rect.width, rect.height)
         return tile
     }
     

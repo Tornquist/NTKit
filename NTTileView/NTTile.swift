@@ -10,10 +10,11 @@ import UIKit
 
 public class NTTile: UIViewController {
     var parentTileView: NTTileView?
+    var targetTileSize: CGSize?
         
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.translatesAutoresizingMaskIntoConstraints = false
+        //self.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     public func anchorPoint() -> CGPoint {
