@@ -17,13 +17,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tile Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgm-FR-o39">
-                    <rect key="frame" x="268" y="289" width="65" height="21"/>
+                    <rect key="frame" x="268" y="290" width="65" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ejz-zx-DbV">
-                    <rect key="frame" x="12" y="8" width="39" height="30"/>
+                    <rect key="frame" x="8" y="8" width="39" height="30"/>
                     <state key="normal" title="Close"/>
                     <connections>
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="J6N-gF-KRZ"/>
@@ -32,13 +32,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Dgm-FR-o39" secondAttribute="bottom" constant="290" id="449-vV-VaL"/>
-                <constraint firstItem="Dgm-FR-o39" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="268" id="M5d-M9-wKN"/>
-                <constraint firstItem="Dgm-FR-o39" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="289" id="bb6-cq-CT0"/>
-                <constraint firstItem="Ejz-zx-DbV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="c0R-zF-z8V"/>
-                <constraint firstAttribute="trailing" secondItem="Dgm-FR-o39" secondAttribute="trailing" constant="267" id="gxx-KJ-mth"/>
-                <constraint firstItem="Ejz-zx-DbV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="t15-No-WEj"/>
+                <constraint firstItem="Dgm-FR-o39" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9fW-Ig-Qpm"/>
+                <constraint firstItem="Dgm-FR-o39" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ShY-Ry-xEZ"/>
+                <constraint firstItem="Ejz-zx-DbV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="UOk-Ix-Vy7"/>
+                <constraint firstItem="Ejz-zx-DbV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="m1L-9w-1mr"/>
             </constraints>
+            <point key="canvasLocation" x="269" y="210"/>
         </view>
     </objects>
 </document>

@@ -25,13 +25,10 @@ class ViewController: UIViewController, NTTileViewDataSource {
     
     func configureTileView() {
         tileView.dataSource = self
+        tileView.reloadTiles()
     }
     
     override func viewDidAppear(animated: Bool) {
-        tileView.arrangeTiles()
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         tileView.arrangeTiles()
     }
     

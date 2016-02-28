@@ -21,20 +21,23 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
             view.frame = CGRectMake(0, CGFloat(index)*tileHeight, tileWidth, tileHeight)
             // Adjust Tile based on anchor
             let tile = tileView.tiles[index]
-            NSLog("frame: \(tile.view.frame)")
             
             let anchor = tile.anchorPoint()
             let viewCenter = CGPoint(x: CGRectGetMidX(view.frame), y: CGRectGetMidY(view.frame))
-            let newX = viewCenter.x - anchor.x
-            let newY = viewCenter.y - anchor.y
-            tile.view.frame = CGRectMake(newX, newY, tile.view.frame.width, tile.view.frame.height)
+            let newX = viewCenter.x - anchor.x - view.frame.origin.x
+            let newY = viewCenter.y - anchor.y - view.frame.origin.y
+            var newFrame = tile.view.frame
+            newFrame.origin.x = newX
+            newFrame.origin.y = newY
+            tile.view.frame = newFrame
         }
-        //tileView.setNeedsDisplay()
     }
     
     func focus(tileView: NTTileView, onTileWithIndex tileIndex: Int) {
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
+        
+        NSLog("Expand Size: \(tileView.frame)")
         
         let expandedTileWidth = viewWidth
         let expandedTileHeight = viewHeight
@@ -45,12 +48,13 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         for (index, view) in tileView.views.enumerate() {
             if (index == tileIndex) {
                 view.frame = CGRectMake(0, 0, expandedTileWidth, expandedTileHeight)
-                tileView.tiles[index].view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
-                tileView.tiles[index].view.setNeedsLayout()
             } else {
                 view.frame = CGRectMake(0, 0, collapsedTileWidth, collapsedTileHeight)
             }
+            
+            //tileView.tiles[index].updateSize()
         }
+        tileView.setNeedsDisplay()
     }
     
     func collapseAll(tileView: NTTileView) {

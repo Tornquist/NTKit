@@ -26,7 +26,7 @@ public class NTTileView: UIView {
         }
         set {
             _dataSource = newValue
-            refreshTiles()
+            //refreshTiles()
         }
     }
     
@@ -48,7 +48,7 @@ public class NTTileView: UIView {
         }
         set {
             _layout = newValue
-            refreshTiles()
+            //refreshTiles()
         }
     }
     
@@ -79,7 +79,7 @@ public class NTTileView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    public func refreshTiles() {
+    public func reloadTiles() {
         guard dataSource != nil else {
             NSLog("NTTileView - nil data source, cannot refresh tiles")
             return
@@ -101,11 +101,13 @@ public class NTTileView: UIView {
     
     func addTile(tile: NTTile) {
         let newView = UIView()
+        self.addSubview(newView)
+        newView.addSubview(tile.view)
+        
         newView.autoresizesSubviews = false
         newView.translatesAutoresizingMaskIntoConstraints = false
         newView.clipsToBounds = true
-        self.addSubview(newView)
-        newView.addSubview(tile.view)
+
         tile.parentTileView = self
         
         views.append(newView)
