@@ -25,4 +25,9 @@ public protocol NTTileViewLayoutProtocol {
      Transition all tiles to a collapsed state
      */
     func collapseAll(tileView: NTTileView)
+    
+    /**
+     Reapply the most recent layout based on the new frame
+     */
+    func updateForFrame(tileView: NTTileView)
 }

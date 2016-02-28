@@ -13,8 +13,20 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
     var expandAnimationDuration: Double = 0.5
     var collapseAnimationDuration: Double = 0.5
     
+    enum LayoutActions {
+        case None
+        case Reset
+        case Focus
+        case Collapse
+    }
+    
+    var lastAction: LayoutActions = .None
+    var lastActionIndex: Int = 0
+    
     //MARK: - NTTileViewLayoutProtocol Methods
     func resetTileLayout(tileView: NTTileView) {
+        lastAction = .Reset
+        
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
         
@@ -31,6 +43,9 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
     }
     
     func focus(tileView: NTTileView, onTileWithIndex tileIndex: Int) {
+        lastAction = .Focus
+        lastActionIndex = tileIndex
+        
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
         
@@ -56,6 +71,8 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
     }
     
     func collapseAll(tileView: NTTileView) {
+        lastAction = .Collapse
+        
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
         
@@ -71,6 +88,19 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
                 self.position(tileView: tileView, tile: tile, inView: view)
             }
         })
+    }
+    
+    func updateForFrame(tileView: NTTileView) {
+        switch lastAction {
+        case .Reset:
+            self.resetTileLayout(tileView)
+        case .Collapse:
+            self.collapseAll(tileView)
+        case .Focus:
+            self.focus(tileView, onTileWithIndex: lastActionIndex)
+        default:
+            break
+        }
     }
     
     // MARK: - Helper Methods for LayoutProtocol implementation
