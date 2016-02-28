@@ -24,6 +24,10 @@ class ViewController: UIViewController, NTTileViewDataSource {
     }
     
     func configureTileView() {
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[tileView]-0-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["tileView":tileView])
+        let horizontalConstrints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[tileView]-0-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["tileView":tileView])
+        self.view.addConstraints(verticalConstraints)
+        self.view.addConstraints(horizontalConstrints)
         tileView.dataSource = self
         tileView.reloadTiles()
     }

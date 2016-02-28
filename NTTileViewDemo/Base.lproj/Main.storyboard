@@ -23,10 +23,10 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="PHm-wy-fAz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0jY-nv-7Qk"/>
-                            <constraint firstItem="PHm-wy-fAz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="1d2-He-GrP"/>
-                            <constraint firstAttribute="trailing" secondItem="PHm-wy-fAz" secondAttribute="trailing" id="ICA-Fq-bQL"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PHm-wy-fAz" secondAttribute="bottom" id="dIy-Ef-TTU"/>
+                            <constraint firstItem="PHm-wy-fAz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="750" id="0jY-nv-7Qk"/>
+                            <constraint firstItem="PHm-wy-fAz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="750" constant="-20" id="1d2-He-GrP"/>
+                            <constraint firstAttribute="trailing" secondItem="PHm-wy-fAz" secondAttribute="trailing" priority="750" id="ICA-Fq-bQL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PHm-wy-fAz" secondAttribute="bottom" priority="750" id="dIy-Ef-TTU"/>
                         </constraints>
                     </view>
                     <connections>
