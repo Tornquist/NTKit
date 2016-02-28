@@ -9,6 +9,14 @@
 import Foundation
 
 public protocol NTTileViewDataSource {
+    /**
+     Returns the integer number of tiles that the provided
+     NTTileView should display
+     */
     func numberOfTiles(tileView: NTTileView) -> Int
+    
+    /**
+     Returns the NTTile for a given index.
+     */
     func tileAt(indexPath indexPath: NSIndexPath) -> NTTile
 }
