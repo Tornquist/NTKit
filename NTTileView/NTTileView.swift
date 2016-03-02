@@ -18,13 +18,8 @@ public class NTTileView: UIView {
      refreshTiles() will be called on the tile view after setting
      a new data source.
      */
-    var _dataSource: NTTileViewDataSource?
     public var dataSource: NTTileViewDataSource? {
-        get {
-            return _dataSource
-        }
-        set {
-            _dataSource = newValue
+        didSet {
             //refreshTiles()
         }
     }
@@ -40,13 +35,8 @@ public class NTTileView: UIView {
      refreshTiles() will be called on the tile view after setting
      a new data source.
      */
-    var _layout: NTTileViewLayoutProtocol = NTTileViewRowLayout()
-    public var layout: NTTileViewLayoutProtocol {
-        get {
-            return _layout
-        }
-        set {
-            _layout = newValue
+    public var layout: NTTileViewLayoutProtocol! {
+        didSet {
             //refreshTiles()
         }
     }
@@ -64,17 +54,18 @@ public class NTTileView: UIView {
     var views: [UIView] = []
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+		super.init(frame: frame)
         configureView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+		super.init(coder: aDecoder)
         configureView()
     }
     
     func configureView() {
-        self.autoresizesSubviews = false
+		self.layout = NTTileViewRowLayout(tileView: self)
+		self.autoresizesSubviews = false
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -95,7 +86,7 @@ public class NTTileView: UIView {
     }
     
     public func arrangeTiles() {
-        layout.resetTileLayout(self)
+        layout.resetTileLayout()
     }
     
     func addTile(tile: NTTile) {
@@ -119,7 +110,7 @@ public class NTTileView: UIView {
      on the layouting engine used
      */
     public func focus(onTileWithIndex tileIndex: Int) {
-        layout.focus(self, onTileWithIndex: tileIndex)
+        layout.focus(onTileWithIndex: tileIndex)
     }
     
     /**
@@ -127,7 +118,7 @@ public class NTTileView: UIView {
      current arrangement or state is.
      */
     public func collapseAllTiles() {
-        layout.collapseAll(self)
+        layout.collapseAll()
     }
     
     /**
@@ -152,7 +143,6 @@ public class NTTileView: UIView {
     
     public override func layoutSublayersOfLayer(layer: CALayer) {
         super.layoutSublayersOfLayer(layer)
-        // TODO: Verify that there is not a cleaner method
-        layout.updateForFrame(self)
+        layout.updateForFrame()
     }
 }
