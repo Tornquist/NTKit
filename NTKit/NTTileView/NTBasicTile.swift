@@ -1,6 +1,6 @@
 //
 //  NTBasicTile.swift
-//  NTTileView
+//  NTKit
 //
 //  Created by Nathan Tornquist on 2/25/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.

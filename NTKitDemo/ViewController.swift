@@ -1,13 +1,13 @@
 //
 //  ViewController.swift
-//  NTTileViewDemo
+//  NTKitDemo
 //
 //  Created by Nathan Tornquist on 2/22/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.
 //
 
 import UIKit
-import NTTileView
+import NTKit
 
 class ViewController: UIViewController, NTTileViewDataSource {
 

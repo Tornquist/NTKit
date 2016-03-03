@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:NTTileView.xcodeproj">
+      location = "self:/Users/nathan/Documents/Development/iOS/NathanKit/NTKit.xcodeproj">
    </FileRef>
 </Workspace>
