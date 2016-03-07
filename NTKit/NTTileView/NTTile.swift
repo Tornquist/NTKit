@@ -14,11 +14,14 @@ public class NTTile: UIViewController {
         
     public override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    /**
+     Returns the anchor point in local coordinates.  The value returned needs to be based on the top
+     left corner of the tile being the origin (0,0).
+    */
     public func anchorPoint() -> CGPoint {
-        return CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame))
+        return CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))
     }
     
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
