@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NTBasicTile" customModule="NTTileView" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NTBasicTile" customModule="NTKit" customModuleProvider="target">
             <connections>
                 <outlet property="tileText" destination="Dgm-FR-o39" id="fUg-s4-OCm"/>
                 <outlet property="view" destination="iN0-l3-epB" id="9XT-MM-Fet"/>

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class NTTileViewRowLayout: NTTileViewLayoutProtocol {
+public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
 
-	weak var tileView: NTTileView! 
+	weak public var tileView: NTTileView! 
 	//MARK: - Configuration Variables
     var expandAnimationDuration: Double = 0.5
     var collapseAnimationDuration: Double = 0.5
@@ -25,13 +25,13 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
     var lastAction: LayoutActions = .None
     var lastActionIndex: Int = 0
 	
-	convenience init(tileView: NTTileView) {
+	public convenience init(tileView: NTTileView) {
 		self.init()
 		self.tileView = tileView
 	}
 	
     //MARK: - NTTileViewLayoutProtocol Methods
-    func resetTileLayout() {
+    public func resetTileLayout() {
         lastAction = .Reset
         
         let viewWidth = tileView.frame.width
@@ -49,7 +49,7 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         }
     }
     
-    func focus(onTileWithIndex tileIndex: Int) {
+    public func focus(onTileWithIndex tileIndex: Int) {
         lastAction = .Focus
         lastActionIndex = tileIndex
         
@@ -77,7 +77,7 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         })
     }
     
-    func collapseAll() {
+    public func collapseAll() {
         lastAction = .Collapse
         
         let viewWidth = tileView.frame.width
@@ -97,7 +97,7 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         })
     }
     
-    func updateForFrame() {
+    public func updateForFrame() {
         switch lastAction {
         case .Reset:
             self.resetTileLayout()
@@ -113,12 +113,21 @@ class NTTileViewRowLayout: NTTileViewLayoutProtocol {
     // MARK: - Helper Methods for LayoutProtocol implementation
     
     func position(tile: NTTile, inView view: UIView) {
+        // Base Positioning
         let anchor = tile.anchorPoint()
         let viewCenter = CGPoint(x: CGRectGetMidX(view.frame), y: CGRectGetMidY(view.frame))
         let newX = viewCenter.x - anchor.x - view.frame.origin.x
-        let newY = viewCenter.y - anchor.y - view.frame.origin.y
+        var newY = viewCenter.y - anchor.y - view.frame.origin.y
+        let width = (tileView.frame.width > view.frame.width) ? tileView.frame.width : view.frame.width
+        let height = (tileView.frame.height > view.frame.height) ? tileView.frame.height : view.frame.height
+        
+        // Apply Corrections
+        if (newY > 0) { newY = 0 }
+        if (newY + height < view.frame.height) { newY = view.frame.height - height }
+        
+        // Set New Frame
         var newFrame: CGRect!
-        newFrame = CGRectMake(newX, newY, tileView.frame.width, tileView.frame.height)
+        newFrame = CGRectMake(newX, newY, width, height)
         tile.view.frame = newFrame
     }
 }

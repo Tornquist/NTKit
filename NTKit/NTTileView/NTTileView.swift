@@ -35,7 +35,7 @@ public class NTTileView: UIView {
      refreshTiles() will be called on the tile view after setting
      a new data source.
      */
-    public var layout: NTTileViewLayoutProtocol! {
+    public var layout: NTTileViewLayoutProtocol? {
         didSet {
             //refreshTiles()
         }
@@ -86,7 +86,7 @@ public class NTTileView: UIView {
     }
     
     public func arrangeTiles() {
-        layout.resetTileLayout()
+        layout?.resetTileLayout()
     }
     
     func addTile(tile: NTTile) {
@@ -110,7 +110,7 @@ public class NTTileView: UIView {
      on the layouting engine used
      */
     public func focus(onTileWithIndex tileIndex: Int) {
-        layout.focus(onTileWithIndex: tileIndex)
+        layout?.focus(onTileWithIndex: tileIndex)
     }
     
     /**
@@ -118,7 +118,7 @@ public class NTTileView: UIView {
      current arrangement or state is.
      */
     public func collapseAllTiles() {
-        layout.collapseAll()
+        layout?.collapseAll()
     }
     
     /**
@@ -143,6 +143,6 @@ public class NTTileView: UIView {
     
     public override func layoutSublayersOfLayer(layer: CALayer) {
         super.layoutSublayersOfLayer(layer)
-        layout.updateForFrame()
+        layout?.updateForFrame()
     }
 }

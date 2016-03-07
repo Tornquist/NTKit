@@ -15,7 +15,7 @@ public class NTBasicTile: NTTile {
         return tile
     }
     
-    @IBOutlet weak var tileText: UILabel!
+    @IBOutlet weak public var tileText: UILabel!
     
     public override func anchorPoint() -> CGPoint {
         return CGPointMake(CGRectGetMidX(tileText.frame), CGRectGetMidY(tileText.frame))

@@ -47,16 +47,26 @@ class ViewController: UIViewController, NTTileViewDataSource {
         switch indexPath.item {
         case 0:
             newTile.view.backgroundColor = UIColor.redColor()
+            newTile.tileText.text = "Centered Anchor"
         case 1:
-            newTile.view.backgroundColor = UIColor.yellowColor()
+            let otherTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
+            otherTile.view.backgroundColor = UIColor.yellowColor()
+            otherTile.titleText.text = "Anchor 1/3"
+            return otherTile
         case 2:
             newTile.view.backgroundColor = UIColor.greenColor()
+            newTile.tileText.text = "Centered Anchor"
         case 3:
             newTile.view.backgroundColor = UIColor.blueColor()
+            newTile.tileText.text = "Centered Anchor"
         case 4:
-            newTile.view.backgroundColor = UIColor.purpleColor()
+            let otherTile = NTImageViewTile.build(inRect: UIScreen.mainScreen().bounds)
+            otherTile.view.backgroundColor = UIColor.purpleColor()
+            otherTile.titleText.text = "Anchor on Bottom"
+            return otherTile
         default:
             newTile.view.backgroundColor = UIColor.brownColor()
+            newTile.tileText.text = "Centered Anchor"
         }
         
         return newTile

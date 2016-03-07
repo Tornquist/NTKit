@@ -22,6 +22,10 @@
 		D87593E61C87F06600918AB4 /* NTBasicTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593D61C8012D200918AB4 /* NTBasicTile.swift */; };
 		D87593E71C87F08200918AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BA1C7C25D500918AB4 /* Main.storyboard */; };
 		D87593E81C87F08200918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
+		D8A0251C1C8CF03F00175E3F /* NTTitleDetailTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251B1C8CF03F00175E3F /* NTTitleDetailTile.swift */; };
+		D8A0251E1C8CF05400175E3F /* NTTitleDetailTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */; };
+		D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */; };
+		D8A025221C8CFF9300175E3F /* NTImageViewTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		D87593CE1C7FEE4500918AB4 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
 		D87593D61C8012D200918AB4 /* NTBasicTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTBasicTile.swift; sourceTree = "<group>"; };
 		D87593D81C80133500918AB4 /* NTBasicTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTBasicTile.xib; sourceTree = "<group>"; };
+		D8A0251B1C8CF03F00175E3F /* NTTitleDetailTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTitleDetailTile.swift; sourceTree = "<group>"; };
+		D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTTitleDetailTile.xib; sourceTree = "<group>"; };
+		D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewTile.swift; sourceTree = "<group>"; };
+		D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewTile.xib; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
 		D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDataSource.swift; sourceTree = "<group>"; };
 		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewLayoutProtocol.swift; sourceTree = "<group>"; };
@@ -113,6 +121,10 @@
 		D87593D21C800E6300918AB4 /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				D87593CE1C7FEE4500918AB4 /* NTTile.swift */,
+				D87593D51C8012C700918AB4 /* Basic Tile */,
+				D8A0251A1C8CF02400175E3F /* Title Detail Tile */,
+				D8A025231C8CFFE300175E3F /* Image View Tile */,
 			);
 			name = Tiles;
 			sourceTree = "<group>";
@@ -120,6 +132,8 @@
 		D87593D31C80102D00918AB4 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
+				D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -127,6 +141,8 @@
 		D87593D51C8012C700918AB4 /* Basic Tile */ = {
 			isa = PBXGroup;
 			children = (
+				D87593D61C8012D200918AB4 /* NTBasicTile.swift */,
+				D87593D81C80133500918AB4 /* NTBasicTile.xib */,
 			);
 			name = "Basic Tile";
 			sourceTree = "<group>";
@@ -137,15 +153,27 @@
 				D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */,
 				D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */,
 				D87593D31C80102D00918AB4 /* Layout */,
-				D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */,
-				D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */,
 				D87593D21C800E6300918AB4 /* Tiles */,
-				D87593CE1C7FEE4500918AB4 /* NTTile.swift */,
-				D87593D51C8012C700918AB4 /* Basic Tile */,
-				D87593D61C8012D200918AB4 /* NTBasicTile.swift */,
-				D87593D81C80133500918AB4 /* NTBasicTile.xib */,
 			);
 			path = NTTileView;
+			sourceTree = "<group>";
+		};
+		D8A0251A1C8CF02400175E3F /* Title Detail Tile */ = {
+			isa = PBXGroup;
+			children = (
+				D8A0251B1C8CF03F00175E3F /* NTTitleDetailTile.swift */,
+				D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */,
+			);
+			name = "Title Detail Tile";
+			sourceTree = "<group>";
+		};
+		D8A025231C8CFFE300175E3F /* Image View Tile */ = {
+			isa = PBXGroup;
+			children = (
+				D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */,
+				D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */,
+			);
+			name = "Image View Tile";
 			sourceTree = "<group>";
 		};
 		D8DFD6451C76AEC70028B8A5 = {
@@ -263,6 +291,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87593D91C80133500918AB4 /* NTBasicTile.xib in Resources */,
+				D8A025221C8CFF9300175E3F /* NTImageViewTile.xib in Resources */,
+				D8A0251E1C8CF05400175E3F /* NTTitleDetailTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,10 +331,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87593E11C87F06600918AB4 /* NTTileView.swift in Sources */,
+				D8A0251C1C8CF03F00175E3F /* NTTitleDetailTile.swift in Sources */,
 				D87593E21C87F06600918AB4 /* NTTileViewDataSource.swift in Sources */,
 				D87593E31C87F06600918AB4 /* NTTileViewLayoutProtocol.swift in Sources */,
 				D87593E41C87F06600918AB4 /* NTTileViewRowLayout.swift in Sources */,
 				D87593E51C87F06600918AB4 /* NTTile.swift in Sources */,
+				D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */,
 				D87593E61C87F06600918AB4 /* NTBasicTile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
