@@ -53,6 +53,8 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
         self.clipsToBounds = true
         self.delegate = self
         self.contentOffset = CGPointZero
+        self.bounces = true
+        self.bouncesZoom = true
         
         // Configure Image View
         self.imageView = UIImageView()
