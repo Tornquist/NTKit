@@ -42,30 +42,37 @@ class ViewController: UIViewController, NTTileViewDataSource {
     }
 
     func tileAt(indexPath indexPath: NSIndexPath) -> NTTile {
-        let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
+        var newTile: NTTile!
         
         switch indexPath.item {
         case 0:
+            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.redColor()
-            newTile.tileText.text = "Centered Anchor"
+            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
+            
         case 1:
-            let otherTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
-            otherTile.view.backgroundColor = UIColor.yellowColor()
-            otherTile.titleText.text = "Anchor 1/3"
-            return otherTile
+            newTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
+            newTile.view.backgroundColor = UIColor.yellowColor()
+            (newTile as! NTTitleDetailTile).titleText.text = "Anchor 1/3"
+            
         case 2:
+            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.greenColor()
-            newTile.tileText.text = "Centered Anchor"
+            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
+            
         case 3:
-            let otherTile = NTImageViewTile.build(inRect: UIScreen.mainScreen().bounds)
-            otherTile.view.backgroundColor = UIColor.blueColor()
-            otherTile.titleText.text = "Anchor on Bottom"
-            return otherTile
+            newTile = NTImageViewTile.build(inRect: UIScreen.mainScreen().bounds)
+            newTile.view.backgroundColor = UIColor.blueColor()
+            (newTile as! NTImageViewTile).titleText.text = "Anchor on Bottom"
+            
         case 4:
+            newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.purpleColor()
+            
         default:
+            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.brownColor()
-            newTile.tileText.text = "Centered Anchor"
+            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
         }
         
         return newTile

@@ -9,8 +9,8 @@
 import UIKit
 
 public class NTTile: UIViewController {
-    var parentTileView: NTTileView?
-    var targetTileSize: CGSize?
+    public var parentTileView: NTTileView?
+    public var targetTileSize: CGSize?
         
     public override func viewDidLoad() {
         super.viewDidLoad()
