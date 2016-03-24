@@ -16,6 +16,18 @@ The NTTileView is designed as a quick way to add a set of expanding tiles to you
 
 ![NTTileViewDemo](Screenshots/NTTileViewDemo.gif)
 
+## NTImageView
+
+NTImageView is a custom view designed to display an image and let the user zoom in and out.  To use:
+
+1. Add a new UIView of type NTImageView
+2. Set the image attribute (`[your view].image`)
+3. Enjoy
+
+To customize the default minimum and maximum zoom amounts, set the `defaultMinimumZoomScale` and `defaultMaximumZoomScale` values.
+
+![NTImageViewDemo](Screenshots/NTImageViewDemo.gif)
+
 # License
 
 This project is completely open source and under the MIT license. For full details please see [license.md](LICENSE.md)
