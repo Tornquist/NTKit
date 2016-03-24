@@ -68,6 +68,7 @@ class ViewController: UIViewController, NTTileViewDataSource {
         case 4:
             newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.purpleColor()
+            (newTile as! NTImageViewDemoTile).imageView.image = UIImage(named: "Landscape")
             
         default:
             newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
