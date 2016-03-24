@@ -189,7 +189,7 @@
 			children = (
 				D8CC0E341CA376F300C99D34 /* NTImageView.swift */,
 			);
-			name = NTImageView;
+			path = NTImageView;
 			sourceTree = "<group>";
 		};
 		D8CC0E371CA377D900C99D34 /* NTImageView Demo Tile */ = {
