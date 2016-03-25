@@ -116,12 +116,15 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         // Base Positioning
         let anchor = tile.anchorPoint()
         let viewCenter = CGPoint(x: CGRectGetMidX(view.frame), y: CGRectGetMidY(view.frame))
-        let newX = viewCenter.x - anchor.x - view.frame.origin.x
+        var newX = viewCenter.x - anchor.x - view.frame.origin.x
         var newY = viewCenter.y - anchor.y - view.frame.origin.y
         let width = (tileView.frame.width > view.frame.width) ? tileView.frame.width : view.frame.width
         let height = (tileView.frame.height > view.frame.height) ? tileView.frame.height : view.frame.height
         
         // Apply Corrections
+        if (newX > 0) { newX = 0 }
+        if (newX + width < view.frame.width) { newX = view.frame.width - width }
+        
         if (newY > 0) { newY = 0 }
         if (newY + height < view.frame.height) { newY = view.frame.height - height }
         

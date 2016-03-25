@@ -37,11 +37,11 @@ class ViewController: UIViewController, NTTileViewDataSource {
     }
     
     // MARK: - Tile View Data Source Methods
-    func numberOfTiles(tileView: NTTileView) -> Int {
+    func numberOfTilesFor(tileView tileView: NTTileView) -> Int {
         return 5
     }
 
-    func tileAt(indexPath indexPath: NSIndexPath) -> NTTile {
+    func tileFor(tileView tileView: NTTileView, atIndexPath indexPath: NSIndexPath) -> NTTile {
         var newTile: NTTile!
         
         switch indexPath.item {
