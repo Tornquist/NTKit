@@ -75,12 +75,12 @@ public class NTTileView: UIView {
             return
         }
         
-        let numTiles = dataSource!.numberOfTiles(self)
+        let numTiles = dataSource!.numberOfTilesFor(tileView: self)
         tiles.removeAll()
         views.removeAll()
         for i in 0..<numTiles {
             let indexPath = NSIndexPath(forItem: i, inSection: 0)
-            addTile(dataSource!.tileAt(indexPath: indexPath))
+            addTile(dataSource!.tileFor(tileView: self, atIndexPath: indexPath))
         }
         arrangeTiles()
     }
