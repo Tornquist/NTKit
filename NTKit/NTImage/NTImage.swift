@@ -8,6 +8,14 @@
 
 import UIKit
 
-class NTImage: UIImage {
+public class NTImage: UIImage {
+    public var effects: [NTImageEffect] = []
     
+    public func imageWithEffects() -> UIImage {
+        var modifiedImage = self as UIImage
+        for effect in effects {
+            modifiedImage = effect.apply(onImage: modifiedImage)
+        }
+        return modifiedImage
+    }
 }
