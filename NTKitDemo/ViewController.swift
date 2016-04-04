@@ -86,10 +86,21 @@ class ViewController: UIViewController, NTTileViewDataSource {
         guard image != nil else {
             return nil
         }
-        let rectEffect = NTImageRectangleEffect(rect: CGRectMake(50, 50, 100, 100), color: UIColor.redColor())
-        let shadeEffect = NTImageShadeEffect(shape: .TriangleBottomRight, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5))
+        let rectEffect = NTImageRectangleEffect(rect: CGRectMake(50, 50, 100, 100),
+                                                color: UIColor.redColor())
+        let shadeEffect = NTImageShadeEffect(shape: .TriangleBottomRight,
+                                             color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5))
+        let progressEffect = NTImageProgressCircleEffect(center: CGPointMake(image!.size.width/2, image!.size.height/2),
+                                                         innerRadius: 100,
+                                                         outerRadius: 200,
+                                                         startAngle: 0,
+                                                         endAngle: 4,
+                                                         color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.75),
+                                                         strokeInnerCircle: true,
+                                                         strokeOuterCircle: true)
         image!.effects.append(rectEffect)
         image!.effects.append(shadeEffect)
+        image!.effects.append(progressEffect)
         return image!.withEffects()
     }
 }
