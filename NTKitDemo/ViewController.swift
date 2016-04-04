@@ -103,10 +103,19 @@ class ViewController: UIViewController, NTTileViewDataSource {
                                                           percent: 0.66,
                                                           color: UIColor.orangeColor(),
                                                           strokeCircle: false)
+        let textEffect = NTImageTextEffect(position: CGPointMake(100, 500),
+                                           text: "Hello World",
+                                           fontColor: UIColor.darkGrayColor())
+        let textEffect2 = NTImageTextEffect(position: CGPointMake(1500, 750),
+                                            text: "Hello World",
+                                            font: UIFont.systemFontOfSize(60),
+                                            fontColor: UIColor.blackColor())
         image!.effects.append(rectEffect)
         image!.effects.append(shadeEffect)
         image!.effects.append(progressEffect)
         image!.effects.append(progressEffect2)
+        image!.effects.append(textEffect)
+        image!.effects.append(textEffect2)
         return image!.withEffects()
     }
 }
