@@ -80,6 +80,33 @@ public class NTImageProgressCircleEffect: NTImageEffect {
         self.strokeWidth = strokeWidth
     }
     
+    /**
+     Draws an arc filled based on the percentage provided.  The arc will start at 12-o'clock and completely wrap around
+     the circle if a value greater than or equal to 1 is provided for the percentage.
+     
+     The inner and outer circle will be stroked at 5% of the arc's thickness if strokeCircle is true.
+     The arc's thickness will be 1/3 of radius provided.
+     
+     - parameter center: The center point of the effect in the coordinate system of the image it will be applied to.
+     - parameter radius: The radius of the outer edge of the arc.
+     - parameter percent: The percentage of the arc to fill in.
+     - parameter color: The fill color of the drawing.
+     - parameter strokeCircle: A boolean used to decide if the inner and outer circle should be drawn.
+     */
+    public convenience init(center: CGPoint, radius: CGFloat, percent: CGFloat, color: UIColor, strokeCircle: Bool) {
+        let endAngle = (percent >= 1) ? CGFloat(3*M_PI+M_PI_2) : (CGFloat(M_PI+M_PI_2) + percent*CGFloat(M_PI*2))
+        
+        self.init(center: center,
+                  innerRadius: radius*0.33,
+                  outerRadius: radius,
+                  startAngle: CGFloat(M_PI+M_PI_2),
+                  endAngle: endAngle,
+                  color: color,
+                  strokeInnerCircle: strokeCircle,
+                  strokeOuterCircle: strokeCircle,
+                  strokeWidth: radius*0.0166)
+    }
+    
     public override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)

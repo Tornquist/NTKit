@@ -63,7 +63,7 @@ class ViewController: UIViewController, NTTileViewDataSource {
             newTile.view.backgroundColor = UIColor.blueColor()
             newTile.imageView.image = NTImageExample()
             newTile.imageView.backgroundColor = UIColor.clearColor()
-            newTile.titleText.text = "NTImageView with Drawing"
+            newTile.titleText.text = "NTImage with NTImageEffects"
             return newTile
         case 4: // NTImageViewTile
             let newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
@@ -98,9 +98,15 @@ class ViewController: UIViewController, NTTileViewDataSource {
                                                          color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.75),
                                                          strokeInnerCircle: true,
                                                          strokeOuterCircle: true)
+        let progressEffect2 = NTImageProgressCircleEffect(center: CGPointMake(image!.size.width/2 - 500, image!.size.height/2),
+                                                          radius: 200,
+                                                          percent: 0.66,
+                                                          color: UIColor.orangeColor(),
+                                                          strokeCircle: false)
         image!.effects.append(rectEffect)
         image!.effects.append(shadeEffect)
         image!.effects.append(progressEffect)
+        image!.effects.append(progressEffect2)
         return image!.withEffects()
     }
 }
