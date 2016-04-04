@@ -60,12 +60,13 @@ class ViewController: UIViewController, NTTileViewDataSource {
             newTile.view.backgroundColor = UIColor.greenColor()
             (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
             
-        case 3:
+        case 3: // UIImageView Tile
             newTile = NTImageViewTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.blueColor()
-            (newTile as! NTImageViewTile).titleText.text = "Anchor on Bottom"
+            (newTile as! NTImageViewTile).titleText.text = "Image View with Drawing"
+            (newTile as! NTImageViewTile).imageView.image = NTImageExample()
             
-        case 4:
+        case 4: // NTImageViewTile
             newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.purpleColor()
             (newTile as! NTImageViewDemoTile).imageView.image = UIImage(named: "Landscape")
@@ -78,5 +79,17 @@ class ViewController: UIViewController, NTTileViewDataSource {
         }
         
         return newTile
+    }
+    
+    //MARK: - NTImage Examples
+    
+    func NTImageExample() -> UIImage? {
+        let image = NTImage(named: "Landscape")
+        guard image != nil else {
+            return nil
+        }
+        let rectEffect = NTImageRectangleEffect(rect: CGRectMake(50, 50, 100, 100), color: UIColor.redColor())
+        image!.effects.append(rectEffect)
+        return image!.withEffects()
     }
 }

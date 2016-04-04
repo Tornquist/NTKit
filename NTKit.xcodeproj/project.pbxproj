@@ -24,6 +24,7 @@
 		D87593E81C87F08200918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
 		D8782B3D1CA5D59100A202E1 /* NTImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B3C1CA5D59100A202E1 /* NTImage.swift */; };
 		D8782B3F1CA5D73100A202E1 /* NTImageEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B3E1CA5D73100A202E1 /* NTImageEffect.swift */; };
+		D8782B431CA5E1B900A202E1 /* NTImageRectangleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */; };
 		D8A0251C1C8CF03F00175E3F /* NTTitleDetailTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251B1C8CF03F00175E3F /* NTTitleDetailTile.swift */; };
 		D8A0251E1C8CF05400175E3F /* NTTitleDetailTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */; };
 		D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */; };
@@ -74,6 +75,7 @@
 		D87593D81C80133500918AB4 /* NTBasicTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTBasicTile.xib; sourceTree = "<group>"; };
 		D8782B3C1CA5D59100A202E1 /* NTImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImage.swift; sourceTree = "<group>"; };
 		D8782B3E1CA5D73100A202E1 /* NTImageEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageEffect.swift; sourceTree = "<group>"; };
+		D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageRectangleEffect.swift; sourceTree = "<group>"; };
 		D8A0251B1C8CF03F00175E3F /* NTTitleDetailTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTitleDetailTile.swift; sourceTree = "<group>"; };
 		D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTTitleDetailTile.xib; sourceTree = "<group>"; };
 		D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewTile.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		D8782B411CA5D7C300A202E1 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */,
 				D8CC0E351CA376F300C99D34 /* NTImageView.swift in Sources */,
 				D87593E61C87F06600918AB4 /* NTBasicTile.swift in Sources */,
+				D8782B431CA5E1B900A202E1 /* NTImageRectangleEffect.swift in Sources */,
 				D8782B3D1CA5D59100A202E1 /* NTImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NTKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -494,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NTKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
