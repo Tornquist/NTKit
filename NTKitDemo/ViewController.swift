@@ -42,41 +42,80 @@ class ViewController: UIViewController, NTTileViewDataSource {
     }
 
     func tileFor(tileView tileView: NTTileView, atIndexPath indexPath: NSIndexPath) -> NTTile {
-        var newTile: NTTile!
-        
         switch indexPath.item {
         case 0:
-            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.redColor()
-            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
-            
+            newTile.tileText.text = "Centered Anchor"
+            return newTile
         case 1:
-            newTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.yellowColor()
-            (newTile as! NTTitleDetailTile).titleText.text = "Anchor 1/3"
-            
+            newTile.titleText.text = "Anchor 1/3"
+            return newTile
         case 2:
-            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.greenColor()
-            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
-            
-        case 3:
-            newTile = NTImageViewTile.build(inRect: UIScreen.mainScreen().bounds)
+            newTile.tileText.text = "Centered Anchor"
+            return newTile
+        case 3: // NTImageViewTile with NTImage custom drawing
+            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.blueColor()
-            (newTile as! NTImageViewTile).titleText.text = "Anchor on Bottom"
-            
-        case 4:
-            newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
+            newTile.imageView.image = NTImageExample()
+            newTile.imageView.backgroundColor = UIColor.clearColor()
+            newTile.titleText.text = "NTImage with NTImageEffects"
+            return newTile
+        case 4: // NTImageViewTile
+            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.purpleColor()
-            (newTile as! NTImageViewDemoTile).imageView.image = UIImage(named: "Landscape")
-            (newTile as! NTImageViewDemoTile).imageView.backgroundColor = UIColor.clearColor()
-            
+            newTile.imageView.image = UIImage(named: "Landscape")
+            newTile.imageView.backgroundColor = UIColor.clearColor()
+            return newTile
         default:
-            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.brownColor()
-            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
+            newTile.tileText.text = "Centered Anchor"
+            return newTile
         }
-        
-        return newTile
+    }
+    
+    //MARK: - NTImage Examples
+    
+    func NTImageExample() -> UIImage? {
+        let image = NTImage(named: "Landscape")
+        guard image != nil else {
+            return nil
+        }
+        let rectEffect = NTImageRectangleEffect(rect: CGRectMake(50, 50, 100, 100),
+                                                color: UIColor.redColor())
+        let shadeEffect = NTImageShadeEffect(shape: .TriangleBottomRight,
+                                             color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5))
+        let progressEffect = NTImageProgressCircleEffect(center: CGPointMake(image!.size.width/2, image!.size.height/2),
+                                                         innerRadius: 100,
+                                                         outerRadius: 200,
+                                                         startAngle: 0,
+                                                         endAngle: 4,
+                                                         color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.75),
+                                                         strokeInnerCircle: true,
+                                                         strokeOuterCircle: true)
+        let progressEffect2 = NTImageProgressCircleEffect(center: CGPointMake(image!.size.width/2 - 500, image!.size.height/2),
+                                                          radius: 200,
+                                                          percent: 0.66,
+                                                          color: UIColor.orangeColor(),
+                                                          strokeCircle: false)
+        let textEffect = NTImageTextEffect(position: CGPointMake(100, 500),
+                                           text: "Hello World",
+                                           fontColor: UIColor.darkGrayColor())
+        let textEffect2 = NTImageTextEffect(position: CGPointMake(1500, 750),
+                                            text: "Hello World",
+                                            font: UIFont.systemFontOfSize(60),
+                                            fontColor: UIColor.blackColor())
+        image!.effects.append(rectEffect)
+        image!.effects.append(shadeEffect)
+        image!.effects.append(progressEffect)
+        image!.effects.append(progressEffect2)
+        image!.effects.append(textEffect)
+        image!.effects.append(textEffect2)
+        return image!.withEffects()
     }
 }
