@@ -25,6 +25,7 @@
 		D8782B3D1CA5D59100A202E1 /* NTImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B3C1CA5D59100A202E1 /* NTImage.swift */; };
 		D8782B3F1CA5D73100A202E1 /* NTImageEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B3E1CA5D73100A202E1 /* NTImageEffect.swift */; };
 		D8782B431CA5E1B900A202E1 /* NTImageRectangleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */; };
+		D8782B451CB2F51E00A202E1 /* NTImageShadeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B441CB2F51E00A202E1 /* NTImageShadeEffect.swift */; };
 		D8A0251C1C8CF03F00175E3F /* NTTitleDetailTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251B1C8CF03F00175E3F /* NTTitleDetailTile.swift */; };
 		D8A0251E1C8CF05400175E3F /* NTTitleDetailTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */; };
 		D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */; };
@@ -76,6 +77,7 @@
 		D8782B3C1CA5D59100A202E1 /* NTImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImage.swift; sourceTree = "<group>"; };
 		D8782B3E1CA5D73100A202E1 /* NTImageEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageEffect.swift; sourceTree = "<group>"; };
 		D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageRectangleEffect.swift; sourceTree = "<group>"; };
+		D8782B441CB2F51E00A202E1 /* NTImageShadeEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageShadeEffect.swift; sourceTree = "<group>"; };
 		D8A0251B1C8CF03F00175E3F /* NTTitleDetailTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTitleDetailTile.swift; sourceTree = "<group>"; };
 		D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTTitleDetailTile.xib; sourceTree = "<group>"; };
 		D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewTile.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */,
+				D8782B441CB2F51E00A202E1 /* NTImageShadeEffect.swift */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8782B451CB2F51E00A202E1 /* NTImageShadeEffect.swift in Sources */,
 				D87593E11C87F06600918AB4 /* NTTileView.swift in Sources */,
 				D8A0251C1C8CF03F00175E3F /* NTTitleDetailTile.swift in Sources */,
 				D87593E21C87F06600918AB4 /* NTTileViewDataSource.swift in Sources */,

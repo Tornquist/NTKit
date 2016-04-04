@@ -11,8 +11,8 @@ import NTKit
 
 public class NTImageViewDemoTile: NTTile {
     
-    @IBOutlet weak var titleText: UILabel!
-    @IBOutlet weak var imageView: NTImageView!
+    @IBOutlet public var titleText: UILabel!
+    @IBOutlet public var imageView: NTImageView!
     
     public class func build(inRect rect: CGRect) -> NTImageViewDemoTile {
         let tile = NTImageViewDemoTile.init(nibName: "NTImageViewDemoTile", bundle: NSBundle(forClass: self))

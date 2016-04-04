@@ -42,43 +42,41 @@ class ViewController: UIViewController, NTTileViewDataSource {
     }
 
     func tileFor(tileView tileView: NTTileView, atIndexPath indexPath: NSIndexPath) -> NTTile {
-        var newTile: NTTile!
-        
         switch indexPath.item {
         case 0:
-            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.redColor()
-            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
-            
+            newTile.tileText.text = "Centered Anchor"
+            return newTile
         case 1:
-            newTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.yellowColor()
-            (newTile as! NTTitleDetailTile).titleText.text = "Anchor 1/3"
-            
+            newTile.titleText.text = "Anchor 1/3"
+            return newTile
         case 2:
-            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.greenColor()
-            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
-            
-        case 3: // UIImageView Tile
-            newTile = NTImageViewTile.build(inRect: UIScreen.mainScreen().bounds)
+            newTile.tileText.text = "Centered Anchor"
+            return newTile
+        case 3: // NTImageViewTile with NTImage custom drawing
+            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.blueColor()
-            (newTile as! NTImageViewTile).titleText.text = "Image View with Drawing"
-            (newTile as! NTImageViewTile).imageView.image = NTImageExample()
-            
+            newTile.imageView.image = NTImageExample()
+            newTile.imageView.backgroundColor = UIColor.clearColor()
+            newTile.titleText.text = "NTImageView with Drawing"
+            return newTile
         case 4: // NTImageViewTile
-            newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.purpleColor()
-            (newTile as! NTImageViewDemoTile).imageView.image = UIImage(named: "Landscape")
-            (newTile as! NTImageViewDemoTile).imageView.backgroundColor = UIColor.clearColor()
-            
+            newTile.imageView.image = UIImage(named: "Landscape")
+            newTile.imageView.backgroundColor = UIColor.clearColor()
+            return newTile
         default:
-            newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
+            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
             newTile.view.backgroundColor = UIColor.brownColor()
-            (newTile as! NTBasicTile).tileText.text = "Centered Anchor"
+            newTile.tileText.text = "Centered Anchor"
+            return newTile
         }
-        
-        return newTile
     }
     
     //MARK: - NTImage Examples
@@ -89,7 +87,9 @@ class ViewController: UIViewController, NTTileViewDataSource {
             return nil
         }
         let rectEffect = NTImageRectangleEffect(rect: CGRectMake(50, 50, 100, 100), color: UIColor.redColor())
+        let shadeEffect = NTImageShadeEffect(shape: .TriangleBottomRight, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5))
         image!.effects.append(rectEffect)
+        image!.effects.append(shadeEffect)
         return image!.withEffects()
     }
 }
