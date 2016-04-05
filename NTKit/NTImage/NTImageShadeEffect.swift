@@ -43,6 +43,9 @@ public enum NTImageShadeEffectShadeShape {
     case SquareBottomLeft
 }
 
+/**
+ NTImageShadeEffect will tint a section of a provided UIImage.
+ */
 public class NTImageShadeEffect: NTImageEffect {
     var shadeShape: NTImageShadeEffectShadeShape = .Full
     var color: UIColor = UIColor.clearColor()

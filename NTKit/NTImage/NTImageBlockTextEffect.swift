@@ -25,6 +25,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ NTImageBlockTextEffect draws text in a block over a UIImage.  The provided text will
+ be scaled to match the width given.  The anchor point and style can be configured, and the
+ height will be determined based on the width and the line breaks in the text.
+ */
 public class NTImageBlockTextEffect: NTImageEffect {
     var anchor: CGPoint = CGPointZero
     var anchorPosition: NTImageEffectAnchorPosition = .Center

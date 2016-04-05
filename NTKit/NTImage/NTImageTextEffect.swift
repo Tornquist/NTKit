@@ -25,6 +25,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ NTImageTextEffect allows for easy drawing of text over a UIImage.  The color, font, anchor positing,
+ and text alignment can all be configured.  This is traditional text drawing.
+ */
 public class NTImageTextEffect: NTImageEffect {
     var anchor: CGPoint = CGPointZero
     var text: NSString = ""
