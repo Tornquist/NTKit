@@ -25,16 +25,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+public enum NTImageTextEffectAnchorPosition {
+    case Center        // Dead Center
+    case CenterLeft    // Vertically Center, Left Align
+    case CenterRight   // Vertically Center, Right Align
+    case CenterTop     // Horizontally Center, Align Top
+    case CenterBottom  // Horizontally Center, Align Bottom
+    case TopLeft       // Top Left Corner
+    case TopRight      // Top Right Corner
+    case BottomLeft    // Bottom Left Corner
+    case BottomRight   // Bottom Right Corner
+}
+
 public class NTImageTextEffect: NTImageEffect {
     var position: CGPoint = CGPointZero
-    var text: String = ""
+    var text: NSString = ""
     var font: UIFont = UIFont.systemFontOfSize(12)
     var fontColor: UIColor = UIColor.clearColor()
+    var positionStyle: NTImageTextEffectAnchorPosition = .Center
     
     public convenience init(position: CGPoint, text: String, fontColor: UIColor) {
         self.init()
         self.position = position
-        self.text = text
+        self.text = (text as NSString)
         self.fontColor = fontColor
     }
     
@@ -46,16 +59,51 @@ public class NTImageTextEffect: NTImageEffect {
     public override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)
-
+        
         let textAttributes = [
             NSFontAttributeName: font,
             NSForegroundColorAttributeName: fontColor
         ]
         
-        let textRect = CGRectMake(position.x, position.y, image.size.width, image.size.height)
-        (text as NSString).drawInRect(textRect, withAttributes: textAttributes)
+        let textRect = generateTextRect()
+        text.drawInRect(textRect, withAttributes: textAttributes)
         
         return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
+    func generateTextRect() -> CGRect {
+        let renderedSize = text.sizeWithAttributes([NSFontAttributeName: font])
+        let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
+        
+        let xLeft   = position.x
+        let xCenter = position.x - adjustedSize.width/2
+        let xRight  = position.x - adjustedSize.width
+        let yTop    = position.y
+        let yCenter = position.y - adjustedSize.height/2
+        let yBottom = position.y - adjustedSize.height
+        let width   = adjustedSize.width
+        let height  = adjustedSize.height
+        
+        switch positionStyle {
+        case .Center:
+            return CGRectMake(xCenter, yCenter, width, height)
+        case .CenterLeft:
+            return CGRectMake(xLeft, yCenter, width, height)
+        case .CenterRight:
+            return CGRectMake(xRight, yCenter, width, height)
+        case .CenterTop:
+            return CGRectMake(xCenter, yTop, width, height)
+        case .CenterBottom:
+            return CGRectMake(xCenter, yBottom, width, height)
+        case .TopLeft:
+            return CGRectMake(xLeft, yTop, width, height)
+        case .TopRight:
+            return CGRectMake(xRight, yTop, width, height)
+        case .BottomLeft:
+            return CGRectMake(xLeft, yBottom, width, height)
+        case .BottomRight:
+            return CGRectMake(xRight, yBottom, width, height)
+        }
     }
 }
 

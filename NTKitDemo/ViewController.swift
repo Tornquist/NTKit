@@ -125,7 +125,7 @@ class ViewController: UIViewController, NTTileViewDataSource {
         let textEffect = NTImageTextEffect(position: CGPointMake(100, 500),
                                            text: "Hello World",
                                            fontColor: UIColor.darkGrayColor())
-        let textEffect2 = NTImageTextEffect(position: CGPointMake(1500, 750),
+        let textEffect2 = NTImageTextEffect(position: CGPointMake(image!.size.width/2, image!.size.height/2),
                                             text: "Hello World",
                                             font: UIFont.systemFontOfSize(60),
                                             fontColor: UIColor.blackColor())
