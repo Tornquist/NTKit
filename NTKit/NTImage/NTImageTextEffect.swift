@@ -38,35 +38,50 @@ public enum NTImageTextEffectAnchorPosition {
 }
 
 public class NTImageTextEffect: NTImageEffect {
-    var position: CGPoint = CGPointZero
+    var anchor: CGPoint = CGPointZero
     var text: NSString = ""
     var font: UIFont = UIFont.systemFontOfSize(12)
     var fontColor: UIColor = UIColor.clearColor()
-    var positionStyle: NTImageTextEffectAnchorPosition = .Center
+    var anchorPosition: NTImageTextEffectAnchorPosition = .Center
+    var alignment: NSTextAlignment = .Center
     
-    public convenience init(position: CGPoint, text: String, fontColor: UIColor) {
+    public convenience init(anchor: CGPoint, text: String, fontColor: UIColor) {
         self.init()
-        self.position = position
+        self.anchor = anchor
         self.text = (text as NSString)
         self.fontColor = fontColor
     }
     
-    public convenience init(position: CGPoint, text: String, font: UIFont, fontColor: UIColor) {
-        self.init(position: position, text: text, fontColor: fontColor)
+    public convenience init(anchor: CGPoint, text: String, font: UIFont, fontColor: UIColor) {
+        self.init(anchor: anchor, text: text, fontColor: fontColor)
         self.font = font
+    }
+    
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageTextEffectAnchorPosition, text: String, font: UIFont, fontColor: UIColor) {
+        self.init(anchor: anchor, text: text, font: font, fontColor: fontColor)
+        self.anchorPosition = anchorPosition
+    }
+    
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageTextEffectAnchorPosition, text: String, textAlignment: NSTextAlignment, font: UIFont, fontColor: UIColor) {
+        self.init(anchor: anchor, anchorPosition: anchorPosition, text: text, font: font, fontColor: fontColor)
+        self.alignment = textAlignment
     }
     
     public override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)
         
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = self.alignment
+        
         let textAttributes = [
-            NSFontAttributeName: font,
-            NSForegroundColorAttributeName: fontColor
+            NSFontAttributeName: self.font,
+            NSForegroundColorAttributeName: self.fontColor,
+            NSParagraphStyleAttributeName: paragraphStyle
         ]
         
         let textRect = generateTextRect()
-        text.drawInRect(textRect, withAttributes: textAttributes)
+        self.text.drawInRect(textRect, withAttributes: textAttributes)
         
         return UIGraphicsGetImageFromCurrentImageContext()
     }
@@ -75,16 +90,16 @@ public class NTImageTextEffect: NTImageEffect {
         let renderedSize = text.sizeWithAttributes([NSFontAttributeName: font])
         let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
         
-        let xLeft   = position.x
-        let xCenter = position.x - adjustedSize.width/2
-        let xRight  = position.x - adjustedSize.width
-        let yTop    = position.y
-        let yCenter = position.y - adjustedSize.height/2
-        let yBottom = position.y - adjustedSize.height
+        let xLeft   = self.anchor.x
+        let xCenter = self.anchor.x - adjustedSize.width/2
+        let xRight  = self.anchor.x - adjustedSize.width
+        let yTop    = self.anchor.y
+        let yCenter = self.anchor.y - adjustedSize.height/2
+        let yBottom = self.anchor.y - adjustedSize.height
         let width   = adjustedSize.width
         let height  = adjustedSize.height
         
-        switch positionStyle {
+        switch anchorPosition {
         case .Center:
             return CGRectMake(xCenter, yCenter, width, height)
         case .CenterLeft:
