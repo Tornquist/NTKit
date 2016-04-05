@@ -25,24 +25,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public enum NTImageTextEffectAnchorPosition {
-    case Center        // Dead Center
-    case CenterLeft    // Vertically Center, Left Align
-    case CenterRight   // Vertically Center, Right Align
-    case CenterTop     // Horizontally Center, Align Top
-    case CenterBottom  // Horizontally Center, Align Bottom
-    case TopLeft       // Top Left Corner
-    case TopRight      // Top Right Corner
-    case BottomLeft    // Bottom Left Corner
-    case BottomRight   // Bottom Right Corner
-}
-
 public class NTImageTextEffect: NTImageEffect {
     var anchor: CGPoint = CGPointZero
     var text: NSString = ""
     var font: UIFont = UIFont.systemFontOfSize(12)
     var fontColor: UIColor = UIColor.clearColor()
-    var anchorPosition: NTImageTextEffectAnchorPosition = .Center
+    var anchorPosition: NTImageEffectAnchorPosition = .Center
     var alignment: NSTextAlignment = .Center
     
     public convenience init(anchor: CGPoint, text: String, fontColor: UIColor) {
@@ -57,12 +45,12 @@ public class NTImageTextEffect: NTImageEffect {
         self.font = font
     }
     
-    public convenience init(anchor: CGPoint, anchorPosition: NTImageTextEffectAnchorPosition, text: String, font: UIFont, fontColor: UIColor) {
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, text: String, font: UIFont, fontColor: UIColor) {
         self.init(anchor: anchor, text: text, font: font, fontColor: fontColor)
         self.anchorPosition = anchorPosition
     }
     
-    public convenience init(anchor: CGPoint, anchorPosition: NTImageTextEffectAnchorPosition, text: String, textAlignment: NSTextAlignment, font: UIFont, fontColor: UIColor) {
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, text: String, textAlignment: NSTextAlignment, font: UIFont, fontColor: UIColor) {
         self.init(anchor: anchor, anchorPosition: anchorPosition, text: text, font: font, fontColor: fontColor)
         self.alignment = textAlignment
     }

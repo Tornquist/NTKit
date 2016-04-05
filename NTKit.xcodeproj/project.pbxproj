@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D85CD2DF1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CD2DE1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift */; };
+		D85CD2E21CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CD2E11CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift */; };
 		D87593AF1C7C23E000918AB4 /* NTKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D87593781C7C1B7100918AB4 /* NTKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87593BD1C7C25D500918AB4 /* Assets.xcassets */; };
 		D87593D91C80133500918AB4 /* NTBasicTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87593D81C80133500918AB4 /* NTBasicTile.xib */; };
@@ -62,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D85CD2DE1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageBlockTextEffect.swift; sourceTree = "<group>"; };
+		D85CD2E11CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageEffectAnchorPosition.swift; sourceTree = "<group>"; };
 		D87593781C7C1B7100918AB4 /* NTKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTKit.h; sourceTree = "<group>"; };
 		D875937A1C7C1B7100918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D87593A31C7C23A500918AB4 /* NTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NTKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D85CD2E01CB4682D00DB30D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D85CD2E11CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D87593A41C7C23A500918AB4 /* NTKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +194,7 @@
 			children = (
 				D8782B3E1CA5D73100A202E1 /* NTImageEffect.swift */,
 				D8782B411CA5D7C300A202E1 /* Effects */,
+				D85CD2E01CB4682D00DB30D9 /* Supporting Files */,
 			);
 			name = NTImageEffects;
 			sourceTree = "<group>";
@@ -193,6 +206,7 @@
 				D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */,
 				D8782B441CB2F51E00A202E1 /* NTImageShadeEffect.swift */,
 				D8782B481CB317FB00A202E1 /* NTImageTextEffect.swift */,
+				D85CD2DE1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -404,9 +418,11 @@
 				D87593E11C87F06600918AB4 /* NTTileView.swift in Sources */,
 				D8A0251C1C8CF03F00175E3F /* NTTitleDetailTile.swift in Sources */,
 				D87593E21C87F06600918AB4 /* NTTileViewDataSource.swift in Sources */,
+				D85CD2E21CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift in Sources */,
 				D87593E31C87F06600918AB4 /* NTTileViewLayoutProtocol.swift in Sources */,
 				D87593E41C87F06600918AB4 /* NTTileViewRowLayout.swift in Sources */,
 				D87593E51C87F06600918AB4 /* NTTile.swift in Sources */,
+				D85CD2DF1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift in Sources */,
 				D8782B3F1CA5D73100A202E1 /* NTImageEffect.swift in Sources */,
 				D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */,
 				D8CC0E351CA376F300C99D34 /* NTImageView.swift in Sources */,

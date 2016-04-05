@@ -131,12 +131,20 @@ class ViewController: UIViewController, NTTileViewDataSource {
                                             textAlignment: .Right,
                                             font: UIFont.systemFontOfSize(60),
                                             fontColor: UIColor.blackColor())
+        let textEffect3 = NTImageBlockTextEffect(anchor: CGPointMake(image!.size.width, image!.size.height),
+                                                 anchorPosition: .BottomRight,
+                                                 maxWidth: 500,
+                                                 text: "This will be a\ncomplicated string with multiple\ndifferent\nlengths of lines.",
+                                                 baseFont: UIFont.systemFontOfSize(30),
+                                                 fontColor: UIColor.blackColor(),
+                                                 capitalize: true)
         image!.effects.append(rectEffect)
         image!.effects.append(shadeEffect)
         image!.effects.append(progressEffect)
         image!.effects.append(progressEffect2)
         image!.effects.append(textEffect)
         image!.effects.append(textEffect2)
+        image!.effects.append(textEffect3)
         return image!.withEffects()
     }
 }
