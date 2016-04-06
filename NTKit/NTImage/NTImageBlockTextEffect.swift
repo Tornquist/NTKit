@@ -148,21 +148,25 @@ public class NTImageBlockTextEffect: NTImageEffect {
     //MARK: - Methods for Breaking Text into Rows
     
     func generateTextRows() -> [String] {
-        var targetCharacterString = ""
-        var generatedWidth: CGFloat = 0
-        while (generatedWidth < self.width) {
-            let renderedTextSize = targetCharacterString.sizeWithAttributes([NSFontAttributeName: font])
-            let adjustedTextSize = CGSizeMake(ceil(renderedTextSize.width), ceil(renderedTextSize.height))
-            generatedWidth = adjustedTextSize.width
-            targetCharacterString = targetCharacterString + "a"
-        }
-        let targetNumberOfCharacters = targetCharacterString.characters.count - 1
+        let targetNumberOfCharacters = calculateTargetNumberOfCharacters(forFont: font, inWidth: self.width)
         
         var baseRows = self.text.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
         baseRows = baseRows.map({$0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())})
         let cleanRows = baseRows.map({generateTextRows(fromString: $0, withTarget: targetNumberOfCharacters)}).reduce([], combine: +)
         
         return cleanRows
+    }
+    
+    func calculateTargetNumberOfCharacters(forFont font: UIFont, inWidth width: CGFloat) -> Int {
+        var targetCharacterString = ""
+        var generatedWidth: CGFloat = 0
+        while (generatedWidth < width) {
+            let renderedTextSize = targetCharacterString.sizeWithAttributes([NSFontAttributeName: font])
+            let adjustedTextSize = CGSizeMake(ceil(renderedTextSize.width), ceil(renderedTextSize.height))
+            generatedWidth = adjustedTextSize.width
+            targetCharacterString = targetCharacterString + "a"
+        }
+        return targetCharacterString.characters.count - 1
     }
     
     func generateTextRows(fromString string: String, withTarget targetCharacters: Int) -> [String] {
