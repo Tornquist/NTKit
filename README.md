@@ -38,6 +38,7 @@ NTImage replaces UIImage and allows for NTImageEffects to be applied to the base
 * **NTImageRectangleEffect**: This effect simply draws a colored rectangle at the coordinates provided.
 * **NTImageShadeEffect**: This effect will draw over an entire image in the region provided (top, bottom, bottom right triangle, etc)
 * **NTImageTextEffect**: This effect will draw text to the screen in the default font, or one provided.
+* **NTImageBlockTextEffect**: This effect will draw text to the screen in the a block.  The text size will be scaled to fill the provided width completely.  This effect is similar to [Slab Text](https://github.com/freqdec/slabText)
 
 # License
 

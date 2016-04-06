@@ -1,8 +1,8 @@
 //
-//  NTImageRectangleEffect.swift
+//  NTImageEffectAnchorPosition.swift
 //  NTKit
 //
-//  Created by Nathan Tornquist on 3/25/16.
+//  Created by Nathan Tornquist on 4/5/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.
 //
 //  Hosted on github at github.com/Tornquist/NTKit
@@ -25,31 +25,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import UIKit
+import Foundation
 
-/**
- NTImageRectangleEffect is used to draw a colored rectangle anywhere on a UIImage.
- */
-public class NTImageRectangleEffect: NTImageEffect {
-    var rect: CGRect = CGRectZero
-    var color: UIColor = UIColor.clearColor()
-    
-    public convenience init(rect: CGRect, color: UIColor) {
-        self.init()
-        self.rect = rect
-        self.color = color
-    }
-    
-    public override func apply(onImage image: UIImage) -> UIImage {
-        UIGraphicsBeginImageContext(image.size)
-        image.drawAtPoint(CGPointZero)
-        let ctx = UIGraphicsGetCurrentContext()
-        color.setStroke()
-        color.setFill()
-        
-        CGContextStrokeRect(ctx, rect)
-        CGContextFillRect(ctx, rect)
-        
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
+public enum NTImageEffectAnchorPosition {
+    case Center        // Dead Center
+    case CenterLeft    // Vertically Center, Left Align
+    case CenterRight   // Vertically Center, Right Align
+    case CenterTop     // Horizontally Center, Align Top
+    case CenterBottom  // Horizontally Center, Align Bottom
+    case TopLeft       // Top Left Corner
+    case TopRight      // Top Right Corner
+    case BottomLeft    // Bottom Left Corner
+    case BottomRight   // Bottom Right Corner
 }

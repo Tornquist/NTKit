@@ -25,37 +25,92 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ NTImageTextEffect allows for easy drawing of text over a UIImage.  The color, font, anchor positing,
+ and text alignment can all be configured.  This is traditional text drawing.
+ */
 public class NTImageTextEffect: NTImageEffect {
-    var position: CGPoint = CGPointZero
-    var text: String = ""
+    var anchor: CGPoint = CGPointZero
+    var text: NSString = ""
     var font: UIFont = UIFont.systemFontOfSize(12)
     var fontColor: UIColor = UIColor.clearColor()
+    var anchorPosition: NTImageEffectAnchorPosition = .Center
+    var alignment: NSTextAlignment = .Center
     
-    public convenience init(position: CGPoint, text: String, fontColor: UIColor) {
+    public convenience init(anchor: CGPoint, text: String, fontColor: UIColor) {
         self.init()
-        self.position = position
-        self.text = text
+        self.anchor = anchor
+        self.text = (text as NSString)
         self.fontColor = fontColor
     }
     
-    public convenience init(position: CGPoint, text: String, font: UIFont, fontColor: UIColor) {
-        self.init(position: position, text: text, fontColor: fontColor)
+    public convenience init(anchor: CGPoint, text: String, font: UIFont, fontColor: UIColor) {
+        self.init(anchor: anchor, text: text, fontColor: fontColor)
         self.font = font
+    }
+    
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, text: String, font: UIFont, fontColor: UIColor) {
+        self.init(anchor: anchor, text: text, font: font, fontColor: fontColor)
+        self.anchorPosition = anchorPosition
+    }
+    
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, text: String, textAlignment: NSTextAlignment, font: UIFont, fontColor: UIColor) {
+        self.init(anchor: anchor, anchorPosition: anchorPosition, text: text, font: font, fontColor: fontColor)
+        self.alignment = textAlignment
     }
     
     public override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)
-
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = self.alignment
+        
         let textAttributes = [
-            NSFontAttributeName: font,
-            NSForegroundColorAttributeName: fontColor
+            NSFontAttributeName: self.font,
+            NSForegroundColorAttributeName: self.fontColor,
+            NSParagraphStyleAttributeName: paragraphStyle
         ]
         
-        let textRect = CGRectMake(position.x, position.y, image.size.width, image.size.height)
-        (text as NSString).drawInRect(textRect, withAttributes: textAttributes)
+        let textRect = generateTextRect()
+        self.text.drawInRect(textRect, withAttributes: textAttributes)
         
         return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
+    func generateTextRect() -> CGRect {
+        let renderedSize = text.sizeWithAttributes([NSFontAttributeName: font])
+        let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
+        
+        let xLeft   = self.anchor.x
+        let xCenter = self.anchor.x - adjustedSize.width/2
+        let xRight  = self.anchor.x - adjustedSize.width
+        let yTop    = self.anchor.y
+        let yCenter = self.anchor.y - adjustedSize.height/2
+        let yBottom = self.anchor.y - adjustedSize.height
+        let width   = adjustedSize.width
+        let height  = adjustedSize.height
+        
+        switch anchorPosition {
+        case .Center:
+            return CGRectMake(xCenter, yCenter, width, height)
+        case .CenterLeft:
+            return CGRectMake(xLeft, yCenter, width, height)
+        case .CenterRight:
+            return CGRectMake(xRight, yCenter, width, height)
+        case .CenterTop:
+            return CGRectMake(xCenter, yTop, width, height)
+        case .CenterBottom:
+            return CGRectMake(xCenter, yBottom, width, height)
+        case .TopLeft:
+            return CGRectMake(xLeft, yTop, width, height)
+        case .TopRight:
+            return CGRectMake(xRight, yTop, width, height)
+        case .BottomLeft:
+            return CGRectMake(xLeft, yBottom, width, height)
+        case .BottomRight:
+            return CGRectMake(xRight, yBottom, width, height)
+        }
     }
 }
 

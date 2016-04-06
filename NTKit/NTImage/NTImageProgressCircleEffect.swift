@@ -27,6 +27,12 @@
 
 import UIKit
 
+/**
+ NTImageProgressCircleEffect can be used to draw circular progress indicators anywhere on
+ a UIImage.  The drawing will run from the start angle to end angle, and will fill in the
+ space between the inner and outer radius.  It is also possible to outline the inner and
+ outer circles completely if so desired.
+ */
 public class NTImageProgressCircleEffect: NTImageEffect {
     var center: CGPoint = CGPointZero
     var color: UIColor = UIColor.clearColor()

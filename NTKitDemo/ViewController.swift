@@ -122,19 +122,38 @@ class ViewController: UIViewController, NTTileViewDataSource {
                                                           percent: 0.66,
                                                           color: UIColor.orangeColor(),
                                                           strokeCircle: false)
-        let textEffect = NTImageTextEffect(position: CGPointMake(100, 500),
+        let textEffect = NTImageTextEffect(anchor: CGPointMake(100, 500),
                                            text: "Hello World",
                                            fontColor: UIColor.darkGrayColor())
-        let textEffect2 = NTImageTextEffect(position: CGPointMake(1500, 750),
-                                            text: "Hello World",
+        let textEffect2 = NTImageTextEffect(anchor: CGPointMake(image!.size.width/2, image!.size.height/2),
+                                            anchorPosition: .Center,
+                                            text: "This is a test of\nmultiline right\naligned text.",
+                                            textAlignment: .Right,
                                             font: UIFont.systemFontOfSize(60),
                                             fontColor: UIColor.blackColor())
+        let textEffect3 = NTImageBlockTextEffect(anchor: CGPointMake(image!.size.width, image!.size.height),
+                                                 anchorPosition: .BottomRight,
+                                                 maxWidth: 500,
+                                                 text: "This will be a\ncomplicated string with multiple different\nlengths of lines.",
+                                                 baseFont: UIFont.systemFontOfSize(60),
+                                                 fontColor: UIColor.blackColor(),
+                                                 capitalize: true,
+                                                 trailingTargetCharacterThreshold: 100)
+        let textEffect4 = NTImageBlockTextEffect(anchor: CGPointMake(image!.size.width, 0),
+                                                 anchorPosition: .TopRight,
+                                                 maxWidth: 1000,
+                                                 text: "This will be a complicated string with multiple different lengths of lines.  As you type, more lines are added.",
+                                                 baseFont: UIFont.systemFontOfSize(60),
+                                                 fontColor: UIColor.blackColor(),
+                                                 capitalize: true)
         image!.effects.append(rectEffect)
         image!.effects.append(shadeEffect)
         image!.effects.append(progressEffect)
         image!.effects.append(progressEffect2)
         image!.effects.append(textEffect)
         image!.effects.append(textEffect2)
+        image!.effects.append(textEffect3)
+        image!.effects.append(textEffect4)
         return image!.withEffects()
     }
 }
