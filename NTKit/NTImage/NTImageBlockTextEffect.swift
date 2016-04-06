@@ -37,6 +37,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
     var text: NSString = ""
     var font: UIFont = UIFont.systemFontOfSize(12)
     var fontColor: UIColor = UIColor.clearColor()
+    var trailingTargetCharacterThreshold: Float = 0.33
     
     enum TextScaleDirection {
         case None
@@ -45,6 +46,18 @@ public class NTImageBlockTextEffect: NTImageEffect {
         case LessThan
     }
     
+    /**
+     Draws the text provided within the given maximum width using the provided font characteristics.  The font size will
+     be adjusted on a per-line basic to make sure that every line is as close to the maximum width as possible.  The height
+     of the final text is completely based on the rendered text and is variable.
+     
+     - parameter anchor: The reference point used to draw the text.
+     - parameter anchorPosition: The positioning of the anchor provided relative to the rest of the drawing.
+     - parameter maxWidth: The maximum width of the rendered text.
+     - parameter text: The text to draw on the screen
+     - parameter baseFont: The font used as a base for calculations.  The font size will be scaled up and down as needed.
+     - parameter fontColor: The color the font should be drawn with.
+     */
     public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, maxWidth: CGFloat, text: String, baseFont: UIFont, fontColor: UIColor) {
         self.init()
         self.anchor = anchor
@@ -55,9 +68,43 @@ public class NTImageBlockTextEffect: NTImageEffect {
         self.fontColor = fontColor
     }
     
+    /**
+     Draws the text provided within the given maximum width using the provided font characteristics.  The font size will
+     be adjusted on a per-line basic to make sure that every line is as close to the maximum width as possible.  The height
+     of the final text is completely based on the rendered text and is variable.
+     
+     - parameter anchor: The reference point used to draw the text.
+     - parameter anchorPosition: The positioning of the anchor provided relative to the rest of the drawing.
+     - parameter maxWidth: The maximum width of the rendered text.
+     - parameter text: The text to draw on the screen
+     - parameter baseFont: The font used as a base for calculations.  The font size will be scaled up and down as needed.
+     - parameter fontColor: The color the font should be drawn with.
+     - parameter capitalize: Used to decide if the input text should be automatically capitalized.
+     */
     public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, maxWidth: CGFloat, text: String, baseFont: UIFont, fontColor: UIColor, capitalize: Bool) {
         let newText = capitalize ? text.uppercaseString : text
         self.init(anchor: anchor, anchorPosition: anchorPosition, maxWidth: maxWidth, text: newText, baseFont: baseFont, fontColor: fontColor)
+    }
+    
+    /**
+     Draws the text provided within the given maximum width using the provided font characteristics.  The font size will
+     be adjusted on a per-line basic to make sure that every line is as close to the maximum width as possible.  The height
+     of the final text is completely based on the rendered text and is variable.
+     
+     - parameter anchor: The reference point used to draw the text.
+     - parameter anchorPosition: The positioning of the anchor provided relative to the rest of the drawing.
+     - parameter maxWidth: The maximum width of the rendered text.
+     - parameter text: The text to draw on the screen
+     - parameter baseFont: The font used as a base for calculations.  The font size will be scaled up and down as needed.
+     - parameter fontColor: The color the font should be drawn with.
+     - parameter capitalize: Used to decide if the input text should be automatically capitalized.
+     - parameter trailingTargetCharacterThreshold: The ratio used to decide whether the final trailing text should be its own line, or if it should be joined with
+                                                   the line above. The default value is 0.33. This means that if the final text is longer than 33% of the target line length it
+                                                   will be drawn on its own line.
+     */
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, maxWidth: CGFloat, text: String, baseFont: UIFont, fontColor: UIColor, capitalize: Bool, trailingTargetCharacterThreshold: Float) {
+        self.init(anchor: anchor, anchorPosition: anchorPosition, maxWidth: maxWidth, text: text, baseFont: baseFont, fontColor: fontColor, capitalize: capitalize)
+        self.trailingTargetCharacterThreshold = trailingTargetCharacterThreshold
     }
     
     public override func apply(onImage image: UIImage) -> UIImage {
@@ -68,7 +115,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
         
         var textFonts: [UIFont] = []
         var textRects: [CGRect] = []
-        let textRows = text.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        let textRows = generateTextRows()
         
         for row in textRows {
             let calculatedFont = calculateFontFor(row, withBase: font)
@@ -97,6 +144,73 @@ public class NTImageBlockTextEffect: NTImageEffect {
         
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
+    //MARK: - Methods for Breaking Text into Rows
+    
+    func generateTextRows() -> [String] {
+        var targetCharacterString = ""
+        var generatedWidth: CGFloat = 0
+        while (generatedWidth < self.width) {
+            let renderedTextSize = targetCharacterString.sizeWithAttributes([NSFontAttributeName: font])
+            let adjustedTextSize = CGSizeMake(ceil(renderedTextSize.width), ceil(renderedTextSize.height))
+            generatedWidth = adjustedTextSize.width
+            targetCharacterString = targetCharacterString + "a"
+        }
+        let targetNumberOfCharacters = targetCharacterString.characters.count - 1
+        
+        var baseRows = self.text.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        baseRows = baseRows.map({$0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())})
+        let cleanRows = baseRows.map({generateTextRows(fromString: $0, withTarget: targetNumberOfCharacters)}).reduce([], combine: +)
+        
+        return cleanRows
+    }
+    
+    func generateTextRows(fromString string: String, withTarget targetCharacters: Int) -> [String] {
+        let words = string.componentsSeparatedByString(" ")
+        var retVal: [String] = []
+        
+        var stringA = ""
+        var stringB = ""
+        var wordIndex = 0
+        
+        while wordIndex < words.count {
+            if stringB != "" {
+                stringB = stringB + " "
+            }
+            stringB = stringB + words[wordIndex]
+            
+            if stringB.characters.count > targetCharacters {
+                let aDiff = abs(stringA.characters.count - targetCharacters)
+                let bDiff = abs(stringB.characters.count - targetCharacters)
+                if aDiff < bDiff {
+                    retVal.append(stringA)
+                    wordIndex = wordIndex - 1 //Account for later increment
+                } else {
+                    retVal.append(stringB)
+                }
+                
+                stringA = ""
+                stringB = ""
+            }
+            
+            wordIndex = wordIndex + 1
+            
+            stringA = stringB
+        }
+        
+        // Make sure no words are dropped
+        if (stringB != "") {
+            if Float(stringB.characters.count) < Float(targetCharacters)*trailingTargetCharacterThreshold && retVal.count > 0 {
+                retVal[retVal.count-1] = retVal[retVal.count-1] + " " + stringB
+            } else {
+                retVal.append(stringB)
+            }
+        }
+        
+        return retVal
+    }
+    
+    //MARK: - Methods for Final Rendering
     
     func calculateOffsetFrom(size: CGSize) -> CGPoint {
         let xLeft   = self.anchor.x
@@ -127,6 +241,8 @@ public class NTImageBlockTextEffect: NTImageEffect {
             return CGPointMake(xRight, yBottom)
         }
     }
+    
+    //MARK: - Methods for Scaling Font Sizes
     
     func calculateFontFor(text: NSString, withBase font: UIFont) -> UIFont {
         var adjustedFont = font
