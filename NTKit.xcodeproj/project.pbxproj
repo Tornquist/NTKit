@@ -316,6 +316,7 @@
 				D87593B11C7C25D500918AB4 /* Frameworks */,
 				D87593B21C7C25D500918AB4 /* Resources */,
 				D87593C91C7D63E900918AB4 /* Copy Frameworks */,
+				D85CD2E41CB5C41700DB30D9 /* Additional Warnings */,
 			);
 			buildRules = (
 			);
@@ -391,6 +392,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		D85CD2E41CB5C41700DB30D9 /* Additional Warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Additional Warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
 		D87593CD1C7EBDA700918AB4 /* Additional Warnings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
