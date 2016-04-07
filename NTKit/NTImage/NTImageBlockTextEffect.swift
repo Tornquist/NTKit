@@ -31,13 +31,22 @@
  height will be determined based on the width and the line breaks in the text.
  */
 public class NTImageBlockTextEffect: NTImageEffect {
-    var anchor: CGPoint = CGPointZero
-    var anchorPosition: NTImageEffectAnchorPosition = .Center
-    var width: CGFloat = 0
-    var text: NSString = ""
-    var font: UIFont = UIFont.systemFontOfSize(12)
-    var fontColor: UIColor = UIColor.clearColor()
-    var trailingTargetCharacterThreshold: Float = 0.33
+    public var anchor: CGPoint = CGPointZero
+    public var anchorPosition: NTImageEffectAnchorPosition = .Center
+    public var width: CGFloat = 0
+    var _text: NSString = ""
+    public var text: NSString {
+        get {
+            return _text
+        }
+        set {
+            _text = self.capitalize ? newValue.uppercaseString : newValue
+        }
+    }
+    public var font: UIFont = UIFont.systemFontOfSize(12)
+    public var fontColor: UIColor = UIColor.clearColor()
+    public var trailingTargetCharacterThreshold: Float = 0.33
+    public var capitalize: Bool = false
     
     enum TextScaleDirection {
         case None
@@ -84,6 +93,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
     public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, maxWidth: CGFloat, text: String, baseFont: UIFont, fontColor: UIColor, capitalize: Bool) {
         let newText = capitalize ? text.uppercaseString : text
         self.init(anchor: anchor, anchorPosition: anchorPosition, maxWidth: maxWidth, text: newText, baseFont: baseFont, fontColor: fontColor)
+        self.capitalize = capitalize
     }
     
     /**

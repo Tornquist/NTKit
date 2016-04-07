@@ -30,12 +30,12 @@
  and text alignment can all be configured.  This is traditional text drawing.
  */
 public class NTImageTextEffect: NTImageEffect {
-    var anchor: CGPoint = CGPointZero
-    var text: NSString = ""
-    var font: UIFont = UIFont.systemFontOfSize(12)
-    var fontColor: UIColor = UIColor.clearColor()
-    var anchorPosition: NTImageEffectAnchorPosition = .Center
-    var alignment: NSTextAlignment = .Center
+    public var anchor: CGPoint = CGPointZero
+    public var text: NSString = ""
+    public var font: UIFont = UIFont.systemFontOfSize(12)
+    public var fontColor: UIColor = UIColor.clearColor()
+    public var anchorPosition: NTImageEffectAnchorPosition = .Center
+    public var alignment: NSTextAlignment = .Center
     
     public convenience init(anchor: CGPoint, text: String, fontColor: UIColor) {
         self.init()

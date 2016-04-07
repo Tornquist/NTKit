@@ -34,15 +34,15 @@ import UIKit
  outer circles completely if so desired.
  */
 public class NTImageProgressCircleEffect: NTImageEffect {
-    var center: CGPoint = CGPointZero
-    var color: UIColor = UIColor.clearColor()
-    var innerRadius: CGFloat = 0
-    var outerRadius: CGFloat = 0
-    var startAngle: CGFloat = 0
-    var endAngle: CGFloat = 0
-    var strokeInnerCircle: Bool = false
-    var strokeOuterCircle: Bool = false
-    var strokeWidth: CGFloat = 5
+    public var center: CGPoint = CGPointZero
+    public var color: UIColor = UIColor.clearColor()
+    public var innerRadius: CGFloat = 0
+    public var outerRadius: CGFloat = 0
+    public var startAngle: CGFloat = 0
+    public var endAngle: CGFloat = 0
+    public var strokeInnerCircle: Bool = false
+    public var strokeOuterCircle: Bool = false
+    public var strokeWidth: CGFloat = 5
     
     /**
      Draws a filled circle from the starting angle to the end angle.  The circle will be filled started at the innerRadius

@@ -31,8 +31,8 @@ import UIKit
  NTImageRectangleEffect is used to draw a colored rectangle anywhere on a UIImage.
  */
 public class NTImageRectangleEffect: NTImageEffect {
-    var rect: CGRect = CGRectZero
-    var color: UIColor = UIColor.clearColor()
+    public var rect: CGRect = CGRectZero
+    public var color: UIColor = UIColor.clearColor()
     
     public convenience init(rect: CGRect, color: UIColor) {
         self.init()

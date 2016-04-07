@@ -47,8 +47,8 @@ public enum NTImageShadeEffectShadeShape {
  NTImageShadeEffect will tint a section of a provided UIImage.
  */
 public class NTImageShadeEffect: NTImageEffect {
-    var shadeShape: NTImageShadeEffectShadeShape = .Full
-    var color: UIColor = UIColor.clearColor()
+    public var shadeShape: NTImageShadeEffectShadeShape = .Full
+    public var color: UIColor = UIColor.clearColor()
     
     public convenience init(shape: NTImageShadeEffectShadeShape, color: UIColor) {
         self.init()
