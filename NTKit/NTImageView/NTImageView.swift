@@ -33,11 +33,16 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
         get {
             return _image
         }
-        set {
-            _image = newValue
-            self.imageView.image = _image
-            self.updateImageViewFrame()
-            self.configureInitialScale()
+        set {            
+            if (_image?.size != newValue?.size) {
+                _image = newValue
+                self.imageView.image = _image
+                self.updateImageViewFrame()
+                self.configureInitialScale()
+            } else {
+                _image = newValue
+                self.imageView.image = _image
+            }
         }
     }
     
