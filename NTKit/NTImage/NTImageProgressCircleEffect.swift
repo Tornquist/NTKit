@@ -154,6 +154,9 @@ public class NTImageProgressCircleEffect: NTImageEffect {
             outer.fill()
         }
         
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let processedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return processedImage
     }
 }

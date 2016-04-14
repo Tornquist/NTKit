@@ -66,7 +66,10 @@ public class NTImageShadeEffect: NTImageEffect {
         createPath(ctx, size: image.size)
         CGContextDrawPath(ctx, .FillStroke)
         
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let processedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return processedImage
     }
     
     func createPath(ctx: CGContext?, size: CGSize) {

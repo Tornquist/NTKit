@@ -75,7 +75,10 @@ public class NTImageTextEffect: NTImageEffect {
         let textRect = generateTextRect()
         self.text.drawInRect(textRect, withAttributes: textAttributes)
         
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let processedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return processedImage
     }
     
     func generateTextRect() -> CGRect {

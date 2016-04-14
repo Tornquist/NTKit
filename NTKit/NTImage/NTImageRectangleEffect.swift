@@ -50,6 +50,9 @@ public class NTImageRectangleEffect: NTImageEffect {
         CGContextStrokeRect(ctx, rect)
         CGContextFillRect(ctx, rect)
         
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let processedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return processedImage
     }
 }

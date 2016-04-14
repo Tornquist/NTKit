@@ -152,7 +152,10 @@ public class NTImageBlockTextEffect: NTImageEffect {
             textRows[i].drawInRect(textRects[i].offsetBy(dx: offset.x, dy: offset.y), withAttributes: textAttributes)
         }
         
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let processedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return processedImage
     }
     
     //MARK: - Methods for Breaking Text into Rows
