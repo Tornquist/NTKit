@@ -38,11 +38,35 @@ public class NTImageProgressCircleEffect: NTImageEffect {
     public var color: UIColor = UIColor.clearColor()
     public var innerRadius: CGFloat = 0
     public var outerRadius: CGFloat = 0
-    public var startAngle: CGFloat = 0
+    public var startAngle: CGFloat = CGFloat(M_PI+M_PI_2)
     public var endAngle: CGFloat = 0
     public var strokeInnerCircle: Bool = false
     public var strokeOuterCircle: Bool = false
     public var strokeWidth: CGFloat = 5
+    public var percent: CGFloat {
+        get {
+            return (endAngle - CGFloat(M_PI+M_PI_2))/CGFloat(M_PI*2)
+        }
+        set {
+            let angle = (newValue >= 1) ? CGFloat(3*M_PI+M_PI_2) : (CGFloat(M_PI+M_PI_2) + newValue*CGFloat(M_PI*2))
+            self.endAngle = angle
+        }
+    }
+    public var strokeCircle: Bool {
+        get {
+            return strokeInnerCircle && strokeOuterCircle
+        }
+        set {
+            strokeInnerCircle = newValue
+            strokeOuterCircle = newValue
+        }
+    }
+    
+    /**
+     Initializes Progress Circle effect with default values
+     */
+    public override init() {
+    }
     
     /**
      Draws a filled circle from the starting angle to the end angle.  The circle will be filled started at the innerRadius
@@ -159,4 +183,90 @@ public class NTImageProgressCircleEffect: NTImageEffect {
         
         return processedImage
     }
+    
+    //MARK: - Movk KVO System
+    
+    override public func acceptedKeys() -> [String] {
+        return ["center", "color", "innerRadius", "outerRadius", "startAngle", "endAngle",
+                "strokeInnerCircle", "strokeOuterCircle", "strokeWidth", "percent", "strokeCircle"]
+    }
+    
+    override public func changeValueOf(key: String, to obj: Any) -> Bool{
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return false
+        }
+        
+        switch key {
+        case "center":
+            if obj is CGPoint {
+                center = obj as! CGPoint
+                return true
+            }
+            return false
+        case "color":
+            if obj is UIColor {
+                color = obj as! UIColor
+                return true
+            }
+            return false
+        case "innerRadius":
+            if obj is CGFloat {
+                innerRadius = obj as! CGFloat
+                return true
+            }
+            return false
+        case "outerRadius":
+            if obj is CGFloat {
+                outerRadius = obj as! CGFloat
+                return true
+            }
+            return false
+        case "startAngle":
+            if obj is CGFloat {
+                startAngle = obj as! CGFloat
+                return true
+            }
+            return false
+        case "endAngle":
+            if obj is CGFloat {
+                endAngle = obj as! CGFloat
+                return true
+            }
+            return false
+        case "percent":
+            if obj is CGFloat {
+                percent = obj as! CGFloat
+                return true
+            }
+            return false
+        case "strokeWidth":
+            if obj is CGFloat {
+                strokeWidth = obj as! CGFloat
+                return true
+            }
+            return false
+        case "strokeInnerCircle":
+            if obj is Bool {
+                strokeInnerCircle = obj as! Bool
+                return true
+            }
+            return false
+        case "strokeOuterCircle":
+            if obj is Bool {
+                strokeOuterCircle = obj as! Bool
+                return true
+            }
+            return false
+        case "strokeCircle":
+            if obj is Bool {
+                strokeCircle = obj as! Bool
+                return true
+            }
+            return false
+        default:
+            return false
+        }
+    }
+
 }

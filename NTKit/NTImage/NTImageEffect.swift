@@ -31,4 +31,13 @@ public class NTImageEffect {
     public func apply(onImage image: UIImage) -> UIImage {
         return image
     }
+    
+    //MARK: Mock KVO System
+    public func acceptedKeys() -> [String] {
+        return []
+    }
+    
+    public func changeValueOf(key: String, to obj: Any) -> Bool {
+        return false
+    }
 }

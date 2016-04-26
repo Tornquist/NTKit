@@ -37,10 +37,10 @@ public class NTImageBlockTextEffect: NTImageEffect {
     var _text: NSString = ""
     public var text: NSString {
         get {
-            return _text
+            return capitalize ? _text.uppercaseString : _text
         }
         set {
-            _text = self.capitalize ? newValue.uppercaseString : newValue
+            _text = newValue
         }
     }
     public var font: UIFont = UIFont.systemFontOfSize(12)
@@ -53,6 +53,12 @@ public class NTImageBlockTextEffect: NTImageEffect {
         case Equal
         case GreaterThan
         case LessThan
+    }
+    
+    /**
+     Initializes Block Text effect with default values
+     */
+    public override init() {
     }
     
     /**
@@ -300,5 +306,72 @@ public class NTImageBlockTextEffect: NTImageEffect {
             return .LessThan
         }
         return .Equal
+    }
+    
+    //MARK: - Mock KVO System
+    
+    override public func acceptedKeys() -> [String] {
+        return ["anchor", "anchorPosition", "width", "text", "font", "fontColor",
+                "trailingTargetCharacterThreshold", "capitalize"]
+    }
+    
+    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return false
+        }
+        
+        switch key {
+        case "anchor":
+            if obj is CGPoint {
+                anchor = obj as! CGPoint
+                return true
+            }
+            return false
+        case "anchorPosition":
+            if obj is NTImageEffectAnchorPosition {
+                anchorPosition = obj as! NTImageEffectAnchorPosition
+                return true
+            }
+            return false
+        case "width":
+            if obj is CGFloat {
+                width = obj as! CGFloat
+                return true
+            }
+            return false
+        case "text":
+            if obj is String || obj is NSString {
+                text = obj as! NSString
+                return true
+            }
+            return false
+        case "font":
+            if obj is UIFont {
+                font = obj as! UIFont
+                return true
+            }
+            return false
+        case "fontColor":
+            if obj is UIColor {
+                fontColor = obj as! UIColor
+                return true
+            }
+            return false
+        case "trailingTargetCharacterThreshold":
+            if obj is Float || obj is CGFloat {
+                trailingTargetCharacterThreshold = obj as! Float
+                return true
+            }
+            return false
+        case "capitalize":
+            if obj is Bool {
+                capitalize = obj as! Bool
+                return true
+            }
+            return false
+        default:
+            return false
+        }
     }
 }

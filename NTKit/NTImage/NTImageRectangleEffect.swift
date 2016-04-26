@@ -34,6 +34,12 @@ public class NTImageRectangleEffect: NTImageEffect {
     public var rect: CGRect = CGRectZero
     public var color: UIColor = UIColor.clearColor()
     
+    /**
+     Initializes Rectangle effect with default values
+     */
+    public override init() {
+    }
+    
     public convenience init(rect: CGRect, color: UIColor) {
         self.init()
         self.rect = rect
@@ -55,4 +61,35 @@ public class NTImageRectangleEffect: NTImageEffect {
         
         return processedImage
     }
+    
+    //MARK: - Mock KVO System
+    
+    override public func acceptedKeys() -> [String] {
+        return ["rect", "color"]
+    }
+    
+    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return false
+        }
+        
+        switch key {
+        case "rect":
+            if obj is CGRect {
+                rect = obj as! CGRect
+                return true
+            }
+            return false
+        case "color":
+            if obj is UIColor {
+                color = obj as! UIColor
+                return true
+            }
+            return false
+        default:
+            return false
+        }
+    }
+
 }

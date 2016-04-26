@@ -37,6 +37,12 @@ public class NTImageTextEffect: NTImageEffect {
     public var anchorPosition: NTImageEffectAnchorPosition = .Center
     public var alignment: NSTextAlignment = .Center
     
+    /**
+     Initializes Text effect with default values
+     */
+    public override init() {
+    }
+    
     public convenience init(anchor: CGPoint, text: String, fontColor: UIColor) {
         self.init()
         self.anchor = anchor
@@ -113,6 +119,60 @@ public class NTImageTextEffect: NTImageEffect {
             return CGRectMake(xLeft, yBottom, width, height)
         case .BottomRight:
             return CGRectMake(xRight, yBottom, width, height)
+        }
+    }
+    
+    //MARK: - Mock KVO System
+    
+    override public func acceptedKeys() -> [String] {
+        return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment"]
+    }
+    
+    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return false
+        }
+        
+        switch key {
+        case "anchor":
+            if obj is CGPoint {
+                anchor = obj as! CGPoint
+                return true
+            }
+            return false
+        case "text":
+            if obj is String || obj is NSString {
+                text = obj as! NSString
+                return true
+            }
+            return false
+        case "font":
+            if obj is UIFont {
+                font = obj as! UIFont
+                return true
+            }
+            return false
+        case "fontColor":
+            if obj is UIColor {
+                fontColor = obj as! UIColor
+                return true
+            }
+            return false
+        case "anchorPosition":
+            if obj is NTImageEffectAnchorPosition {
+                anchorPosition = obj as! NTImageEffectAnchorPosition
+                return true
+            }
+            return false
+        case "alignment":
+            if obj is NSTextAlignment {
+                alignment = obj as! NSTextAlignment
+                return true
+            }
+            return false
+        default:
+            return false
         }
     }
 }

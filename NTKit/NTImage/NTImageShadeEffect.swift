@@ -50,6 +50,12 @@ public class NTImageShadeEffect: NTImageEffect {
     public var shadeShape: NTImageShadeEffectShadeShape = .Full
     public var color: UIColor = UIColor.clearColor()
     
+    /**
+     Initializes Shade effect with default values
+     */
+    public override init() {
+    }
+    
     public convenience init(shape: NTImageShadeEffectShadeShape, color: UIColor) {
         self.init()
         self.shadeShape = shape
@@ -126,5 +132,35 @@ public class NTImageShadeEffect: NTImageEffect {
             CGContextAddLineToPoint(ctx, points[i].x, points[i].y)
         }
         CGContextAddLineToPoint(ctx, points[0].x, points[0].y)
+    }
+    
+    //MARK: - Mock KVO System
+    
+    override public func acceptedKeys() -> [String] {
+        return ["shadeShape", "color"]
+    }
+    
+    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return false
+        }
+        
+        switch key {
+        case "shadeShape":
+            if obj is NTImageShadeEffectShadeShape {
+                shadeShape = obj as! NTImageShadeEffectShadeShape
+                return true
+            }
+            return false
+        case "color":
+            if obj is UIColor {
+                color = obj as! UIColor
+                return true
+            }
+            return false
+        default:
+            return false
+        }
     }
 }
