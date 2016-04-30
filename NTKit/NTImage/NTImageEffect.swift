@@ -40,4 +40,8 @@ public class NTImageEffect {
     public func changeValueOf(key: String, to obj: Any) -> Bool {
         return false
     }
+    
+    public func getValueOf(key: String) -> Any? {
+        return nil
+    }
 }

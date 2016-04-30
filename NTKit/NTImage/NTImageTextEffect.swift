@@ -175,5 +175,29 @@ public class NTImageTextEffect: NTImageEffect {
             return false
         }
     }
+    
+    override public func getValueOf(key: String) -> Any? {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return nil
+        }
+        
+        switch key {
+        case "anchor":
+            return anchor
+        case "text":
+            return text
+        case "font":
+            return font
+        case "fontColor":
+            return fontColor
+        case "anchorPosition":
+            return anchorPosition
+        case "alignment":
+            return alignment
+        default:
+            return nil
+        }
+    }
 }
 

@@ -269,4 +269,37 @@ public class NTImageProgressCircleEffect: NTImageEffect {
         }
     }
 
+    override public func getValueOf(key: String) -> Any? {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return nil
+        }
+        
+        switch key {
+        case "center":
+            return center
+        case "color":
+            return color
+        case "innerRadius":
+            return innerRadius
+        case "outerRadius":
+            return outerRadius
+        case "startAngle":
+            return startAngle
+        case "endAngle":
+            return endAngle
+        case "percent":
+            return percent
+        case "strokeWidth":
+            return strokeWidth
+        case "strokeInnerCircle":
+            return strokeInnerCircle
+        case "strokeOuterCircle":
+            return strokeOuterCircle
+        case "strokeCircle":
+            return strokeCircle
+        default:
+            return nil
+        }
+    }
 }

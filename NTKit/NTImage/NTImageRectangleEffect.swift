@@ -92,4 +92,19 @@ public class NTImageRectangleEffect: NTImageEffect {
         }
     }
 
+    override public func getValueOf(key: String) -> Any? {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return nil
+        }
+        
+        switch key {
+        case "rect":
+            return rect
+        case "color":
+            return color
+        default:
+            return nil
+        }
+    }
 }

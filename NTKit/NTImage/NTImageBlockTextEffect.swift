@@ -35,6 +35,11 @@ public class NTImageBlockTextEffect: NTImageEffect {
     public var anchorPosition: NTImageEffectAnchorPosition = .Center
     public var width: CGFloat = 0
     var _text: NSString = ""
+    public var rawText: NSString {
+        get {
+            return _text
+        }
+    }
     public var text: NSString {
         get {
             return capitalize ? _text.uppercaseString : _text
@@ -372,6 +377,34 @@ public class NTImageBlockTextEffect: NTImageEffect {
             return false
         default:
             return false
+        }
+    }
+    
+    override public func getValueOf(key: String) -> Any? {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return nil
+        }
+        
+        switch key {
+        case "anchor":
+            return anchor
+        case "anchorPosition":
+            return anchorPosition
+        case "width":
+            return width
+        case "text":
+            return rawText // Return unmodified text
+        case "font":
+            return font
+        case "fontColor":
+            return fontColor
+        case "trailingTargetCharacterThreshold":
+            return trailingTargetCharacterThreshold
+        case "capitalize":
+            return capitalize
+        default:
+            return nil
         }
     }
 }

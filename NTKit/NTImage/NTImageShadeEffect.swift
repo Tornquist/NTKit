@@ -163,4 +163,20 @@ public class NTImageShadeEffect: NTImageEffect {
             return false
         }
     }
+    
+    override public func getValueOf(key: String) -> Any? {
+        let options = acceptedKeys()
+        guard options.contains(key) else {
+            return nil
+        }
+        
+        switch key {
+        case "shadeShape":
+            return shadeShape
+        case "color":
+            return color
+        default:
+            return nil
+        }
+    }
 }
