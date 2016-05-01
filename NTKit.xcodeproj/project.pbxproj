@@ -10,20 +10,13 @@
 		D85CD2DF1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CD2DE1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift */; };
 		D85CD2E21CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CD2E11CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift */; };
 		D87593AF1C7C23E000918AB4 /* NTKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D87593781C7C1B7100918AB4 /* NTKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87593BD1C7C25D500918AB4 /* Assets.xcassets */; };
 		D87593D91C80133500918AB4 /* NTBasicTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87593D81C80133500918AB4 /* NTBasicTile.xib */; };
-		D87593DD1C87EF2400918AB4 /* NTKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D87593DE1C87EF9D00918AB4 /* NTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87593A31C7C23A500918AB4 /* NTKit.framework */; };
-		D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B61C7C25D500918AB4 /* AppDelegate.swift */; };
-		D87593E01C87F05B00918AB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B81C7C25D500918AB4 /* ViewController.swift */; };
 		D87593E11C87F06600918AB4 /* NTTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */; };
 		D87593E21C87F06600918AB4 /* NTTileViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */; };
 		D87593E31C87F06600918AB4 /* NTTileViewLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */; };
 		D87593E41C87F06600918AB4 /* NTTileViewRowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */; };
 		D87593E51C87F06600918AB4 /* NTTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593CE1C7FEE4500918AB4 /* NTTile.swift */; };
 		D87593E61C87F06600918AB4 /* NTBasicTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593D61C8012D200918AB4 /* NTBasicTile.swift */; };
-		D87593E71C87F08200918AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BA1C7C25D500918AB4 /* Main.storyboard */; };
-		D87593E81C87F08200918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
 		D8782B3D1CA5D59100A202E1 /* NTImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B3C1CA5D59100A202E1 /* NTImage.swift */; };
 		D8782B3F1CA5D73100A202E1 /* NTImageEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B3E1CA5D73100A202E1 /* NTImageEffect.swift */; };
 		D8782B431CA5E1B900A202E1 /* NTImageRectangleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8782B421CA5E1B900A202E1 /* NTImageRectangleEffect.swift */; };
@@ -35,33 +28,7 @@
 		D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */; };
 		D8A025221C8CFF9300175E3F /* NTImageViewTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */; };
 		D8CC0E351CA376F300C99D34 /* NTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E341CA376F300C99D34 /* NTImageView.swift */; };
-		D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */; };
-		D8CC0E3B1CA3781900C99D34 /* NTImageViewDemoTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D87593DB1C87EF1B00918AB4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D8DFD6461C76AEC70028B8A5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D87593A21C7C23A500918AB4;
-			remoteInfo = NathanKit;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D87593C91C7D63E900918AB4 /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D87593DD1C87EF2400918AB4 /* NTKit.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D85CD2DE1CB44FA100DB30D9 /* NTImageBlockTextEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageBlockTextEffect.swift; sourceTree = "<group>"; };
@@ -69,13 +36,6 @@
 		D87593781C7C1B7100918AB4 /* NTKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTKit.h; sourceTree = "<group>"; };
 		D875937A1C7C1B7100918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D87593A31C7C23A500918AB4 /* NTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NTKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D87593B41C7C25D500918AB4 /* NTKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D87593B61C7C25D500918AB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D87593B81C7C25D500918AB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D87593BB1C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D87593BD1C7C25D500918AB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D87593C21C7C25D500918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D87593CB1C7D6B5C00918AB4 /* NTTileViewRowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewRowLayout.swift; sourceTree = "<group>"; };
 		D87593CE1C7FEE4500918AB4 /* NTTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTile.swift; sourceTree = "<group>"; };
 		D87593D61C8012D200918AB4 /* NTBasicTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTBasicTile.swift; sourceTree = "<group>"; };
@@ -91,8 +51,6 @@
 		D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewTile.swift; sourceTree = "<group>"; };
 		D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewTile.xib; sourceTree = "<group>"; };
 		D8CC0E341CA376F300C99D34 /* NTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageView.swift; sourceTree = "<group>"; };
-		D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewDemoTile.swift; sourceTree = "<group>"; };
-		D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewDemoTile.xib; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
 		D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDataSource.swift; sourceTree = "<group>"; };
 		D8DFD67B1C7C12F10028B8A5 /* NTTileViewLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewLayoutProtocol.swift; sourceTree = "<group>"; };
@@ -103,14 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D87593B11C7C25D500918AB4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D87593DE1C87EF9D00918AB4 /* NTKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,20 +85,6 @@
 				D8782B3B1CA5D4BE00A202E1 /* NTImage */,
 			);
 			path = NTKit;
-			sourceTree = "<group>";
-		};
-		D87593B51C7C25D500918AB4 /* NTKitDemo */ = {
-			isa = PBXGroup;
-			children = (
-				D8CC0E371CA377D900C99D34 /* NTImageView Demo Tile */,
-				D87593B61C7C25D500918AB4 /* AppDelegate.swift */,
-				D87593B81C7C25D500918AB4 /* ViewController.swift */,
-				D87593BA1C7C25D500918AB4 /* Main.storyboard */,
-				D87593BD1C7C25D500918AB4 /* Assets.xcassets */,
-				D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */,
-				D87593C21C7C25D500918AB4 /* Info.plist */,
-			);
-			path = NTKitDemo;
 			sourceTree = "<group>";
 		};
 		D87593D21C800E6300918AB4 /* Tiles */ = {
@@ -248,20 +184,10 @@
 			path = NTImageView;
 			sourceTree = "<group>";
 		};
-		D8CC0E371CA377D900C99D34 /* NTImageView Demo Tile */ = {
-			isa = PBXGroup;
-			children = (
-				D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */,
-				D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */,
-			);
-			name = "NTImageView Demo Tile";
-			sourceTree = "<group>";
-		};
 		D8DFD6451C76AEC70028B8A5 = {
 			isa = PBXGroup;
 			children = (
 				D87593A41C7C23A500918AB4 /* NTKit */,
-				D87593B51C7C25D500918AB4 /* NTKitDemo */,
 				D8DFD64F1C76AEC70028B8A5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -270,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				D87593A31C7C23A500918AB4 /* NTKit.framework */,
-				D87593B41C7C25D500918AB4 /* NTKitDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,26 +233,6 @@
 			productReference = D87593A31C7C23A500918AB4 /* NTKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D87593B31C7C25D500918AB4 /* NTKitDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D87593C31C7C25D600918AB4 /* Build configuration list for PBXNativeTarget "NTKitDemo" */;
-			buildPhases = (
-				D87593B01C7C25D500918AB4 /* Sources */,
-				D87593B11C7C25D500918AB4 /* Frameworks */,
-				D87593B21C7C25D500918AB4 /* Resources */,
-				D87593C91C7D63E900918AB4 /* Copy Frameworks */,
-				D85CD2E41CB5C41700DB30D9 /* Additional Warnings */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D87593DC1C87EF1B00918AB4 /* PBXTargetDependency */,
-			);
-			name = NTKitDemo;
-			productName = NTTileViewDemo;
-			productReference = D87593B41C7C25D500918AB4 /* NTKitDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -339,10 +244,6 @@
 				ORGANIZATIONNAME = "Nathan Tornquist";
 				TargetAttributes = {
 					D87593A21C7C23A500918AB4 = {
-						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 99AECXNBFU;
-					};
-					D87593B31C7C25D500918AB4 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 99AECXNBFU;
 					};
@@ -362,7 +263,6 @@
 			projectRoot = "";
 			targets = (
 				D87593A21C7C23A500918AB4 /* NTKit */,
-				D87593B31C7C25D500918AB4 /* NTKitDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -378,34 +278,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D87593B21C7C25D500918AB4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D87593E81C87F08200918AB4 /* LaunchScreen.storyboard in Resources */,
-				D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */,
-				D87593E71C87F08200918AB4 /* Main.storyboard in Resources */,
-				D8CC0E3B1CA3781900C99D34 /* NTImageViewDemoTile.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D85CD2E41CB5C41700DB30D9 /* Additional Warnings */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Additional Warnings";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
-		};
 		D87593CD1C7EBDA700918AB4 /* Additional Warnings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -447,44 +322,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D87593B01C7C25D500918AB4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */,
-				D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */,
-				D87593E01C87F05B00918AB4 /* ViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D87593DC1C87EF1B00918AB4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D87593A21C7C23A500918AB4 /* NTKit */;
-			targetProxy = D87593DB1C87EF1B00918AB4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D87593BA1C7C25D500918AB4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D87593BB1C7C25D500918AB4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D87593C01C7C25D500918AB4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D87593A91C7C23A500918AB4 /* Debug */ = {
@@ -524,32 +362,6 @@
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D87593C41C7C25D600918AB4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = NTKitDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NathanKitDemo;
-				PRODUCT_NAME = NTKitDemo;
-			};
-			name = Debug;
-		};
-		D87593C51C7C25D600918AB4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = NTKitDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NathanKitDemo;
-				PRODUCT_NAME = NTKitDemo;
 			};
 			name = Release;
 		};
@@ -644,15 +456,6 @@
 			buildConfigurations = (
 				D87593A91C7C23A500918AB4 /* Debug */,
 				D87593AA1C7C23A500918AB4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D87593C31C7C25D600918AB4 /* Build configuration list for PBXNativeTarget "NTKitDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D87593C41C7C25D600918AB4 /* Debug */,
-				D87593C51C7C25D600918AB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
