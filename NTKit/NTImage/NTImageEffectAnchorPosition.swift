@@ -27,7 +27,7 @@
 
 import Foundation
 
-public enum NTImageEffectAnchorPosition {
+public enum NTImageEffectAnchorPosition: String {
     case Center        // Dead Center
     case CenterLeft    // Vertically Center, Left Align
     case CenterRight   // Vertically Center, Right Align

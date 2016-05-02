@@ -27,7 +27,7 @@
 
 import UIKit
 
-public enum NTImageShadeEffectShadeShape {
+public enum NTImageShadeEffectShadeShape: String {
     case Full
     case Top
     case Bottom
