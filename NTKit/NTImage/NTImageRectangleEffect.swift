@@ -31,8 +31,53 @@ import UIKit
  NTImageRectangleEffect is used to draw a colored rectangle anywhere on a UIImage.
  */
 public class NTImageRectangleEffect: NTImageEffect {
-    public var rect: CGRect = CGRectZero
+    public var rect: CGRect {
+        get {
+            var x: CGFloat = 0
+            var y: CGFloat = 0
+            switch anchorPosition {
+            case .TopLeft:
+                x = anchor.x
+                y = anchor.y
+            case .CenterTop:
+                x = anchor.x - width/2
+                y = anchor.y
+            case .TopRight:
+                x = anchor.x - width
+                y = anchor.y
+            case .CenterLeft:
+                x = anchor.x
+                y = anchor.y - height/2
+            case .Center:
+                x = anchor.x - width/2
+                y = anchor.y - height/2
+            case .CenterRight:
+                x = anchor.x - width
+                y = anchor.y - height/2
+            case .BottomLeft:
+                x = anchor.x
+                y = anchor.y - height
+            case .CenterBottom:
+                x = anchor.x - width/2
+                y = anchor.y - height
+            case .BottomRight:
+                x = anchor.x - width
+                y = anchor.y - height
+            }
+            return CGRectMake(x, y, width, height)
+        }
+        set {
+            self.anchor = CGPointMake(newValue.origin.x, newValue.origin.y)
+            self.anchorPosition = .TopLeft
+            self.width = newValue.width
+            self.height = newValue.height
+        }
+    }
     public var color: UIColor = UIColor.clearColor()
+    public var anchor: CGPoint = CGPointZero
+    public var anchorPosition: NTImageEffectAnchorPosition = .TopLeft
+    public var width: CGFloat = 0
+    public var height: CGFloat = 0
     
     /**
      Initializes Rectangle effect with default values
@@ -42,7 +87,19 @@ public class NTImageRectangleEffect: NTImageEffect {
     
     public convenience init(rect: CGRect, color: UIColor) {
         self.init()
-        self.rect = rect
+        self.color = color
+        self.anchor = CGPointMake(rect.origin.x, rect.origin.y)
+        self.anchorPosition = .TopLeft
+        self.width = rect.width
+        self.height = rect.height
+    }
+    
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, width: CGFloat, height: CGFloat, color: UIColor) {
+        self.init()
+        self.anchor = anchor
+        self.anchorPosition = anchorPosition
+        self.width = width
+        self.height = height
         self.color = color
     }
     
@@ -65,7 +122,7 @@ public class NTImageRectangleEffect: NTImageEffect {
     //MARK: - Mock KVO System
     
     override public func acceptedKeys() -> [String] {
-        return ["rect", "color"]
+        return ["rect", "color", "anchor", "anchorPosition", "width", "height"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool {
@@ -87,6 +144,30 @@ public class NTImageRectangleEffect: NTImageEffect {
                 return true
             }
             return false
+        case "anchor":
+            if obj is CGPoint {
+                anchor = obj as! CGPoint
+                return true
+            }
+            return false
+        case "anchorPosition":
+            if obj is NTImageEffectAnchorPosition {
+                anchorPosition = obj as! NTImageEffectAnchorPosition
+                return true
+            }
+            return false
+        case "width":
+            if obj is CGFloat {
+                width = obj as! CGFloat
+                return true
+            }
+            return false
+        case "height":
+            if obj is CGFloat {
+                height = obj as! CGFloat
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -103,6 +184,14 @@ public class NTImageRectangleEffect: NTImageEffect {
             return rect
         case "color":
             return color
+        case "anchor":
+            return anchor
+        case "anchorPosition":
+            return anchorPosition
+        case "width":
+            return width
+        case "height":
+            return height
         default:
             return nil
         }
