@@ -12,20 +12,20 @@
 		D87593E01C87F05B00918AB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B81C7C25D500918AB4 /* ViewController.swift */; };
 		D87593E71C87F08200918AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BA1C7C25D500918AB4 /* Main.storyboard */; };
 		D87593E81C87F08200918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
-		D87724C91CD6951B00FD6526 /* NTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87724C81CD6951B00FD6526 /* NTKit.framework */; };
-		D87724CA1CD6951B00FD6526 /* NTKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D87724C81CD6951B00FD6526 /* NTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8A0AC6B1CE18A9F00B3E577 /* NTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A0AC6A1CE18A9F00B3E577 /* NTKit.framework */; };
+		D8A0AC6C1CE18A9F00B3E577 /* NTKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8A0AC6A1CE18A9F00B3E577 /* NTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */; };
 		D8CC0E3B1CA3781900C99D34 /* NTImageViewDemoTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D87724C71CD694AA00FD6526 /* Embed Frameworks */ = {
+		D8A0AC681CE18A3400B3E577 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D87724CA1CD6951B00FD6526 /* NTKit.framework in Embed Frameworks */,
+				D8A0AC6C1CE18A9F00B3E577 /* NTKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,6 +41,7 @@
 		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D87593C21C7C25D500918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D87724C81CD6951B00FD6526 /* NTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NTKit.framework; path = "/Users/nathan/Library/Developer/Xcode/DerivedData/NTKit-dpcnpbtajgfepoeeeyyqtfsozcyc/Build/Products/Debug-iphonesimulator/NTKit.framework"; sourceTree = "<absolute>"; };
+		D8A0AC6A1CE18A9F00B3E577 /* NTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NTKit.framework; path = "/Users/nathan/Library/Developer/Xcode/DerivedData/NTKit-dpcnpbtajgfepoeeeyyqtfsozcyc/Build/Products/Debug-iphoneos/NTKit.framework"; sourceTree = "<absolute>"; };
 		D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewDemoTile.swift; sourceTree = "<group>"; };
 		D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewDemoTile.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D87724C91CD6951B00FD6526 /* NTKit.framework in Frameworks */,
+				D8A0AC6B1CE18A9F00B3E577 /* NTKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +84,7 @@
 		D8DFD6451C76AEC70028B8A5 = {
 			isa = PBXGroup;
 			children = (
+				D8A0AC6A1CE18A9F00B3E577 /* NTKit.framework */,
 				D87724C81CD6951B00FD6526 /* NTKit.framework */,
 				D87593B51C7C25D500918AB4 /* NTKitDemo */,
 				D8DFD64F1C76AEC70028B8A5 /* Products */,
@@ -108,7 +110,7 @@
 				D87593B11C7C25D500918AB4 /* Frameworks */,
 				D87593B21C7C25D500918AB4 /* Resources */,
 				D85CD2E41CB5C41700DB30D9 /* Additional Warnings */,
-				D87724C71CD694AA00FD6526 /* Embed Frameworks */,
+				D8A0AC681CE18A3400B3E577 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,6 +224,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NTKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NathanKitDemo;
@@ -234,6 +237,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NTKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NathanKitDemo;
