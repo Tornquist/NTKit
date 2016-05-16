@@ -28,6 +28,8 @@
 import UIKit
 
 public class NTImageEffect {
+    public var name: String? = nil
+    
     public func apply(onImage image: UIImage) -> UIImage {
         return image
     }
