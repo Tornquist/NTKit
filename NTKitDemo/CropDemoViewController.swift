@@ -55,7 +55,8 @@ class CropDemoViewController: UIViewController {
         }
         
         // Build Path
-        let path = bigPath()
+        var path = bigPath()
+        path = scale(path, toPoint: CGPointMake(50, 540), withScale: 0.5)
         
         // Mask original image
         UIGraphicsBeginImageContextWithOptions(image!.size, false, 0)
@@ -73,6 +74,22 @@ class CropDemoViewController: UIViewController {
         
         return croppedImage
     }
+    
+    // MARK: - Path Modification
+    func scale(path: UIBezierPath, toPoint point: CGPoint, withScale scale: CGFloat) -> UIBezierPath {
+        let boundingBox = path.bounds
+        let originTranslation = CGAffineTransformMakeTranslation(-boundingBox.minX, -boundingBox.minY)
+        let newOriginTranslation = CGAffineTransformMakeTranslation(point.x, point.y)
+        
+        let sizeScale = CGAffineTransformMakeScale(scale, scale)
+        
+        path.applyTransform(originTranslation)
+        path.applyTransform(newOriginTranslation)
+        path.applyTransform(sizeScale)
+        return path
+    }
+    
+    // MARK: - Path Generation
     
     func bigPath() -> UIBezierPath {
         var paths: [UIBezierPath] = []
