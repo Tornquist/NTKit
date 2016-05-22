@@ -29,8 +29,95 @@ import UIKit
 import NTKit
 
 class CropDemoViewController: UIViewController {
+    @IBOutlet weak var topImageView: NTImageView!
+    @IBOutlet weak var bottomImageView: NTImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        performCropAction()
+    }
+    
+    func performCropAction() {
+        let image = UIImage(named: "Landscape")
+        topImageView.image = image
+        bottomImageView.image = crop(image)
+    }
     
     @IBAction func closePressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    func crop(image: UIImage?) -> UIImage? {
+        guard image != nil else {
+            return nil
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(image!.size, false, 0)
+        bigPath().addClip()
+        image!.drawAtPoint(CGPointZero)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
+    func bigPath() -> UIBezierPath {
+        var paths: [UIBezierPath] = []
+        paths.append(angledPath())
+        paths.append(circlePath())
+        paths.append(stripePath())
+        
+        let resultPath = UIBezierPath()
+        for path in paths {
+            resultPath.appendPath(path)
+        }
+        
+        return resultPath
+    }
+    
+    func angledPath() -> UIBezierPath {
+        let points: [CGPoint] = [
+            CGPointMake(10, 10),
+            CGPointMake(1800, 200),
+            CGPointMake(1500, 900),
+            CGPointMake(50, 300)
+        ]
+        
+        let path = UIBezierPath()
+        for (index, point) in points.enumerate() {
+            if index == 0 {
+                path.moveToPoint(point)
+            } else {
+                path.addLineToPoint(point)
+            }
+        }
+        path.closePath()
+        return path
+    }
+    
+    func circlePath() -> UIBezierPath {
+        return UIBezierPath(ovalInRect: CGRectMake(0, 900, 100, 100))
+    }
+    
+    func stripePath() -> UIBezierPath {
+        let points: [CGPoint] = [
+            CGPointMake(500, 1080),
+            CGPointMake(1400, 0),
+            CGPointMake(1500, 0),
+            CGPointMake(600, 1080)
+        ]
+        
+        let path = UIBezierPath()
+        for (index, point) in points.enumerate() {
+            if index == 0 {
+                path.moveToPoint(point)
+            } else {
+                path.addLineToPoint(point)
+            }
+        }
+        path.closePath()
+        return path
     }
 }

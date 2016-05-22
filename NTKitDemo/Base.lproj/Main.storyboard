@@ -211,13 +211,33 @@
                                     <action selector="closePressed:" destination="vjA-pv-HR3" eventType="touchUpInside" id="wvx-OD-sWy"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2Y-OV-CTV" customClass="NTImageView" customModule="NTKit">
+                                <rect key="frame" x="0.0" y="28" width="600" height="259"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCk-5p-uYS" customClass="NTImageView" customModule="NTKit">
+                                <rect key="frame" x="0.0" y="295" width="600" height="259"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SCk-5p-uYS" firstAttribute="leading" secondItem="6Pa-L0-aP5" secondAttribute="leading" id="9Cj-et-9gh"/>
+                            <constraint firstItem="x2Y-OV-CTV" firstAttribute="top" secondItem="iBq-OO-n4j" secondAttribute="bottom" constant="8" id="AIG-R8-MEu"/>
+                            <constraint firstItem="x2Y-OV-CTV" firstAttribute="height" secondItem="SCk-5p-uYS" secondAttribute="height" id="JmN-4t-a1Q"/>
+                            <constraint firstItem="IWm-CR-Trx" firstAttribute="top" secondItem="SCk-5p-uYS" secondAttribute="bottom" constant="8" id="Rfm-7M-Lkj"/>
                             <constraint firstItem="mns-On-uZk" firstAttribute="top" secondItem="IWm-CR-Trx" secondAttribute="bottom" constant="8" id="fzt-R1-aU4"/>
+                            <constraint firstItem="SCk-5p-uYS" firstAttribute="top" secondItem="x2Y-OV-CTV" secondAttribute="bottom" constant="8" id="kty-gp-MwL"/>
+                            <constraint firstAttribute="trailing" secondItem="x2Y-OV-CTV" secondAttribute="trailing" id="mu0-Dd-WVz"/>
+                            <constraint firstItem="x2Y-OV-CTV" firstAttribute="leading" secondItem="6Pa-L0-aP5" secondAttribute="leading" id="qt2-jF-7tu"/>
+                            <constraint firstAttribute="trailing" secondItem="SCk-5p-uYS" secondAttribute="trailing" id="v9E-WA-cr6"/>
                             <constraint firstItem="IWm-CR-Trx" firstAttribute="centerX" secondItem="6Pa-L0-aP5" secondAttribute="centerX" id="ymt-Y4-S2m"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomImageView" destination="SCk-5p-uYS" id="F6i-wH-M3M"/>
+                        <outlet property="topImageView" destination="x2Y-OV-CTV" id="JLI-VU-9c5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1X-fe-O5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
