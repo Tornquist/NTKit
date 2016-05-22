@@ -9,10 +9,16 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let demoTitles: [String] = [
-        "NTTileView",
-        "NTImageView",
-        "NTImage with NTImageEffects"
+    struct Demo {
+        var title: String
+        var storyboardViewName: String
+    }
+    
+    let demos: [Demo] = [
+        Demo(title: "NTTileView", storyboardViewName: "tileView"),
+        Demo(title: "NTImageView", storyboardViewName: "imageView"),
+        Demo(title: "NTImage with NTImageEffects", storyboardViewName: "imageViewEffects"),
+        Demo(title: "NTCrop", storyboardViewName: "cropView")
     ]
     
     // MARK: - Table View Methods
@@ -22,29 +28,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return demoTitles.count
+        return demos.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("demoCell")!
-        cell.textLabel?.text = demoTitles[indexPath.row]
+        cell.textLabel?.text = demos[indexPath.row].title
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-            let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tileView")
-            self.presentViewController(newVC, animated: true, completion: nil)
-        case 1:
-            let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("imageView")
-            self.presentViewController(newVC, animated: true, completion: nil)
-        case 2:
-            let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("imageViewEffects")
-            self.presentViewController(newVC, animated: true, completion: nil)
-        default:
-            break
-        }
+        let demo = demos[indexPath.row]
+        let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(demo.storyboardViewName)
+        self.presentViewController(newVC, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
