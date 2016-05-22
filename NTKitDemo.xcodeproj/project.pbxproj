@@ -17,6 +17,7 @@
 		D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */; };
 		D8CC0E3B1CA3781900C99D34 /* NTImageViewDemoTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */; };
 		D8F506B21CF1EEE400B90A2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F506B11CF1EEE400B90A2B /* MainViewController.swift */; };
+		D8F506B51CF1F34900B90A2B /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F506B41CF1F34900B90A2B /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,7 @@
 		D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewDemoTile.swift; sourceTree = "<group>"; };
 		D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewDemoTile.xib; sourceTree = "<group>"; };
 		D8F506B11CF1EEE400B90A2B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D8F506B41CF1F34900B90A2B /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +65,9 @@
 		D87593B51C7C25D500918AB4 /* NTKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D8CC0E371CA377D900C99D34 /* NTImageView Demo Tile */,
 				D87593B61C7C25D500918AB4 /* AppDelegate.swift */,
-				D87593B81C7C25D500918AB4 /* TileViewController.swift */,
+				D8CC0E371CA377D900C99D34 /* NTImageView Demo Tile */,
+				D8F506B31CF1F32700B90A2B /* Demo View Controllers */,
 				D8F506B11CF1EEE400B90A2B /* MainViewController.swift */,
 				D87593BA1C7C25D500918AB4 /* Main.storyboard */,
 				D87593BD1C7C25D500918AB4 /* Assets.xcassets */,
@@ -100,6 +102,15 @@
 				D87593B41C7C25D500918AB4 /* NTKitDemo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D8F506B31CF1F32700B90A2B /* Demo View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D87593B81C7C25D500918AB4 /* TileViewController.swift */,
+				D8F506B41CF1F34900B90A2B /* ImageViewController.swift */,
+			);
+			name = "Demo View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 			files = (
 				D8F506B21CF1EEE400B90A2B /* MainViewController.swift in Sources */,
 				D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */,
+				D8F506B51CF1F34900B90A2B /* ImageViewController.swift in Sources */,
 				D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */,
 				D87593E01C87F05B00918AB4 /* TileViewController.swift in Sources */,
 			);

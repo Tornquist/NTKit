@@ -108,5 +108,48 @@
             </objects>
             <point key="canvasLocation" x="558" y="479"/>
         </scene>
+        <!--Image View Controller-->
+        <scene sceneID="GYF-6k-VJc">
+            <objects>
+                <viewController storyboardIdentifier="imageView" id="t51-Cg-ZbL" customClass="ImageViewController" customModule="NTKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rRM-MG-Fod"/>
+                        <viewControllerLayoutGuide type="bottom" id="eGk-uP-RDn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eZm-gY-F7n">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzN-tM-hKB">
+                                <rect key="frame" x="258" y="570" width="84" height="30"/>
+                                <state key="normal" title="Close Demo"/>
+                                <connections>
+                                    <action selector="closePressed:" destination="t51-Cg-ZbL" eventType="touchUpInside" id="KBz-H6-dOA"/>
+                                    <action selector="closePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UsT-Ym-UfQ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPN-Hb-wGn" customClass="NTImageView" customModule="NTKit">
+                                <rect key="frame" x="20" y="28" width="560" height="534"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RPN-Hb-wGn" firstAttribute="top" secondItem="rRM-MG-Fod" secondAttribute="bottom" constant="8" id="GKY-b9-zs7"/>
+                            <constraint firstItem="zzN-tM-hKB" firstAttribute="top" secondItem="RPN-Hb-wGn" secondAttribute="bottom" constant="8" id="Ip2-GT-03b"/>
+                            <constraint firstItem="RPN-Hb-wGn" firstAttribute="leading" secondItem="eZm-gY-F7n" secondAttribute="leadingMargin" id="MSJ-m3-ouQ"/>
+                            <constraint firstItem="RPN-Hb-wGn" firstAttribute="trailing" secondItem="eZm-gY-F7n" secondAttribute="trailingMargin" id="PKg-kP-amm"/>
+                            <constraint firstItem="eGk-uP-RDn" firstAttribute="top" secondItem="zzN-tM-hKB" secondAttribute="bottom" id="UCf-4A-Slc"/>
+                            <constraint firstItem="zzN-tM-hKB" firstAttribute="centerX" secondItem="eZm-gY-F7n" secondAttribute="centerX" id="eX6-9u-OZx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="RPN-Hb-wGn" id="PX0-KM-1Up"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGX-Zp-j36" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558" y="1135"/>
+        </scene>
     </scenes>
 </document>
