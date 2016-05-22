@@ -18,6 +18,7 @@
 		D8CC0E3B1CA3781900C99D34 /* NTImageViewDemoTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */; };
 		D8F506B21CF1EEE400B90A2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F506B11CF1EEE400B90A2B /* MainViewController.swift */; };
 		D8F506B51CF1F34900B90A2B /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F506B41CF1F34900B90A2B /* ImageViewController.swift */; };
+		D8F506B71CF1F49100B90A2B /* ImageViewWithEffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F506B61CF1F49100B90A2B /* ImageViewWithEffectsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +49,7 @@
 		D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewDemoTile.xib; sourceTree = "<group>"; };
 		D8F506B11CF1EEE400B90A2B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D8F506B41CF1F34900B90A2B /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		D8F506B61CF1F49100B90A2B /* ImageViewWithEffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewWithEffectsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				D87593B81C7C25D500918AB4 /* TileViewController.swift */,
 				D8F506B41CF1F34900B90A2B /* ImageViewController.swift */,
+				D8F506B61CF1F49100B90A2B /* ImageViewWithEffectsViewController.swift */,
 			);
 			name = "Demo View Controllers";
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */,
 				D8F506B51CF1F34900B90A2B /* ImageViewController.swift in Sources */,
 				D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */,
+				D8F506B71CF1F49100B90A2B /* ImageViewWithEffectsViewController.swift in Sources */,
 				D87593E01C87F05B00918AB4 /* TileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

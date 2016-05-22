@@ -39,6 +39,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 1:
             let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("imageView")
             self.presentViewController(newVC, animated: true, completion: nil)
+        case 2:
+            let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("imageViewEffects")
+            self.presentViewController(newVC, animated: true, completion: nil)
         default:
             break
         }
