@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87593BD1C7C25D500918AB4 /* Assets.xcassets */; };
 		D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B61C7C25D500918AB4 /* AppDelegate.swift */; };
-		D87593E01C87F05B00918AB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B81C7C25D500918AB4 /* ViewController.swift */; };
+		D87593E01C87F05B00918AB4 /* TileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B81C7C25D500918AB4 /* TileViewController.swift */; };
 		D87593E71C87F08200918AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BA1C7C25D500918AB4 /* Main.storyboard */; };
 		D87593E81C87F08200918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
 		D8A0AC6B1CE18A9F00B3E577 /* NTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A0AC6A1CE18A9F00B3E577 /* NTKit.framework */; };
@@ -35,7 +35,7 @@
 /* Begin PBXFileReference section */
 		D87593B41C7C25D500918AB4 /* NTKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87593B61C7C25D500918AB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D87593B81C7C25D500918AB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D87593B81C7C25D500918AB4 /* TileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileViewController.swift; sourceTree = "<group>"; };
 		D87593BB1C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D87593BD1C7C25D500918AB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			children = (
 				D8CC0E371CA377D900C99D34 /* NTImageView Demo Tile */,
 				D87593B61C7C25D500918AB4 /* AppDelegate.swift */,
-				D87593B81C7C25D500918AB4 /* ViewController.swift */,
+				D87593B81C7C25D500918AB4 /* TileViewController.swift */,
 				D87593BA1C7C25D500918AB4 /* Main.storyboard */,
 				D87593BD1C7C25D500918AB4 /* Assets.xcassets */,
 				D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */,
@@ -193,7 +193,7 @@
 			files = (
 				D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */,
 				D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */,
-				D87593E01C87F05B00918AB4 /* ViewController.swift in Sources */,
+				D87593E01C87F05B00918AB4 /* TileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

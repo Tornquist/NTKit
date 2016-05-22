@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TileViewController.swift
 //  NTKitDemo
 //
 //  Created by Nathan Tornquist on 2/22/16.
@@ -28,7 +28,7 @@
 import UIKit
 import NTKit
 
-class ViewController: UIViewController, NTTileViewDataSource {
+class TileViewController: UIViewController, NTTileViewDataSource {
 
     @IBOutlet weak var tileView: NTTileView!
     
