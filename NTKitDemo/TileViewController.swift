@@ -156,4 +156,10 @@ class TileViewController: UIViewController, NTTileViewDataSource {
         image!.effects.append(textEffect4)
         return image!.withEffects()
     }
+    
+    // MARK: - Button Events
+    
+    @IBAction func closePressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

@@ -16,6 +16,7 @@
 		D8A0AC6C1CE18A9F00B3E577 /* NTKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8A0AC6A1CE18A9F00B3E577 /* NTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */; };
 		D8CC0E3B1CA3781900C99D34 /* NTImageViewDemoTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */; };
+		D8F506B21CF1EEE400B90A2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F506B11CF1EEE400B90A2B /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,7 @@
 		D8A0AC6A1CE18A9F00B3E577 /* NTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NTKit.framework; path = "/Users/nathan/Library/Developer/Xcode/DerivedData/NTKit-dpcnpbtajgfepoeeeyyqtfsozcyc/Build/Products/Debug-iphoneos/NTKit.framework"; sourceTree = "<absolute>"; };
 		D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewDemoTile.swift; sourceTree = "<group>"; };
 		D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewDemoTile.xib; sourceTree = "<group>"; };
+		D8F506B11CF1EEE400B90A2B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				D8CC0E371CA377D900C99D34 /* NTImageView Demo Tile */,
 				D87593B61C7C25D500918AB4 /* AppDelegate.swift */,
 				D87593B81C7C25D500918AB4 /* TileViewController.swift */,
+				D8F506B11CF1EEE400B90A2B /* MainViewController.swift */,
 				D87593BA1C7C25D500918AB4 /* Main.storyboard */,
 				D87593BD1C7C25D500918AB4 /* Assets.xcassets */,
 				D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */,
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F506B21CF1EEE400B90A2B /* MainViewController.swift in Sources */,
 				D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */,
 				D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */,
 				D87593E01C87F05B00918AB4 /* TileViewController.swift in Sources */,
