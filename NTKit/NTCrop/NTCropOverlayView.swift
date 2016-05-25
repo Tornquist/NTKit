@@ -28,8 +28,32 @@
 import UIKit
 
 class NTCropOverlayView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        self.configureView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        self.configureView()
+    }
+    
+    func configureView() {
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
     override func drawRect(rect: CGRect) {
-        UIColor.redColor().setFill()
+        UIColor.redColor().colorWithAlphaComponent(0.6).setFill()
         UIRectFill(rect)
+    }
+    
+    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+        return false // Overlay ignores touchces
+    }
+    
+    func aspectRatio() -> CGFloat {
+        return 2
     }
 }

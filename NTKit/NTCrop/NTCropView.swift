@@ -49,10 +49,6 @@ public class NTCropView: UIView {
         }
     }
     
-    // Temp variables
-    let overlayHeight: CGFloat = 100
-    let overlayWidth: CGFloat = 50
-    
     // MARK: - Initializers
     
     public override init(frame: CGRect) {
@@ -107,7 +103,7 @@ public class NTCropView: UIView {
             self.removeConstraint(overlayViewHeightConstraint)
         }
         
-        let overlayAspectRatio = overlayHeight/overlayWidth
+        let overlayAspectRatio = self.overlayView.aspectRatio()
         let viewAspectRatio = self.frame.height/self.frame.width
         
         var widthMultiplier: CGFloat = 0
