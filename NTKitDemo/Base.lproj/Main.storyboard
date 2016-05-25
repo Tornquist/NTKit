@@ -212,25 +212,34 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2Y-OV-CTV" customClass="NTCropView" customModule="NTKit">
-                                <rect key="frame" x="0.0" y="28" width="600" height="259"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCk-5p-uYS" customClass="NTImageView" customModule="NTKit">
-                                <rect key="frame" x="0.0" y="295" width="600" height="259"/>
+                                <rect key="frame" x="0.0" y="314" width="600" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRb-WV-LlR">
+                                <rect key="frame" x="283" y="276" width="34" height="30"/>
+                                <state key="normal" title="Crop"/>
+                                <connections>
+                                    <action selector="cropButtonPressed:" destination="vjA-pv-HR3" eventType="touchUpInside" id="XcM-xm-ghc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SCk-5p-uYS" firstAttribute="top" secondItem="CRb-WV-LlR" secondAttribute="bottom" constant="8" id="22l-8q-k2W"/>
+                            <constraint firstItem="CRb-WV-LlR" firstAttribute="top" secondItem="x2Y-OV-CTV" secondAttribute="bottom" constant="8" id="79w-id-Pgk"/>
                             <constraint firstItem="SCk-5p-uYS" firstAttribute="leading" secondItem="6Pa-L0-aP5" secondAttribute="leading" id="9Cj-et-9gh"/>
                             <constraint firstItem="x2Y-OV-CTV" firstAttribute="top" secondItem="iBq-OO-n4j" secondAttribute="bottom" constant="8" id="AIG-R8-MEu"/>
                             <constraint firstItem="x2Y-OV-CTV" firstAttribute="height" secondItem="SCk-5p-uYS" secondAttribute="height" id="JmN-4t-a1Q"/>
                             <constraint firstItem="IWm-CR-Trx" firstAttribute="top" secondItem="SCk-5p-uYS" secondAttribute="bottom" constant="8" id="Rfm-7M-Lkj"/>
                             <constraint firstItem="mns-On-uZk" firstAttribute="top" secondItem="IWm-CR-Trx" secondAttribute="bottom" constant="8" id="fzt-R1-aU4"/>
-                            <constraint firstItem="SCk-5p-uYS" firstAttribute="top" secondItem="x2Y-OV-CTV" secondAttribute="bottom" constant="8" id="kty-gp-MwL"/>
                             <constraint firstAttribute="trailing" secondItem="x2Y-OV-CTV" secondAttribute="trailing" id="mu0-Dd-WVz"/>
                             <constraint firstItem="x2Y-OV-CTV" firstAttribute="leading" secondItem="6Pa-L0-aP5" secondAttribute="leading" id="qt2-jF-7tu"/>
                             <constraint firstAttribute="trailing" secondItem="SCk-5p-uYS" secondAttribute="trailing" id="v9E-WA-cr6"/>
+                            <constraint firstItem="CRb-WV-LlR" firstAttribute="centerX" secondItem="6Pa-L0-aP5" secondAttribute="centerX" id="wt5-ir-AWU"/>
                             <constraint firstItem="IWm-CR-Trx" firstAttribute="centerX" secondItem="6Pa-L0-aP5" secondAttribute="centerX" id="ymt-Y4-S2m"/>
                         </constraints>
                     </view>

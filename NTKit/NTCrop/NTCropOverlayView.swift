@@ -28,6 +28,11 @@
 import UIKit
 
 class NTCropOverlayView: UIView {
+    
+    var cropPath: UIBezierPath? = nil
+    
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -45,15 +50,44 @@ class NTCropOverlayView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        UIColor.redColor().colorWithAlphaComponent(0.6).setFill()
-        UIRectFill(rect)
+        if let path = pathInFrame() {
+            UIColor.redColor().colorWithAlphaComponent(0.6).setFill()
+            UIColor.redColor().colorWithAlphaComponent(0.6).setStroke()
+            path.fill()
+        }
     }
     
     override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
         return false // Overlay ignores touchces
     }
     
+    // MARK: - Path Methods
+    
+    func pathInFrame() -> UIBezierPath? {
+        guard cropPath != nil else { return nil }
+        
+        return scale(cropPath!, toPoint: CGPointZero, withScale: self.frame.width/cropPath!.bounds.width)
+    }
+    
+    func scale(path: UIBezierPath, toPoint point: CGPoint, withScale scale: CGFloat) -> UIBezierPath {
+        let boundingBox = path.bounds
+        let originTranslation = CGAffineTransformMakeTranslation(-boundingBox.minX, -boundingBox.minY)
+        let newOriginTranslation = CGAffineTransformMakeTranslation(point.x, point.y)
+        
+        let sizeScale = CGAffineTransformMakeScale(scale, scale)
+        
+        path.applyTransform(originTranslation)
+        path.applyTransform(newOriginTranslation)
+        path.applyTransform(sizeScale)
+        return path
+    }
+    
     func aspectRatio() -> CGFloat {
-        return 2
+        guard cropPath != nil else {
+            return 1
+        }
+        
+        let bounds = cropPath!.bounds
+        return bounds.width/bounds.height
     }
 }

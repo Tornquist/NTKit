@@ -36,18 +36,21 @@ class CropDemoViewController: UIViewController {
         super.viewDidLoad()
         
         performCropAction()
+        self.topImageView.cropPath = bigPath()
     }
     
     func performCropAction() {
         let image = UIImage(named: "Landscape")
         topImageView.image = image
-        bottomImageView.image = crop(image)
     }
     
     @IBAction func closePressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func cropButtonPressed(sender: AnyObject) {
+        bottomImageView.image = crop(topImageView.image)
+    }
     
     func crop(image: UIImage?) -> UIImage? {
         guard image != nil else {

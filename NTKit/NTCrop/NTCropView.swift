@@ -49,6 +49,19 @@ public class NTCropView: UIView {
         }
     }
     
+    var _cropPath: UIBezierPath? = nil
+    public var cropPath: UIBezierPath? {
+        get {
+            return _cropPath
+        }
+        set {
+            self._cropPath = newValue
+            if overlayView != nil {
+                overlayView.cropPath = self.cropPath
+            }
+        }
+    }
+    
     // MARK: - Initializers
     
     public override init(frame: CGRect) {
@@ -111,10 +124,10 @@ public class NTCropView: UIView {
         
         if overlayAspectRatio > viewAspectRatio { // Overlay Height Fills
             heightMultiplier = 0.8
-            widthMultiplier = (self.frame.height*heightMultiplier/overlayAspectRatio)/self.frame.width
+            widthMultiplier = (self.frame.height*heightMultiplier*overlayAspectRatio)/self.frame.width
         } else { // Overlay Width Fills
             widthMultiplier = 0.8
-            heightMultiplier = (self.frame.width*widthMultiplier*overlayAspectRatio)/self.frame.height
+            heightMultiplier = (self.frame.width*widthMultiplier/overlayAspectRatio)/self.frame.height
         }
         
         overlayViewWidthConstraint = NSLayoutConstraint(item: overlayView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: widthMultiplier, constant: 0)
