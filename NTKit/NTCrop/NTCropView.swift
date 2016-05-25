@@ -27,153 +27,67 @@
 
 import UIKit
 
-public class NTCropView: UIScrollView, UIScrollViewDelegate {
-    var _image: UIImage?
+public class NTCropView: UIView {
+    var scrollView: NTCropScrollView! = nil
+    var overlayView: NTCropOverlayView! = nil
+    
     public var image: UIImage? {
         get {
-            return _image
+            if scrollView != nil {
+                return scrollView.image
+            }
+            return nil
         }
         set {
-            if (_image?.size != newValue?.size) {
-                _image = newValue
-                self.imageView.image = _image
-                self.updateImageViewFrame()
-                self.configureInitialScale()
-            } else {
-                _image = newValue
-                self.imageView.image = _image
+            if scrollView != nil {
+                scrollView.image = newValue
             }
         }
     }
     
-    var imageView: UIImageView!
-    var leftConstraint: NSLayoutConstraint!
-    var rightConstraint: NSLayoutConstraint!
-    var topConstraint: NSLayoutConstraint!
-    var bottomConstraint: NSLayoutConstraint!
-    var oldFrame: CGRect = CGRectZero
-    
-    public var defaultMinimumZoomScale: CGFloat = 0.5
-    public var defaultMaximumZoomScale: CGFloat = 2
-    
-    //MARK: - Initializers
+    // MARK: - Initializers
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureView()
+        self.addScrollView()
+        self.addOverlayView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.configureView()
+        self.addScrollView()
+        self.addOverlayView()
     }
     
-    //MARK: - Configuration
+    // MARK: - View Configuration
     
-    func configureView() {
-        // Configure Scroll View
-        self.clipsToBounds = true
-        self.delegate = self
-        self.contentOffset = CGPointZero
-        self.bounces = true
-        self.bouncesZoom = true
-        
-        // Configure Image View
-        self.imageView = UIImageView()
-        self.addSubview(self.imageView)
-        self.imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.topConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-        self.leftConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        self.bottomConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
-        self.rightConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
+    func addScrollView() {
+        scrollView = NTCropScrollView(frame: self.frame)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.autoresizesSubviews = true
+        self.addSubview(scrollView)
+        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
         self.addConstraint(topConstraint)
         self.addConstraint(bottomConstraint)
-        self.addConstraint(rightConstraint)
         self.addConstraint(leftConstraint)
-        
-        // Default Zoom Scaling
-        self.configureInitialScale()
+        self.addConstraint(rightConstraint)
     }
     
-    func configureInitialScale() {
-        // Set Defaults
-        self.minimumZoomScale = defaultMinimumZoomScale
-        self.maximumZoomScale = defaultMaximumZoomScale
-        self.zoomScale = 1
-        
-        // Configure only if image set
-        guard self.image != nil else {
-            return
-        }
-        
-        // Calculate Values
-        let aspectRatioView = self.frame.width/self.frame.height
-        let aspectRatioImage = self.image!.size.width/self.image!.size.height
-        
-        var targetScale: CGFloat = 1
-        
-        // Determine Scale
-        if aspectRatioView > aspectRatioImage {
-            targetScale = self.frame.height/self.image!.size.height
-        } else {
-            targetScale = self.frame.width/self.image!.size.width
-        }
-        
-        // Update min/max scale
-        if targetScale < self.minimumZoomScale {
-            self.minimumZoomScale = targetScale
-        } else if targetScale > self.maximumZoomScale {
-            self.maximumZoomScale = targetScale
-        }
-        
-        // Set Scale
-        self.zoomScale = targetScale
-        
-        // Update Constraints
-        self.updateImageConstraints()
-    }
-    
-    func updateImageConstraints() {
-        guard self.image != nil else {
-            return
-        }
-        // Calculate Padding
-        let horizontalPadding = max(0, (self.frame.width - self.image!.size.width * self.zoomScale)/2)
-        let verticalPadding = max(0, (self.frame.height - self.image!.size.height * self.zoomScale)/2)
-        
-        // Update Constraints
-        self.topConstraint.constant = verticalPadding
-        self.bottomConstraint.constant = verticalPadding
-        self.leftConstraint.constant = horizontalPadding
-        self.rightConstraint.constant = horizontalPadding
-        self.layoutIfNeeded()
-    }
-    
-    func updateImageViewFrame() {
-        guard self.image != nil else {
-            return
-        }
-        let newFrame = CGRectMake(0, 0, self.image!.size.width, self.image!.size.height)
-        self.imageView.frame = newFrame
-    }
-    
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if self.oldFrame != self.frame {
-            self.oldFrame = self.frame
-            self.configureInitialScale()
-        }
-    }
-    
-    //MARK: - UIScrollView Delegates
-    
-    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    
-    public func scrollViewDidZoom(scrollView: UIScrollView) {
-        updateImageConstraints()
+    func addOverlayView() {
+        overlayView = NTCropOverlayView(frame: self.frame)
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.autoresizesSubviews = true
+        self.addSubview(overlayView)
+        let widthConstraint = NSLayoutConstraint(item: overlayView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 0.5, constant: 0)
+        let heightConstraint = NSLayoutConstraint(item: overlayView, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0.5, constant: 0)
+        let centerVerticalConstraint = NSLayoutConstraint(item: overlayView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0)
+        let centerHorizontalConstraint = NSLayoutConstraint(item: overlayView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0)
+        self.addConstraint(widthConstraint)
+        self.addConstraint(heightConstraint)
+        self.addConstraint(centerVerticalConstraint)
+        self.addConstraint(centerHorizontalConstraint)
     }
 }
