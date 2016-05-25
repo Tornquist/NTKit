@@ -29,7 +29,7 @@ import UIKit
 import NTKit
 
 class CropDemoViewController: UIViewController {
-    @IBOutlet weak var topImageView: NTImageView!
+    @IBOutlet weak var topImageView: NTCropView!
     @IBOutlet weak var bottomImageView: NTImageView!
     
     override func viewDidLoad() {

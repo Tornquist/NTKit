@@ -1,8 +1,8 @@
 //
-//  NTImageView.swift
+//  NTCropView.swift
 //  NTKit
 //
-//  Created by Nathan Tornquist on 3/23/16.
+//  Created by Nathan Tornquist on 5/25/16.
 //  Copyright © 2016 Nathan Tornquist. All rights reserved.
 //
 //  Hosted on github at github.com/Tornquist/NTKit
@@ -27,13 +27,13 @@
 
 import UIKit
 
-public class NTImageView: UIScrollView, UIScrollViewDelegate {
+public class NTCropView: UIScrollView, UIScrollViewDelegate {
     var _image: UIImage?
     public var image: UIImage? {
         get {
             return _image
         }
-        set {            
+        set {
             if (_image?.size != newValue?.size) {
                 _image = newValue
                 self.imageView.image = _image
@@ -132,7 +132,7 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
         // Update Constraints
         self.updateImageConstraints()
     }
-
+    
     func updateImageConstraints() {
         guard self.image != nil else {
             return

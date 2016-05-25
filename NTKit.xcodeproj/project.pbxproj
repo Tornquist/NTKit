@@ -27,6 +27,7 @@
 		D8A0251E1C8CF05400175E3F /* NTTitleDetailTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */; };
 		D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */; };
 		D8A025221C8CFF9300175E3F /* NTImageViewTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */; };
+		D8B9C48B1CF5D03900182BF9 /* NTCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9C48A1CF5D03900182BF9 /* NTCropView.swift */; };
 		D8CC0E351CA376F300C99D34 /* NTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E341CA376F300C99D34 /* NTImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		D8A0251D1C8CF05400175E3F /* NTTitleDetailTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTTitleDetailTile.xib; sourceTree = "<group>"; };
 		D8A0251F1C8CFF8400175E3F /* NTImageViewTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewTile.swift; sourceTree = "<group>"; };
 		D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewTile.xib; sourceTree = "<group>"; };
+		D8B9C48A1CF5D03900182BF9 /* NTCropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCropView.swift; sourceTree = "<group>"; };
 		D8CC0E341CA376F300C99D34 /* NTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageView.swift; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
 		D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDataSource.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				D87593781C7C1B7100918AB4 /* NTKit.h */,
 				D875937A1C7C1B7100918AB4 /* Info.plist */,
 				D8A025191C87F1E800175E3F /* NTTileView */,
+				D8B9C4891CF5CFFF00182BF9 /* NTCrop */,
 				D8CC0E361CA376F700C99D34 /* NTImageView */,
 				D8782B3B1CA5D4BE00A202E1 /* NTImage */,
 			);
@@ -174,6 +177,14 @@
 				D8A025211C8CFF9300175E3F /* NTImageViewTile.xib */,
 			);
 			name = "Image View Tile";
+			sourceTree = "<group>";
+		};
+		D8B9C4891CF5CFFF00182BF9 /* NTCrop */ = {
+			isa = PBXGroup;
+			children = (
+				D8B9C48A1CF5D03900182BF9 /* NTCropView.swift */,
+			);
+			path = NTCrop;
 			sourceTree = "<group>";
 		};
 		D8CC0E361CA376F700C99D34 /* NTImageView */ = {
@@ -316,6 +327,7 @@
 				D8782B3F1CA5D73100A202E1 /* NTImageEffect.swift in Sources */,
 				D8A025201C8CFF8400175E3F /* NTImageViewTile.swift in Sources */,
 				D8CC0E351CA376F300C99D34 /* NTImageView.swift in Sources */,
+				D8B9C48B1CF5D03900182BF9 /* NTCropView.swift in Sources */,
 				D87593E61C87F06600918AB4 /* NTBasicTile.swift in Sources */,
 				D8782B431CA5E1B900A202E1 /* NTImageRectangleEffect.swift in Sources */,
 				D8782B3D1CA5D59100A202E1 /* NTImage.swift in Sources */,
