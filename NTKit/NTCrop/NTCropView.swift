@@ -27,7 +27,7 @@
 
 import UIKit
 
-public class NTCropView: UIView {
+public class NTCropView: UIView, NTCropScrollViewDelegate {
     var scrollView: NTCropScrollView! = nil
     var overlayView: NTCropOverlayView! = nil
     
@@ -109,6 +109,7 @@ public class NTCropView: UIView {
         scrollView = NTCropScrollView(frame: self.frame)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.autoresizesSubviews = true
+        scrollView.cropRegionDelegate = self
         self.addSubview(scrollView)
         let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
         let bottomConstraint = NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
@@ -133,5 +134,14 @@ public class NTCropView: UIView {
         self.addConstraint(bottomConstraint)
         self.addConstraint(leftConstraint)
         self.addConstraint(rightConstraint)
+    }
+    
+    // MARK: - NTCropScrollViewDelegate Methods
+    
+    func constrainScrollToRect() -> CGRect {
+        if let cropFrame = overlayView.cropRect {
+            return cropFrame
+        }
+        return CGRectMake(0, 0, self.frame.width, self.frame.height)
     }
 }
