@@ -39,7 +39,7 @@ class NTCropOverlayView: UIView {
     var scaledCropWidth: CGFloat? = nil
     var scaledCropHeight: CGFloat? = nil
     
-    var shadeColor: UIColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.8)
+    var shadeColor: UIColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
     
     var _cropPath: UIBezierPath? = nil
     var oldFrame: CGRect = CGRectZero
@@ -75,7 +75,7 @@ class NTCropOverlayView: UIView {
         shadeColor.setFill()
         UIRectFill(rect)
         if let path = scaledPathInFrame() {
-            UIColor.redColor().setFill()
+            CGContextSetBlendMode(UIGraphicsGetCurrentContext(), .Clear)
             path.fill()
         }
     }
