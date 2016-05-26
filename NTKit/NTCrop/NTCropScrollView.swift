@@ -41,7 +41,6 @@ class NTCropScrollView: UIScrollView, UIScrollViewDelegate {
             if (_image?.size != newValue?.size) {
                 _image = newValue
                 self.imageView.image = _image
-                self.updateImageViewFrame()
                 self.configureInitialScale()
             } else {
                 _image = newValue
@@ -179,15 +178,6 @@ class NTCropScrollView: UIScrollView, UIScrollViewDelegate {
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }
-    
-    func updateImageViewFrame() {
-        guard self.image != nil else {
-            return
-        }
-        let newFrame = CGRectMake(0, 0, self.image!.size.width, self.image!.size.height)
-        //self.imageView.frame = newFrame
-    }
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
