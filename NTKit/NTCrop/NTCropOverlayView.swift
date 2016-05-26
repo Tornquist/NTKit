@@ -38,6 +38,17 @@ class NTCropOverlayView: UIView {
     var scaledCropPath: UIBezierPath? = nil
     var scaledCropWidth: CGFloat? = nil
     var scaledCropHeight: CGFloat? = nil
+    var cropRect: CGRect? {
+        get {
+            if scaledCropWidth == nil || scaledCropHeight == nil {
+                return nil
+            }
+            
+            let x = self.frame.width/2 - scaledCropWidth!/2
+            let y = self.frame.height/2 - scaledCropHeight!/2
+            return CGRectMake(x, y, scaledCropWidth!, scaledCropHeight!)
+        }
+    }
     
     var shadeColor: UIColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
     
@@ -111,7 +122,7 @@ class NTCropOverlayView: UIView {
         
         self.scaledCropWidth = widthMultiplier*self.frame.width
         self.scaledCropHeight = heightMultiplier*self.frame.height
-        self.scaledCropPath = scale(cropPath!, toPoint: CGPointZero, withScale: scaledCropWidth!/self.cropPath!.bounds.width)
+        self.scaledCropPath = NTCropHelper.scale(cropPath!, toPoint: CGPointZero, withScale: scaledCropWidth!/self.cropPath!.bounds.width)
         dispatch_async(dispatch_get_main_queue(), {
             //TODO: Make this animate smoother when rotating
             self.setNeedsDisplay()
@@ -126,20 +137,7 @@ class NTCropOverlayView: UIView {
         let pointX = self.frame.width/2-self.scaledCropWidth!/2
         let pointY = self.frame.height/2-self.scaledCropHeight!/2
         
-        return scale(scaledCropPath!, toPoint: CGPointMake(pointX, pointY), withScale: 1)
-    }
-    
-    func scale(path: UIBezierPath, toPoint point: CGPoint, withScale scale: CGFloat) -> UIBezierPath {
-        let boundingBox = path.bounds
-        let originTranslation = CGAffineTransformMakeTranslation(-boundingBox.minX, -boundingBox.minY)
-        let newOriginTranslation = CGAffineTransformMakeTranslation(point.x, point.y)
-        
-        let sizeScale = CGAffineTransformMakeScale(scale, scale)
-        
-        path.applyTransform(originTranslation)
-        path.applyTransform(newOriginTranslation)
-        path.applyTransform(sizeScale)
-        return path
+        return NTCropHelper.scale(scaledCropPath!, toPoint: CGPointMake(pointX, pointY), withScale: 1)
     }
     
     // MARK: - Layout Views

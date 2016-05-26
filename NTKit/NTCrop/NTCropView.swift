@@ -73,6 +73,36 @@ public class NTCropView: UIView {
         self.addOverlayView()
     }
     
+    // MARK: - Crop Image
+    
+    public func crop() -> UIImage? {
+        if let currentImage = image, cropFrame = overlayView.cropRect, path = cropPath {
+            let frameInImage = self.scrollView.imageView.convertRect(cropFrame, fromView: self.overlayView)
+            
+            // Map path to image
+            let scaleFactor = frameInImage.width/path.bounds.width
+            let point = CGPointMake(frameInImage.minX, frameInImage.minY)
+            let scaledPath = NTCropHelper.scale(path, toPoint: point, withScale: scaleFactor)
+            
+            // Mask original image
+            UIGraphicsBeginImageContextWithOptions(currentImage.size, false, 0)
+            scaledPath.addClip()
+            currentImage.drawAtPoint(CGPointZero)
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            // Crop masked image to size (visible at min and max positions, no extra whitespace)
+            let boundingBox = scaledPath.bounds
+            UIGraphicsBeginImageContext(boundingBox.size)
+            newImage.drawAtPoint(CGPointMake(-boundingBox.minX, -boundingBox.minY))
+            let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return croppedImage
+        }
+        return nil
+    }
+    
     // MARK: - View Configuration
     
     func addScrollView() {

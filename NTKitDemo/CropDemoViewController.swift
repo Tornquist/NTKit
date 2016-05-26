@@ -49,7 +49,7 @@ class CropDemoViewController: UIViewController {
     }
     
     @IBAction func cropButtonPressed(sender: AnyObject) {
-        bottomImageView.image = crop(topImageView.image)
+        bottomImageView.image = topImageView.crop()
     }
     
     func crop(image: UIImage?) -> UIImage? {

@@ -30,6 +30,7 @@
 		D8B9C48B1CF5D03900182BF9 /* NTCropScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9C48A1CF5D03900182BF9 /* NTCropScrollView.swift */; };
 		D8B9C48D1CF5D37100182BF9 /* NTCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9C48C1CF5D37100182BF9 /* NTCropView.swift */; };
 		D8B9C48F1CF5D58100182BF9 /* NTCropOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9C48E1CF5D58100182BF9 /* NTCropOverlayView.swift */; };
+		D8B9C4911CF6B4C200182BF9 /* NTCropHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9C4901CF6B4C200182BF9 /* NTCropHelper.swift */; };
 		D8CC0E351CA376F300C99D34 /* NTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E341CA376F300C99D34 /* NTImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		D8B9C48A1CF5D03900182BF9 /* NTCropScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCropScrollView.swift; sourceTree = "<group>"; };
 		D8B9C48C1CF5D37100182BF9 /* NTCropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCropView.swift; sourceTree = "<group>"; };
 		D8B9C48E1CF5D58100182BF9 /* NTCropOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCropOverlayView.swift; sourceTree = "<group>"; };
+		D8B9C4901CF6B4C200182BF9 /* NTCropHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCropHelper.swift; sourceTree = "<group>"; };
 		D8CC0E341CA376F300C99D34 /* NTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageView.swift; sourceTree = "<group>"; };
 		D8DFD6771C7C12AA0028B8A5 /* NTTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileView.swift; sourceTree = "<group>"; };
 		D8DFD6791C7C12B70028B8A5 /* NTTileViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTTileViewDataSource.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				D8B9C48C1CF5D37100182BF9 /* NTCropView.swift */,
 				D8B9C48A1CF5D03900182BF9 /* NTCropScrollView.swift */,
 				D8B9C48E1CF5D58100182BF9 /* NTCropOverlayView.swift */,
+				D8B9C4901CF6B4C200182BF9 /* NTCropHelper.swift */,
 			);
 			path = NTCrop;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				D87593E11C87F06600918AB4 /* NTTileView.swift in Sources */,
 				D8A0251C1C8CF03F00175E3F /* NTTitleDetailTile.swift in Sources */,
 				D8B9C48F1CF5D58100182BF9 /* NTCropOverlayView.swift in Sources */,
+				D8B9C4911CF6B4C200182BF9 /* NTCropHelper.swift in Sources */,
 				D87593E21C87F06600918AB4 /* NTTileViewDataSource.swift in Sources */,
 				D85CD2E21CB4684500DB30D9 /* NTImageEffectAnchorPosition.swift in Sources */,
 				D87593E31C87F06600918AB4 /* NTTileViewLayoutProtocol.swift in Sources */,
