@@ -30,10 +30,6 @@ import UIKit
 public class NTCropView: UIView {
     var scrollView: NTCropScrollView! = nil
     var overlayView: NTCropOverlayView! = nil
-    var overlayViewWidthConstraint: NSLayoutConstraint! = nil
-    var overlayViewHeightConstraint: NSLayoutConstraint! = nil
-    
-    var oldFrame: CGRect = CGRectZero
     
     public var image: UIImage? {
         get {
@@ -49,15 +45,16 @@ public class NTCropView: UIView {
         }
     }
     
-    var _cropPath: UIBezierPath? = nil
     public var cropPath: UIBezierPath? {
         get {
-            return _cropPath
+            if overlayView != nil {
+                return overlayView.cropPath
+            }
+            return nil
         }
         set {
-            self._cropPath = newValue
             if overlayView != nil {
-                overlayView.cropPath = self.cropPath
+                overlayView.cropPath = newValue
             }
         }
     }
@@ -98,52 +95,13 @@ public class NTCropView: UIView {
         overlayView.translatesAutoresizingMaskIntoConstraints = false
         overlayView.autoresizesSubviews = true
         self.addSubview(overlayView)
-        overlayViewWidthConstraint = NSLayoutConstraint(item: overlayView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 0.5, constant: 0)
-        overlayViewHeightConstraint = NSLayoutConstraint(item: overlayView, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0.5, constant: 0)
-        let centerVerticalConstraint = NSLayoutConstraint(item: overlayView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0)
-        let centerHorizontalConstraint = NSLayoutConstraint(item: overlayView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0)
-        self.addConstraint(overlayViewWidthConstraint)
-        self.addConstraint(overlayViewHeightConstraint)
-        self.addConstraint(centerVerticalConstraint)
-        self.addConstraint(centerHorizontalConstraint)
-    }
-    
-    func configureOverlayConstraints() {
-        if overlayViewWidthConstraint != nil {
-            self.removeConstraint(overlayViewWidthConstraint)
-        }
-        if overlayViewHeightConstraint != nil {
-            self.removeConstraint(overlayViewHeightConstraint)
-        }
-        
-        let overlayAspectRatio = self.overlayView.aspectRatio()
-        let viewAspectRatio = self.frame.height/self.frame.width
-        
-        var widthMultiplier: CGFloat = 0
-        var heightMultiplier: CGFloat = 0
-        
-        if overlayAspectRatio > viewAspectRatio { // Overlay Height Fills
-            heightMultiplier = 0.8
-            widthMultiplier = (self.frame.height*heightMultiplier*overlayAspectRatio)/self.frame.width
-        } else { // Overlay Width Fills
-            widthMultiplier = 0.8
-            heightMultiplier = (self.frame.width*widthMultiplier/overlayAspectRatio)/self.frame.height
-        }
-        
-        overlayViewWidthConstraint = NSLayoutConstraint(item: overlayView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: widthMultiplier, constant: 0)
-        overlayViewHeightConstraint = NSLayoutConstraint(item: overlayView, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: heightMultiplier, constant: 0)
-        self.addConstraint(overlayViewWidthConstraint)
-        self.addConstraint(overlayViewHeightConstraint)
-    }
-    
-    // Layout Views
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if self.oldFrame != self.frame {
-            self.oldFrame = self.frame
-            self.configureOverlayConstraints()
-        }
+        let topConstraint = NSLayoutConstraint(item: overlayView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: overlayView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: overlayView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: overlayView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
+        self.addConstraint(topConstraint)
+        self.addConstraint(bottomConstraint)
+        self.addConstraint(leftConstraint)
+        self.addConstraint(rightConstraint)
     }
 }

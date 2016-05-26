@@ -29,7 +29,29 @@ import UIKit
 
 class NTCropOverlayView: UIView {
     
-    var cropPath: UIBezierPath? = nil
+    // The maximum amount of the overlay that the cropFrame can fill
+    // The overlay will grow until it is this value of the height or
+    // width of the enclosing view (whichever is reached first)
+    var maxFillPercent: CGFloat = 0.8
+    
+    // Values updated and maintained by scaleCropPath
+    var scaledCropPath: UIBezierPath? = nil
+    var scaledCropWidth: CGFloat? = nil
+    var scaledCropHeight: CGFloat? = nil
+    
+    var shadeColor: UIColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.8)
+    
+    var _cropPath: UIBezierPath? = nil
+    var oldFrame: CGRect = CGRectZero
+    var cropPath: UIBezierPath? {
+        get {
+            return _cropPath
+        }
+        set {
+            _cropPath = newValue
+            self.scaleCropPath()
+        }
+    }
     
     // MARK: - Initializers
     
@@ -50,9 +72,10 @@ class NTCropOverlayView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        if let path = pathInFrame() {
-            UIColor.redColor().colorWithAlphaComponent(0.6).setFill()
-            UIColor.redColor().colorWithAlphaComponent(0.6).setStroke()
+        shadeColor.setFill()
+        UIRectFill(rect)
+        if let path = scaledPathInFrame() {
+            UIColor.redColor().setFill()
             path.fill()
         }
     }
@@ -61,12 +84,49 @@ class NTCropOverlayView: UIView {
         return false // Overlay ignores touchces
     }
     
-    // MARK: - Path Methods
+    // MARK: - Scale Crop Path
     
-    func pathInFrame() -> UIBezierPath? {
-        guard cropPath != nil else { return nil }
+    func scaleCropPath() {
+        guard cropPath != nil else {
+            scaledCropPath = nil
+            scaledCropWidth = nil
+            scaledCropHeight = nil
+            return
+        }
         
-        return scale(cropPath!, toPoint: CGPointZero, withScale: self.frame.width/cropPath!.bounds.width)
+        let cropBoundingBox = self.cropPath!.bounds
+        let cropAspectRatio = cropBoundingBox.width/cropBoundingBox.height
+        let viewAspectRatio = self.frame.height/self.frame.width
+        
+        var widthMultiplier: CGFloat = 0
+        var heightMultiplier: CGFloat = 0
+        
+        if cropAspectRatio > viewAspectRatio { // Overlay Height Fills
+            heightMultiplier = maxFillPercent
+            widthMultiplier = (self.frame.height*heightMultiplier*cropAspectRatio)/self.frame.width
+        } else { // Overlay Width Fills
+            widthMultiplier = maxFillPercent
+            heightMultiplier = (self.frame.width*widthMultiplier/cropAspectRatio)/self.frame.height
+        }
+        
+        self.scaledCropWidth = widthMultiplier*self.frame.width
+        self.scaledCropHeight = heightMultiplier*self.frame.height
+        self.scaledCropPath = scale(cropPath!, toPoint: CGPointZero, withScale: scaledCropWidth!/self.cropPath!.bounds.width)
+        dispatch_async(dispatch_get_main_queue(), {
+            //TODO: Make this animate smoother when rotating
+            self.setNeedsDisplay()
+        })
+    }
+    
+    func scaledPathInFrame() -> UIBezierPath? {
+        guard self.scaledCropPath != nil && self.scaledCropWidth != nil && self.scaledCropHeight != nil else {
+            return nil
+        }
+        
+        let pointX = self.frame.width/2-self.scaledCropWidth!/2
+        let pointY = self.frame.height/2-self.scaledCropHeight!/2
+        
+        return scale(scaledCropPath!, toPoint: CGPointMake(pointX, pointY), withScale: 1)
     }
     
     func scale(path: UIBezierPath, toPoint point: CGPoint, withScale scale: CGFloat) -> UIBezierPath {
@@ -82,12 +142,14 @@ class NTCropOverlayView: UIView {
         return path
     }
     
-    func aspectRatio() -> CGFloat {
-        guard cropPath != nil else {
-            return 1
-        }
+    // MARK: - Layout Views
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
         
-        let bounds = cropPath!.bounds
-        return bounds.width/bounds.height
+        if self.oldFrame != self.frame {
+            self.oldFrame = self.frame
+            self.scaleCropPath()
+        }
     }
 }
