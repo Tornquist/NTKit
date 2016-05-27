@@ -40,6 +40,20 @@ NTImage replaces UIImage and allows for NTImageEffects to be applied to the base
 * **NTImageTextEffect**: This effect will draw text to the screen in the default font, or one provided.
 * **NTImageBlockTextEffect**: This effect will draw text to the screen in the a block.  The text size will be scaled to fill the provided width completely.  This effect is similar to [Slab Text](https://github.com/freqdec/slabText)
 
+## NTCropView
+
+NTCropView takes a bezier path and an image, and uses the path to crop sections out of the image.
+
+The cropped region will match the shape of the provided path, but the actual size will represent the region taken from the original photo.  The photo will not be scaled up or down when being cropped.  If a larger section of the photo is included, the resulting UIImage will be larger.
+
+1. Add a new UIView of type NTCropView
+2. Pass in an image of type UIImage
+3. Set `cropPath` to the Bezier Path you want to use
+4. (Optional) Set `exclusedRegionOverlayColor` and `croppedRegionOverlayColor`
+5. Call `crop()` on NTCropView to generate your cropped image
+
+![NTCropView](Screenshots/NTCropView.gif)
+
 # License
 
 This project is completely open source and under the MIT license. For full details please see [license.md](LICENSE.md)
