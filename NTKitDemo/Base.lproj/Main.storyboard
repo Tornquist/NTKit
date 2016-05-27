@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DWj-la-tbD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DWj-la-tbD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -220,10 +220,17 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRb-WV-LlR">
-                                <rect key="frame" x="283" y="276" width="34" height="30"/>
+                                <rect key="frame" x="538" y="276" width="34" height="30"/>
                                 <state key="normal" title="Crop"/>
                                 <connections>
                                     <action selector="cropButtonPressed:" destination="vjA-pv-HR3" eventType="touchUpInside" id="XcM-xm-ghc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qj-KL-pWG">
+                                <rect key="frame" x="28" y="276" width="74" height="30"/>
+                                <state key="normal" title="Cycle Path"/>
+                                <connections>
+                                    <action selector="cyclePathPressed:" destination="vjA-pv-HR3" eventType="touchUpInside" id="pcT-Ai-TtS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -234,14 +241,23 @@
                             <constraint firstItem="SCk-5p-uYS" firstAttribute="leading" secondItem="6Pa-L0-aP5" secondAttribute="leading" id="9Cj-et-9gh"/>
                             <constraint firstItem="x2Y-OV-CTV" firstAttribute="top" secondItem="iBq-OO-n4j" secondAttribute="bottom" constant="8" id="AIG-R8-MEu"/>
                             <constraint firstItem="x2Y-OV-CTV" firstAttribute="height" secondItem="SCk-5p-uYS" secondAttribute="height" id="JmN-4t-a1Q"/>
+                            <constraint firstItem="1Qj-KL-pWG" firstAttribute="top" secondItem="x2Y-OV-CTV" secondAttribute="bottom" constant="8" id="R44-ek-vwP"/>
                             <constraint firstItem="IWm-CR-Trx" firstAttribute="top" secondItem="SCk-5p-uYS" secondAttribute="bottom" constant="8" id="Rfm-7M-Lkj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CRb-WV-LlR" secondAttribute="trailing" constant="8" id="SVO-QE-vP5"/>
                             <constraint firstItem="mns-On-uZk" firstAttribute="top" secondItem="IWm-CR-Trx" secondAttribute="bottom" constant="8" id="fzt-R1-aU4"/>
                             <constraint firstAttribute="trailing" secondItem="x2Y-OV-CTV" secondAttribute="trailing" id="mu0-Dd-WVz"/>
                             <constraint firstItem="x2Y-OV-CTV" firstAttribute="leading" secondItem="6Pa-L0-aP5" secondAttribute="leading" id="qt2-jF-7tu"/>
+                            <constraint firstItem="1Qj-KL-pWG" firstAttribute="leading" secondItem="6Pa-L0-aP5" secondAttribute="leadingMargin" constant="8" id="uId-CE-lKs"/>
                             <constraint firstAttribute="trailing" secondItem="SCk-5p-uYS" secondAttribute="trailing" id="v9E-WA-cr6"/>
                             <constraint firstItem="CRb-WV-LlR" firstAttribute="centerX" secondItem="6Pa-L0-aP5" secondAttribute="centerX" id="wt5-ir-AWU"/>
                             <constraint firstItem="IWm-CR-Trx" firstAttribute="centerX" secondItem="6Pa-L0-aP5" secondAttribute="centerX" id="ymt-Y4-S2m"/>
+                            <constraint firstItem="SCk-5p-uYS" firstAttribute="top" secondItem="1Qj-KL-pWG" secondAttribute="bottom" constant="8" id="zNE-lr-U5i"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wt5-ir-AWU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="bottomImageView" destination="SCk-5p-uYS" id="F6i-wH-M3M"/>

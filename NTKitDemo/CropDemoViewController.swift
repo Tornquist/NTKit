@@ -32,14 +32,21 @@ class CropDemoViewController: UIViewController {
     @IBOutlet weak var topImageView: NTCropView!
     @IBOutlet weak var bottomImageView: NTImageView!
     
+    var currentPathIndex: Int = 0
+    var paths: [UIBezierPath] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializePaths()
+        
         // Setup NTCropView
-        self.topImageView.cropPath = bigPath()
+        self.topImageView.cropPath = currentPath()
         let image = UIImage(named: "Landscape")
         topImageView.image = image
     }
+    
+    // MARK: - Button Events
     
     @IBAction func closePressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -49,47 +56,34 @@ class CropDemoViewController: UIViewController {
         bottomImageView.image = topImageView.crop()
     }
     
-    func crop(image: UIImage?) -> UIImage? {
-        guard image != nil else {
-            return nil
-        }
-        
-        // Build Path
-        var path = bigPath()
-        path = scale(path, toPoint: CGPointMake(50, 540), withScale: 0.5)
-        
-        // Mask original image
-        UIGraphicsBeginImageContextWithOptions(image!.size, false, 0)
-        path.addClip()
-        image!.drawAtPoint(CGPointZero)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        // Crop masked image to size (visible at min and max positions, no extra whitespace)
-        let boundingBox = path.bounds
-        UIGraphicsBeginImageContext(boundingBox.size)
-        newImage.drawAtPoint(CGPointMake(-boundingBox.minX, -boundingBox.minY))
-        let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return croppedImage
-    }
-    
-    // MARK: - Path Modification
-    func scale(path: UIBezierPath, toPoint point: CGPoint, withScale scale: CGFloat) -> UIBezierPath {
-        let boundingBox = path.bounds
-        let originTranslation = CGAffineTransformMakeTranslation(-boundingBox.minX, -boundingBox.minY)
-        let newOriginTranslation = CGAffineTransformMakeTranslation(point.x, point.y)
-        
-        let sizeScale = CGAffineTransformMakeScale(scale, scale)
-        
-        path.applyTransform(originTranslation)
-        path.applyTransform(newOriginTranslation)
-        path.applyTransform(sizeScale)
-        return path
+    @IBAction func cyclePathPressed(sender: AnyObject) {
+        self.topImageView.cropPath = nextPath()
     }
     
     // MARK: - Path Generation
+    
+    func currentPath() -> UIBezierPath {
+        // Note: This is dangerous in the 'real' world. In this demo,
+        //       the options list is closed and it's safe enough.
+        return paths[currentPathIndex]
+    }
+    
+    func nextPath() -> UIBezierPath {
+        currentPathIndex = currentPathIndex + 1
+        currentPathIndex = currentPathIndex % paths.count
+        
+        return currentPath()
+    }
+    
+    func initializePaths() {
+        paths.append(bigPath())
+        paths.append(circlePath())
+        paths.append(diamondPath())
+        paths.append(verticalRectangle())
+        paths.append(horizontalRectangle())
+    }
+    
+    // MARK: Specific Paths
     
     func bigPath() -> UIBezierPath {
         var paths: [UIBezierPath] = []
@@ -107,10 +101,6 @@ class CropDemoViewController: UIViewController {
         return resultPath
     }
     
-    func circlePath() -> UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRectMake(660, 240, 600, 600))
-    }
-    
     func stripePath(startX: CGFloat) -> UIBezierPath {
         let points: [CGPoint] = [
             CGPointMake(startX, 980),
@@ -119,6 +109,49 @@ class CropDemoViewController: UIViewController {
             CGPointMake(startX+100, 980)
         ]
         
+        return makePathFromPoints(points)
+    }
+    
+    func circlePath() -> UIBezierPath {
+        return UIBezierPath(ovalInRect: CGRectMake(660, 240, 600, 600))
+    }
+    
+    func diamondPath() -> UIBezierPath {
+        let points: [CGPoint] = [
+            CGPointMake(50, 0),
+            CGPointMake(100, 150),
+            CGPointMake(50, 300),
+            CGPointMake(0, 150)
+        ]
+        
+        return makePathFromPoints(points)
+    }
+    
+    func verticalRectangle() -> UIBezierPath {
+        let points: [CGPoint] = [
+            CGPointMake(0, 0),
+            CGPointMake(100, 0),
+            CGPointMake(100, 50),
+            CGPointMake(0, 50)
+        ]
+        
+        return makePathFromPoints(points)
+    }
+    
+    func horizontalRectangle() -> UIBezierPath {
+        let points: [CGPoint] = [
+            CGPointMake(0, 0),
+            CGPointMake(50, 0),
+            CGPointMake(50, 100),
+            CGPointMake(0, 100)
+        ]
+        
+        return makePathFromPoints(points)
+    }
+    
+    // MARK: - Helper Methods
+    
+    func makePathFromPoints(points: [CGPoint]) -> UIBezierPath {
         let path = UIBezierPath()
         for (index, point) in points.enumerate() {
             if index == 0 {

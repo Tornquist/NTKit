@@ -60,6 +60,7 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
         }
         set {
             overlayView.cropPath = newValue
+            scrollView.configureInitialScale()
         }
     }
     
