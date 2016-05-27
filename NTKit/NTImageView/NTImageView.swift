@@ -58,11 +58,6 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
     
     //MARK: - Initializers
     
-    public convenience init() {
-        self.init()
-        self.configureView()
-    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureView()

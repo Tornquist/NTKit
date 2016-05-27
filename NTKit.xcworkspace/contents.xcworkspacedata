@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:NTKitDemo.xcodeproj">
+      location = "absolute:NTKitDemo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:NTKit.xcodeproj">
