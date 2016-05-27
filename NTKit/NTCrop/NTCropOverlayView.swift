@@ -111,15 +111,15 @@ class NTCropOverlayView: UIView {
         
         let cropBoundingBox = self.cropPath!.bounds
         let cropAspectRatio = cropBoundingBox.width/cropBoundingBox.height
-        let viewAspectRatio = self.frame.height/self.frame.width
+        let viewAspectRatio = self.frame.width/self.frame.height
         
         var widthMultiplier: CGFloat = 0
         var heightMultiplier: CGFloat = 0
         
-        if cropAspectRatio > viewAspectRatio { // Overlay Height Fills
+        if viewAspectRatio > cropAspectRatio  {
             heightMultiplier = maxFillPercent
             widthMultiplier = (self.frame.height*heightMultiplier*cropAspectRatio)/self.frame.width
-        } else { // Overlay Width Fills
+        } else {
             widthMultiplier = maxFillPercent
             heightMultiplier = (self.frame.width*widthMultiplier/cropAspectRatio)/self.frame.height
         }

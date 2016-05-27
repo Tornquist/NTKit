@@ -79,8 +79,10 @@ class CropDemoViewController: UIViewController {
         paths.append(bigPath())
         paths.append(circlePath())
         paths.append(diamondPath())
-        paths.append(verticalRectangle())
-        paths.append(horizontalRectangle())
+        paths.append(verticalRectanglePath())
+        paths.append(horizontalRectanglePath())
+        paths.append(trianglePath())
+        paths.append(triforcePath())
     }
     
     // MARK: Specific Paths
@@ -127,7 +129,7 @@ class CropDemoViewController: UIViewController {
         return makePathFromPoints(points)
     }
     
-    func verticalRectangle() -> UIBezierPath {
+    func verticalRectanglePath() -> UIBezierPath {
         let points: [CGPoint] = [
             CGPointMake(0, 0),
             CGPointMake(100, 0),
@@ -138,7 +140,7 @@ class CropDemoViewController: UIViewController {
         return makePathFromPoints(points)
     }
     
-    func horizontalRectangle() -> UIBezierPath {
+    func horizontalRectanglePath() -> UIBezierPath {
         let points: [CGPoint] = [
             CGPointMake(0, 0),
             CGPointMake(50, 0),
@@ -147,6 +149,56 @@ class CropDemoViewController: UIViewController {
         ]
         
         return makePathFromPoints(points)
+    }
+    
+    func trianglePath() -> UIBezierPath {
+        let points: [CGPoint] = [
+            CGPointMake(0, 3),
+            CGPointMake(4, 3),
+            CGPointMake(2, 0)
+        ]
+        
+        return makePathFromPoints(points)
+    }
+    
+    func triforcePath() -> UIBezierPath {
+        var paths: [UIBezierPath] = []
+
+        //         f
+        //      d    e
+        //    a    b   c
+        
+        let triangleHeight: CGFloat = 0.866
+        let triangleSideLength: CGFloat = 1
+        
+        let pointA = CGPointMake(0, triangleHeight*2)
+        let pointB = CGPointMake(triangleSideLength, triangleHeight*2)
+        let pointC = CGPointMake(triangleSideLength*2, triangleHeight*2)
+        let pointD = CGPointMake(triangleSideLength/2, triangleHeight)
+        let pointE = CGPointMake(triangleSideLength*1.5, triangleHeight)
+        let pointF = CGPointMake(triangleSideLength, 0)
+        
+        let points1: [CGPoint] = [
+            pointA, pointB, pointD
+        ]
+        paths.append(makePathFromPoints(points1))
+        
+        let points2: [CGPoint] = [
+            pointB, pointC, pointE
+        ]
+        paths.append(makePathFromPoints(points2))
+        
+        let points3: [CGPoint] = [
+            pointD, pointE, pointF
+        ]
+        paths.append(makePathFromPoints(points3))
+        
+        let resultPath = UIBezierPath()
+        for path in paths {
+            resultPath.appendPath(path)
+        }
+        
+        return resultPath
     }
     
     // MARK: - Helper Methods
