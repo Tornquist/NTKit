@@ -35,11 +35,8 @@ class CropDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        performCropAction()
+        // Setup NTCropView
         self.topImageView.cropPath = bigPath()
-    }
-    
-    func performCropAction() {
         let image = UIImage(named: "Landscape")
         topImageView.image = image
     }

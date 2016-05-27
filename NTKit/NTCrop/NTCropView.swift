@@ -31,31 +31,68 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
     var scrollView: NTCropScrollView! = nil
     var overlayView: NTCropOverlayView! = nil
     
+    /**
+     Image
+     
+     The image to be cropped.  The size and shape do not matter,
+     the image will be cropped using a scaled cropPath.
+     */
     public var image: UIImage? {
         get {
-            if scrollView != nil {
-                return scrollView.image
-            }
-            return nil
+            return scrollView.image
         }
         set {
-            if scrollView != nil {
-                scrollView.image = newValue
-            }
+            scrollView.image = newValue
         }
     }
     
+    /**
+     Crop Path
+     
+     The bezier path describing the pattern to be cropped from the image.
+     The size and origin of this path will be ignored, and the path will
+     be scaled (with aspect ratio maintained) to crop whatever image is
+     passed in.
+     */
     public var cropPath: UIBezierPath? {
         get {
-            if overlayView != nil {
-                return overlayView.cropPath
-            }
-            return nil
+            return overlayView.cropPath
         }
         set {
-            if overlayView != nil {
-                overlayView.cropPath = newValue
-            }
+            overlayView.cropPath = newValue
+        }
+    }
+    
+    /**
+     exclusedRegionOverlayColor
+     
+     The color to fill the entire region excluded when crop() is executed.
+     This color will fill the entire view, not only the section over the image.
+     
+     This color defaults to black with 80% opacity.
+     */
+    public var exclusedRegionOverlayColor: UIColor {
+        get {
+            return overlayView.shadeColor
+        }
+        set {
+            overlayView.shadeColor = newValue
+        }
+    }
+    
+    /**
+     croppedRegionOverlayColor
+     
+     The color to fill the region returned when crop() is executed.
+     
+     This color defaults to clear.
+     */
+    public var croppedRegionOverlayColor: UIColor {
+        get {
+            return overlayView.cropPathColor
+        }
+        set {
+            overlayView.cropPathColor = newValue
         }
     }
     
@@ -75,6 +112,14 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
     
     // MARK: - Crop Image
     
+    /**
+     crop
+     
+     The current cropPath will be applied to the current image.
+     If both are set, the result will be a segment of the original image
+     that represents the outline and aspect ratio of the provided
+     crop path.
+     */
     public func crop() -> UIImage? {
         if let currentImage = image, cropFrame = overlayView.cropRect, path = cropPath {
             let frameInImage = self.scrollView.imageView.convertRect(cropFrame, fromView: self.overlayView)
