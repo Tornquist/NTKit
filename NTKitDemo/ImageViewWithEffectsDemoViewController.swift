@@ -88,6 +88,13 @@ class ImageViewWithEffectsDemoViewController: UIViewController {
                                                  baseFont: UIFont.systemFontOfSize(60),
                                                  fontColor: UIColor.blackColor(),
                                                  capitalize: true)
+        let textEffect5 = NTImageTextEffect(anchor: CGPointMake(image!.size.width*0.33, image!.size.height*0.7),
+                                            anchorPosition: .TopLeft,
+                                            text: "This is a test of text with a max width that automatically wraps around.",
+                                            textAlignment: .Left,
+                                            font: UIFont.systemFontOfSize(60),
+                                            fontColor: UIColor.blackColor(),
+                                            maxWidth: image!.size.width*0.33)
         image!.effects.append(rectEffect)
         image!.effects.append(shadeEffect)
         image!.effects.append(progressEffect)
@@ -96,6 +103,7 @@ class ImageViewWithEffectsDemoViewController: UIViewController {
         image!.effects.append(textEffect2)
         image!.effects.append(textEffect3)
         image!.effects.append(textEffect4)
+        image!.effects.append(textEffect5)
         return image!.withEffects()
     }
 

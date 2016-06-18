@@ -31,11 +31,12 @@
  */
 public class NTImageTextEffect: NTImageEffect {
     public var anchor: CGPoint = CGPointZero
-    public var text: NSString = ""
+    public var text: String = ""
     public var font: UIFont = UIFont.systemFontOfSize(12)
     public var fontColor: UIColor = UIColor.clearColor()
     public var anchorPosition: NTImageEffectAnchorPosition = .Center
     public var alignment: NSTextAlignment = .Center
+    public var maxWidth: CGFloat? = nil
     
     /**
      Initializes Text effect with default values
@@ -46,7 +47,7 @@ public class NTImageTextEffect: NTImageEffect {
     public convenience init(anchor: CGPoint, text: String, fontColor: UIColor) {
         self.init()
         self.anchor = anchor
-        self.text = (text as NSString)
+        self.text = text
         self.fontColor = fontColor
     }
     
@@ -65,6 +66,11 @@ public class NTImageTextEffect: NTImageEffect {
         self.alignment = textAlignment
     }
     
+    public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, text: String, textAlignment: NSTextAlignment, font: UIFont, fontColor: UIColor, maxWidth: CGFloat) {
+        self.init(anchor: anchor, anchorPosition: anchorPosition, text: text, textAlignment: textAlignment, font: font, fontColor: fontColor)
+        self.maxWidth = maxWidth
+    }
+    
     public override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)
@@ -78,8 +84,9 @@ public class NTImageTextEffect: NTImageEffect {
             NSParagraphStyleAttributeName: paragraphStyle
         ]
         
-        let textRect = generateTextRect()
-        self.text.drawInRect(textRect, withAttributes: textAttributes)
+        let textToDraw = (maxWidth == nil) ? self.text : generateWrappedText(from: self.text)
+        let textRect = generateTextRect(for: textToDraw)
+        textToDraw.drawInRect(textRect, withAttributes: textAttributes)
         
         let processedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -87,7 +94,7 @@ public class NTImageTextEffect: NTImageEffect {
         return processedImage
     }
     
-    func generateTextRect() -> CGRect {
+    func generateTextRect(for text: String) -> CGRect {
         let renderedSize = text.sizeWithAttributes([NSFontAttributeName: font])
         let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
         
@@ -122,10 +129,88 @@ public class NTImageTextEffect: NTImageEffect {
         }
     }
     
-    //MARK: - Mock KVO System
+    func generateWrappedText(from string: String) -> String {
+        guard self.maxWidth != nil else {
+            return string
+        }
+        
+        let newlineChars = NSCharacterSet.newlineCharacterSet()
+        let lines = string.utf16.split { newlineChars.characterIsMember($0) }.flatMap(String.init)
+        
+        var resultString: String = ""
+        
+        for line in lines {
+            let correctedText = adjust(text: line, renderedWithFont: font, andMaxWidth: self.maxWidth!)
+            
+            if resultString == "" {
+                resultString = correctedText
+            } else {
+                resultString = resultString + "\n" + correctedText
+            }
+        }
+        
+        return resultString
+    }
+    
+    // MARK: - Wrap Text Helper Methods
+    
+    func adjust(text text: String, renderedWithFont font: UIFont, andMaxWidth maxWidth: CGFloat) -> String {
+        let whitespaceChars = NSCharacterSet.whitespaceCharacterSet()
+        var remainingWords = text.utf16.split { whitespaceChars.characterIsMember($0) }.flatMap(String.init)
+        
+        var processedString = ""
+        
+        var workingString = ""
+        var lastWorkingString = ""
+        
+        while (true) {
+            guard remainingWords.count != 0 else {
+                // Append final string if needed
+                if workingString != "" {
+                    processedString = safeAppend(workingString, to: processedString, withSpacer: "\n")
+                }
+                break
+            }
+            
+            workingString = safeAppend(remainingWords[0], to: workingString, withSpacer: " ")
+            
+            // Calculate Current Size
+            let renderedSize = workingString.sizeWithAttributes([NSFontAttributeName: font])
+            let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
+            
+            // Evaluate Width
+            if adjustedSize.width < maxWidth {
+                remainingWords.removeFirst()
+            } else {
+                // When width is too large, evaluate if there is only one word. If a single word is too long,
+                // then the word will break the maxWidth rule. Words will not currently be split
+                if lastWorkingString != "" {
+                    processedString = safeAppend(lastWorkingString, to: processedString, withSpacer: "\n")
+                } else {
+                    processedString = safeAppend(workingString, to: processedString, withSpacer: "\n")
+                    remainingWords.removeFirst()
+                }
+                workingString = ""
+            }
+            
+            lastWorkingString = workingString
+        }
+        
+        return processedString
+    }
+    
+    func safeAppend(newString: String, to oldString: String, withSpacer spacer: String) -> String {
+        if oldString == "" {
+            return newString
+        } else {
+            return oldString + spacer + newString
+        }
+    }
+    
+    // MARK: - Mock KVO System
     
     override public func acceptedKeys() -> [String] {
-        return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment"]
+        return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment", "maxWidth"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool {
@@ -143,7 +228,7 @@ public class NTImageTextEffect: NTImageEffect {
             return false
         case "text":
             if obj is String || obj is NSString {
-                text = obj as! NSString
+                text = obj as! String
                 return true
             }
             return false
@@ -171,6 +256,12 @@ public class NTImageTextEffect: NTImageEffect {
                 return true
             }
             return false
+        case "maxWidth":
+            if obj is CGFloat {
+                maxWidth = obj as? CGFloat
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -195,6 +286,8 @@ public class NTImageTextEffect: NTImageEffect {
             return anchorPosition
         case "alignment":
             return alignment
+        case "maxWidth":
+            return maxWidth
         default:
             return nil
         }
