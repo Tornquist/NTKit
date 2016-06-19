@@ -37,6 +37,23 @@ public class NTImageTextEffect: NTImageEffect {
     public var anchorPosition: NTImageEffectAnchorPosition = .Center
     public var alignment: NSTextAlignment = .Center
     public var maxWidth: CGFloat? = nil
+    var angle: CGFloat = 0
+    public var degreeAngle: CGFloat {
+        get {
+            return self.angle*180/CGFloat(M_PI)
+        }
+        set {
+            self.angle = CGFloat(M_PI)/180*newValue
+        }
+    }
+    public var radianAngle: CGFloat {
+        get {
+            return self.angle
+        }
+        set {
+            self.angle = newValue
+        }
+    }
     
     /**
      Initializes Text effect with default values
@@ -73,6 +90,7 @@ public class NTImageTextEffect: NTImageEffect {
     
     public override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
+        let ctx = UIGraphicsGetCurrentContext()
         image.drawAtPoint(CGPointZero)
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -86,7 +104,18 @@ public class NTImageTextEffect: NTImageEffect {
         
         let textToDraw = (maxWidth == nil) ? self.text : generateWrappedText(from: self.text)
         let textRect = generateTextRect(for: textToDraw)
-        textToDraw.drawInRect(textRect, withAttributes: textAttributes)
+    
+        CGContextTranslateCTM(ctx, self.anchor.x, self.anchor.y)
+        CGContextRotateCTM(ctx, self.angle)
+        
+        let adjustedTextRect = CGRectMake(textRect.minX-self.anchor.x,
+                                          textRect.minY-self.anchor.y,
+                                          textRect.width,
+                                          textRect.height)
+        
+        textToDraw.drawInRect(adjustedTextRect, withAttributes: textAttributes)
+        
+        CGContextRotateCTM(ctx, -self.angle)
         
         let processedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -210,7 +239,7 @@ public class NTImageTextEffect: NTImageEffect {
     // MARK: - Mock KVO System
     
     override public func acceptedKeys() -> [String] {
-        return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment", "maxWidth"]
+        return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment", "maxWidth", "degreeAngle", "radianAngle"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool {
@@ -262,6 +291,18 @@ public class NTImageTextEffect: NTImageEffect {
                 return true
             }
             return false
+        case "radianAngle":
+            if obj is CGFloat {
+                radianAngle = obj as! CGFloat
+                return true
+            }
+            return false
+        case "degreeAngle":
+            if obj is CGFloat {
+                degreeAngle = obj as! CGFloat
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -288,6 +329,10 @@ public class NTImageTextEffect: NTImageEffect {
             return alignment
         case "maxWidth":
             return maxWidth
+        case "radianAngle":
+            return radianAngle
+        case "degreeAngle":
+            return degreeAngle
         default:
             return nil
         }
