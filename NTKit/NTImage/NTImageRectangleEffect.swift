@@ -161,10 +161,18 @@ public class NTImageRectangleEffect: NTImageEffect {
                 width = obj as! CGFloat
                 return true
             }
+            if obj is Float {
+                width = CGFloat(obj as! Float)
+                return true
+            }
             return false
         case "height":
             if obj is CGFloat {
                 height = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                height = CGFloat(obj as! Float)
                 return true
             }
             return false

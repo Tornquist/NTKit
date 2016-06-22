@@ -344,6 +344,10 @@ public class NTImageBlockTextEffect: NTImageEffect {
                 width = obj as! CGFloat
                 return true
             }
+            if obj is Float {
+                width = CGFloat(obj as! Float)
+                return true
+            }
             return false
         case "text":
             if obj is String || obj is NSString {

@@ -215,10 +215,18 @@ public class NTImageProgressCircleEffect: NTImageEffect {
                 innerRadius = obj as! CGFloat
                 return true
             }
+            if obj is Float {
+                innerRadius = CGFloat(obj as! Float)
+                return true
+            }
             return false
         case "outerRadius":
             if obj is CGFloat {
                 outerRadius = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                outerRadius = CGFloat(obj as! Float)
                 return true
             }
             return false
@@ -227,10 +235,18 @@ public class NTImageProgressCircleEffect: NTImageEffect {
                 startAngle = obj as! CGFloat
                 return true
             }
+            if obj is Float {
+                startAngle = CGFloat(obj as! Float)
+                return true
+            }
             return false
         case "endAngle":
             if obj is CGFloat {
                 endAngle = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                endAngle = CGFloat(obj as! Float)
                 return true
             }
             return false
@@ -239,10 +255,18 @@ public class NTImageProgressCircleEffect: NTImageEffect {
                 percent = obj as! CGFloat
                 return true
             }
+            if obj is Float {
+                percent = CGFloat(obj as! Float)
+                return true
+            }
             return false
         case "strokeWidth":
             if obj is CGFloat {
                 strokeWidth = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                strokeWidth = CGFloat(obj as! Float)
                 return true
             }
             return false

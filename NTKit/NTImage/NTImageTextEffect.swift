@@ -290,16 +290,28 @@ public class NTImageTextEffect: NTImageEffect {
                 maxWidth = obj as? CGFloat
                 return true
             }
+            if obj is Float {
+                maxWidth = CGFloat(obj as! Float)
+                return true
+            }
             return false
         case "radianAngle":
             if obj is CGFloat {
                 radianAngle = obj as! CGFloat
                 return true
             }
+            if obj is Float {
+                radianAngle = CGFloat(obj as! Float)
+                return true
+            }
             return false
         case "degreeAngle":
             if obj is CGFloat {
                 degreeAngle = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                degreeAngle = CGFloat(obj as! Float)
                 return true
             }
             return false
