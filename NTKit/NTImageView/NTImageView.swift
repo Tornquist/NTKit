@@ -167,6 +167,12 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
         }
     }
     
+    //MARK: - External Control
+    
+    public func zoomOut() {
+        self.zoomScale = self.minimumZoomScale
+    }
+    
     //MARK: - UIScrollView Delegates
     
     public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
