@@ -168,13 +168,13 @@ public class NTImageProgressCircleEffect: NTImageEffect {
         path.fill()
         
         if strokeInnerCircle {
-            let inner = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: endAngle, endAngle: startAngle, clockwise: true)
-            inner.addArcWithCenter(center, radius: innerRadius + strokeWidth, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+            let inner = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: true)
+            inner.addArcWithCenter(center, radius: innerRadius + strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
             inner.fill()
         }
         if strokeOuterCircle {
-            let outer = UIBezierPath(arcCenter: center, radius: outerRadius, startAngle: endAngle, endAngle: startAngle, clockwise: true)
-            outer.addArcWithCenter(center, radius: outerRadius - strokeWidth, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+            let outer = UIBezierPath(arcCenter: center, radius: outerRadius, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: true)
+            outer.addArcWithCenter(center, radius: outerRadius - strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
             outer.fill()
         }
         
