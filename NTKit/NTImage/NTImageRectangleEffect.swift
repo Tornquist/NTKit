@@ -78,6 +78,12 @@ public class NTImageRectangleEffect: NTImageEffect {
     public var anchorPosition: NTImageEffectAnchorPosition = .TopLeft
     public var width: CGFloat = 0
     public var height: CGFloat = 0
+    public var alpha: CGFloat = 1 {
+        didSet {
+            if alpha < 0 { alpha = 0 }
+            if alpha > 1 { alpha = 1 }
+        }
+    }
     
     /**
      Initializes Rectangle effect with default values
@@ -107,8 +113,8 @@ public class NTImageRectangleEffect: NTImageEffect {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)
         let ctx = UIGraphicsGetCurrentContext()
-        color.setStroke()
-        color.setFill()
+        color.colorWithAlphaComponent(alpha).setStroke()
+        color.colorWithAlphaComponent(alpha).setFill()
         
         CGContextStrokeRect(ctx, rect)
         CGContextFillRect(ctx, rect)
@@ -122,7 +128,7 @@ public class NTImageRectangleEffect: NTImageEffect {
     //MARK: - Mock KVO System
     
     override public func acceptedKeys() -> [String] {
-        return ["rect", "color", "anchor", "anchorPosition", "width", "height"]
+        return ["rect", "color", "anchor", "anchorPosition", "width", "height", "alpha"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool {
@@ -176,6 +182,16 @@ public class NTImageRectangleEffect: NTImageEffect {
                 return true
             }
             return false
+        case "alpha":
+            if obj is CGFloat {
+                alpha = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                alpha = CGFloat(obj as! Float)
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -200,6 +216,8 @@ public class NTImageRectangleEffect: NTImageEffect {
             return width
         case "height":
             return height
+        case "alpha":
+            return alpha
         default:
             return nil
         }

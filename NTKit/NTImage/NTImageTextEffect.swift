@@ -54,6 +54,12 @@ public class NTImageTextEffect: NTImageEffect {
             self.angle = newValue
         }
     }
+    public var alpha: CGFloat = 1 {
+        didSet {
+            if alpha < 0 { alpha = 0 }
+            if alpha > 1 { alpha = 1 }
+        }
+    }
     
     /**
      Initializes Text effect with default values
@@ -98,7 +104,7 @@ public class NTImageTextEffect: NTImageEffect {
         
         let textAttributes = [
             NSFontAttributeName: self.font,
-            NSForegroundColorAttributeName: self.fontColor,
+            NSForegroundColorAttributeName: self.fontColor.colorWithAlphaComponent(alpha),
             NSParagraphStyleAttributeName: paragraphStyle
         ]
         
@@ -239,7 +245,7 @@ public class NTImageTextEffect: NTImageEffect {
     // MARK: - Mock KVO System
     
     override public func acceptedKeys() -> [String] {
-        return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment", "maxWidth", "degreeAngle", "radianAngle"]
+        return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment", "maxWidth", "degreeAngle", "radianAngle", "alpha"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool {
@@ -315,6 +321,16 @@ public class NTImageTextEffect: NTImageEffect {
                 return true
             }
             return false
+        case "alpha":
+            if obj is CGFloat {
+                alpha = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                alpha = CGFloat(obj as! Float)
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -345,6 +361,8 @@ public class NTImageTextEffect: NTImageEffect {
             return radianAngle
         case "degreeAngle":
             return degreeAngle
+        case "alpha":
+            return alpha
         default:
             return nil
         }

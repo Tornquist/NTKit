@@ -49,6 +49,12 @@ public enum NTImageShadeEffectShadeShape: String {
 public class NTImageShadeEffect: NTImageEffect {
     public var shadeShape: NTImageShadeEffectShadeShape = .Full
     public var color: UIColor = UIColor.clearColor()
+    public var alpha: CGFloat = 1 {
+        didSet {
+            if alpha < 0 { alpha = 0 }
+            if alpha > 1 { alpha = 1 }
+        }
+    }
     
     /**
      Initializes Shade effect with default values
@@ -66,8 +72,8 @@ public class NTImageShadeEffect: NTImageEffect {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)
         let ctx = UIGraphicsGetCurrentContext()
-        color.setStroke()
-        color.setFill()
+        color.colorWithAlphaComponent(alpha).setStroke()
+        color.colorWithAlphaComponent(alpha).setFill()
         
         createPath(ctx, size: image.size)
         CGContextDrawPath(ctx, .FillStroke)
@@ -137,7 +143,7 @@ public class NTImageShadeEffect: NTImageEffect {
     //MARK: - Mock KVO System
     
     override public func acceptedKeys() -> [String] {
-        return ["shadeShape", "color"]
+        return ["shadeShape", "color", "alpha"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool {
@@ -159,6 +165,16 @@ public class NTImageShadeEffect: NTImageEffect {
                 return true
             }
             return false
+        case "alpha":
+            if obj is CGFloat {
+                alpha = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                alpha = CGFloat(obj as! Float)
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -175,6 +191,8 @@ public class NTImageShadeEffect: NTImageEffect {
             return shadeShape
         case "color":
             return color
+        case "alpha":
+            return alpha
         default:
             return nil
         }

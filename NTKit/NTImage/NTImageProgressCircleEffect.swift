@@ -43,6 +43,12 @@ public class NTImageProgressCircleEffect: NTImageEffect {
     public var strokeInnerCircle: Bool = false
     public var strokeOuterCircle: Bool = false
     public var strokeWidth: CGFloat = 5
+    public var alpha: CGFloat = 1 {
+        didSet {
+            if alpha < 0 { alpha = 0 }
+            if alpha > 1 { alpha = 1 }
+        }
+    }
     public var percent: CGFloat {
         get {
             return (endAngle - CGFloat(M_PI+M_PI_2))/CGFloat(M_PI*2)
@@ -159,8 +165,8 @@ public class NTImageProgressCircleEffect: NTImageEffect {
     public override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         image.drawAtPoint(CGPointZero)
-        color.setStroke()
-        color.setFill()
+        color.colorWithAlphaComponent(alpha).setStroke()
+        color.colorWithAlphaComponent(alpha).setFill()
         
         let path = UIBezierPath()
         path.addArcWithCenter(center, radius: innerRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
@@ -188,7 +194,7 @@ public class NTImageProgressCircleEffect: NTImageEffect {
     
     override public func acceptedKeys() -> [String] {
         return ["center", "color", "innerRadius", "outerRadius", "startAngle", "endAngle",
-                "strokeInnerCircle", "strokeOuterCircle", "strokeWidth", "percent", "strokeCircle"]
+                "strokeInnerCircle", "strokeOuterCircle", "strokeWidth", "percent", "strokeCircle", "alpha"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool{
@@ -288,6 +294,16 @@ public class NTImageProgressCircleEffect: NTImageEffect {
                 return true
             }
             return false
+        case "alpha":
+            if obj is CGFloat {
+                alpha = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                alpha = CGFloat(obj as! Float)
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -322,6 +338,8 @@ public class NTImageProgressCircleEffect: NTImageEffect {
             return strokeOuterCircle
         case "strokeCircle":
             return strokeCircle
+        case "alpha":
+            return alpha
         default:
             return nil
         }

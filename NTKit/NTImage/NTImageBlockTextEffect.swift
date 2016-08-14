@@ -52,6 +52,12 @@ public class NTImageBlockTextEffect: NTImageEffect {
     public var fontColor: UIColor = UIColor.clearColor()
     public var trailingTargetCharacterThreshold: Float = 0.33
     public var capitalize: Bool = false
+    public var alpha: CGFloat = 1 {
+        didSet {
+            if alpha < 0 { alpha = 0 }
+            if alpha > 1 { alpha = 1 }
+        }
+    }
     
     enum TextScaleDirection {
         case None
@@ -157,7 +163,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
         for i in 0..<textRows.count {
             let textAttributes = [
                 NSFontAttributeName: textFonts[i],
-                NSForegroundColorAttributeName: self.fontColor
+                NSForegroundColorAttributeName: self.fontColor.colorWithAlphaComponent(alpha)
             ]
             
             textRows[i].drawInRect(textRects[i].offsetBy(dx: offset.x, dy: offset.y), withAttributes: textAttributes)
@@ -317,7 +323,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
     
     override public func acceptedKeys() -> [String] {
         return ["anchor", "anchorPosition", "width", "text", "font", "fontColor",
-                "trailingTargetCharacterThreshold", "capitalize"]
+                "trailingTargetCharacterThreshold", "capitalize", "alpha"]
     }
     
     override public func changeValueOf(key: String, to obj: Any) -> Bool {
@@ -379,6 +385,16 @@ public class NTImageBlockTextEffect: NTImageEffect {
                 return true
             }
             return false
+        case "alpha":
+            if obj is CGFloat {
+                alpha = obj as! CGFloat
+                return true
+            }
+            if obj is Float {
+                alpha = CGFloat(obj as! Float)
+                return true
+            }
+            return false
         default:
             return false
         }
@@ -407,6 +423,8 @@ public class NTImageBlockTextEffect: NTImageEffect {
             return trailingTargetCharacterThreshold
         case "capitalize":
             return capitalize
+        case "alpha":
+            return alpha
         default:
             return nil
         }
