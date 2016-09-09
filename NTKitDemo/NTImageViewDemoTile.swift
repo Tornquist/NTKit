@@ -28,22 +28,22 @@
 import UIKit
 import NTKit
 
-public class NTImageViewDemoTile: NTTile {
+open class NTImageViewDemoTile: NTTile {
     
-    @IBOutlet public var titleText: UILabel!
-    @IBOutlet public var imageView: NTImageView!
+    @IBOutlet open var titleText: UILabel!
+    @IBOutlet open var imageView: NTImageView!
     
-    public class func build(inRect rect: CGRect) -> NTImageViewDemoTile {
-        let tile = NTImageViewDemoTile.init(nibName: "NTImageViewDemoTile", bundle: NSBundle(forClass: self))
-        tile.targetTileSize = CGSizeMake(rect.width, rect.height)
+    open class func build(inRect rect: CGRect) -> NTImageViewDemoTile {
+        let tile = NTImageViewDemoTile.init(nibName: "NTImageViewDemoTile", bundle: Bundle(for: self))
+        tile.targetTileSize = CGSize(width: rect.width, height: rect.height)
         return tile
     }
     
-    public override func anchorPoint() -> CGPoint {
-        return CGPointMake(CGRectGetMidX(titleText.frame), CGRectGetMidY(titleText.frame))
+    open override func anchorPoint() -> CGPoint {
+        return CGPoint(x: titleText.frame.midX, y: titleText.frame.midY)
     }
     
-    @IBAction func closePressed(sender: AnyObject) {
+    @IBAction func closePressed(_ sender: AnyObject) {
         parentTileView?.collapseAllTiles()
     }
 }

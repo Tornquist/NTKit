@@ -33,23 +33,23 @@ import UIKit
  space between the inner and outer radius.  It is also possible to outline the inner and
  outer circles completely if so desired.
  */
-public class NTImageProgressCircleEffect: NTImageEffect {
-    public var center: CGPoint = CGPointZero
-    public var color: UIColor = UIColor.clearColor()
-    public var innerRadius: CGFloat = 0
-    public var outerRadius: CGFloat = 0
-    public var startAngle: CGFloat = CGFloat(M_PI+M_PI_2)
-    public var endAngle: CGFloat = 0
-    public var strokeInnerCircle: Bool = false
-    public var strokeOuterCircle: Bool = false
-    public var strokeWidth: CGFloat = 5
-    public var alpha: CGFloat = 1 {
+open class NTImageProgressCircleEffect: NTImageEffect {
+    open var center: CGPoint = CGPoint.zero
+    open var color: UIColor = UIColor.clear
+    open var innerRadius: CGFloat = 0
+    open var outerRadius: CGFloat = 0
+    open var startAngle: CGFloat = CGFloat(M_PI+M_PI_2)
+    open var endAngle: CGFloat = 0
+    open var strokeInnerCircle: Bool = false
+    open var strokeOuterCircle: Bool = false
+    open var strokeWidth: CGFloat = 5
+    open var alpha: CGFloat = 1 {
         didSet {
             if alpha < 0 { alpha = 0 }
             if alpha > 1 { alpha = 1 }
         }
     }
-    public var percent: CGFloat {
+    open var percent: CGFloat {
         get {
             return (endAngle - CGFloat(M_PI+M_PI_2))/CGFloat(M_PI*2)
         }
@@ -58,7 +58,7 @@ public class NTImageProgressCircleEffect: NTImageEffect {
             self.endAngle = angle
         }
     }
-    public var strokeCircle: Bool {
+    open var strokeCircle: Bool {
         get {
             return strokeInnerCircle && strokeOuterCircle
         }
@@ -162,42 +162,42 @@ public class NTImageProgressCircleEffect: NTImageEffect {
                   strokeWidth: radius*0.0166)
     }
     
-    public override func apply(onImage image: UIImage) -> UIImage {
+    open override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
-        image.drawAtPoint(CGPointZero)
-        color.colorWithAlphaComponent(alpha).setStroke()
-        color.colorWithAlphaComponent(alpha).setFill()
+        image.draw(at: CGPoint.zero)
+        color.withAlphaComponent(alpha).setStroke()
+        color.withAlphaComponent(alpha).setFill()
         
         let path = UIBezierPath()
-        path.addArcWithCenter(center, radius: innerRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        path.addArcWithCenter(center, radius: outerRadius, startAngle: endAngle, endAngle: startAngle, clockwise: false)
+        path.addArc(withCenter: center, radius: innerRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        path.addArc(withCenter: center, radius: outerRadius, startAngle: endAngle, endAngle: startAngle, clockwise: false)
         path.fill()
         
         if strokeInnerCircle {
             let inner = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: true)
-            inner.addArcWithCenter(center, radius: innerRadius + strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
+            inner.addArc(withCenter: center, radius: innerRadius + strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
             inner.fill()
         }
         if strokeOuterCircle {
             let outer = UIBezierPath(arcCenter: center, radius: outerRadius, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: true)
-            outer.addArcWithCenter(center, radius: outerRadius - strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
+            outer.addArc(withCenter: center, radius: outerRadius - strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
             outer.fill()
         }
         
         let processedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return processedImage
+        return processedImage!
     }
     
     //MARK: - Movk KVO System
     
-    override public func acceptedKeys() -> [String] {
+    override open func acceptedKeys() -> [String] {
         return ["center", "color", "innerRadius", "outerRadius", "startAngle", "endAngle",
                 "strokeInnerCircle", "strokeOuterCircle", "strokeWidth", "percent", "strokeCircle", "alpha"]
     }
     
-    override public func changeValueOf(key: String, to obj: Any) -> Bool{
+    override open func changeValueOf(_ key: String, to obj: Any) -> Bool{
         let options = acceptedKeys()
         guard options.contains(key) else {
             return false
@@ -309,7 +309,7 @@ public class NTImageProgressCircleEffect: NTImageEffect {
         }
     }
 
-    override public func getValueOf(key: String) -> Any? {
+    override open func getValueOf(_ key: String) -> Any? {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return nil

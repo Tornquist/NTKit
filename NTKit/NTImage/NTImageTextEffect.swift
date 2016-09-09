@@ -29,16 +29,16 @@
  NTImageTextEffect allows for easy drawing of text over a UIImage.  The color, font, anchor positing,
  and text alignment can all be configured.  This is traditional text drawing.
  */
-public class NTImageTextEffect: NTImageEffect {
-    public var anchor: CGPoint = CGPointZero
-    public var text: String = ""
-    public var font: UIFont = UIFont.systemFontOfSize(12)
-    public var fontColor: UIColor = UIColor.clearColor()
-    public var anchorPosition: NTImageEffectAnchorPosition = .Center
-    public var alignment: NSTextAlignment = .Center
-    public var maxWidth: CGFloat? = nil
+open class NTImageTextEffect: NTImageEffect {
+    open var anchor: CGPoint = CGPoint.zero
+    open var text: String = ""
+    open var font: UIFont = UIFont.systemFont(ofSize: 12)
+    open var fontColor: UIColor = UIColor.clear
+    open var anchorPosition: NTImageEffectAnchorPosition = .Center
+    open var alignment: NSTextAlignment = .center
+    open var maxWidth: CGFloat? = nil
     var angle: CGFloat = 0
-    public var degreeAngle: CGFloat {
+    open var degreeAngle: CGFloat {
         get {
             return self.angle*180/CGFloat(M_PI)
         }
@@ -46,7 +46,7 @@ public class NTImageTextEffect: NTImageEffect {
             self.angle = CGFloat(M_PI)/180*newValue
         }
     }
-    public var radianAngle: CGFloat {
+    open var radianAngle: CGFloat {
         get {
             return self.angle
         }
@@ -54,7 +54,7 @@ public class NTImageTextEffect: NTImageEffect {
             self.angle = newValue
         }
     }
-    public var alpha: CGFloat = 1 {
+    open var alpha: CGFloat = 1 {
         didSet {
             if alpha < 0 { alpha = 0 }
             if alpha > 1 { alpha = 1 }
@@ -94,44 +94,44 @@ public class NTImageTextEffect: NTImageEffect {
         self.maxWidth = maxWidth
     }
     
-    public override func apply(onImage image: UIImage) -> UIImage {
+    open override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         let ctx = UIGraphicsGetCurrentContext()
-        image.drawAtPoint(CGPointZero)
+        image.draw(at: CGPoint.zero)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = self.alignment
         
         let textAttributes = [
             NSFontAttributeName: self.font,
-            NSForegroundColorAttributeName: self.fontColor.colorWithAlphaComponent(alpha),
+            NSForegroundColorAttributeName: self.fontColor.withAlphaComponent(alpha),
             NSParagraphStyleAttributeName: paragraphStyle
         ]
         
         let textToDraw = (maxWidth == nil) ? self.text : generateWrappedText(from: self.text)
         let textRect = generateTextRect(for: textToDraw)
     
-        CGContextTranslateCTM(ctx, self.anchor.x, self.anchor.y)
-        CGContextRotateCTM(ctx, self.angle)
+        ctx?.translateBy(x: self.anchor.x, y: self.anchor.y)
+        ctx?.rotate(by: self.angle)
         
-        let adjustedTextRect = CGRectMake(textRect.minX-self.anchor.x,
-                                          textRect.minY-self.anchor.y,
-                                          textRect.width,
-                                          textRect.height)
+        let adjustedTextRect = CGRect(x: textRect.minX-self.anchor.x,
+                                          y: textRect.minY-self.anchor.y,
+                                          width: textRect.width,
+                                          height: textRect.height)
         
-        textToDraw.drawInRect(adjustedTextRect, withAttributes: textAttributes)
+        textToDraw.draw(in: adjustedTextRect, withAttributes: textAttributes)
         
-        CGContextRotateCTM(ctx, -self.angle)
+        ctx?.rotate(by: -self.angle)
         
         let processedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return processedImage
+        return processedImage!
     }
     
     func generateTextRect(for text: String) -> CGRect {
-        let renderedSize = text.sizeWithAttributes([NSFontAttributeName: font])
-        let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
+        let renderedSize = text.size(attributes: [NSFontAttributeName: font])
+        let adjustedSize = CGSize(width: ceil(renderedSize.width), height: ceil(renderedSize.height))
         
         let xLeft   = self.anchor.x
         let xCenter = self.anchor.x - adjustedSize.width/2
@@ -144,23 +144,23 @@ public class NTImageTextEffect: NTImageEffect {
         
         switch anchorPosition {
         case .Center:
-            return CGRectMake(xCenter, yCenter, width, height)
+            return CGRect(x: xCenter, y: yCenter, width: width, height: height)
         case .CenterLeft:
-            return CGRectMake(xLeft, yCenter, width, height)
+            return CGRect(x: xLeft, y: yCenter, width: width, height: height)
         case .CenterRight:
-            return CGRectMake(xRight, yCenter, width, height)
+            return CGRect(x: xRight, y: yCenter, width: width, height: height)
         case .CenterTop:
-            return CGRectMake(xCenter, yTop, width, height)
+            return CGRect(x: xCenter, y: yTop, width: width, height: height)
         case .CenterBottom:
-            return CGRectMake(xCenter, yBottom, width, height)
+            return CGRect(x: xCenter, y: yBottom, width: width, height: height)
         case .TopLeft:
-            return CGRectMake(xLeft, yTop, width, height)
+            return CGRect(x: xLeft, y: yTop, width: width, height: height)
         case .TopRight:
-            return CGRectMake(xRight, yTop, width, height)
+            return CGRect(x: xRight, y: yTop, width: width, height: height)
         case .BottomLeft:
-            return CGRectMake(xLeft, yBottom, width, height)
+            return CGRect(x: xLeft, y: yBottom, width: width, height: height)
         case .BottomRight:
-            return CGRectMake(xRight, yBottom, width, height)
+            return CGRect(x: xRight, y: yBottom, width: width, height: height)
         }
     }
     
@@ -169,8 +169,8 @@ public class NTImageTextEffect: NTImageEffect {
             return string
         }
         
-        let newlineChars = NSCharacterSet.newlineCharacterSet()
-        let lines = string.utf16.split { newlineChars.characterIsMember($0) }.flatMap(String.init)
+        let newlineChars = CharacterSet.newlines
+        let lines = string.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init)
         
         var resultString: String = ""
         
@@ -189,9 +189,9 @@ public class NTImageTextEffect: NTImageEffect {
     
     // MARK: - Wrap Text Helper Methods
     
-    func adjust(text text: String, renderedWithFont font: UIFont, andMaxWidth maxWidth: CGFloat) -> String {
-        let whitespaceChars = NSCharacterSet.whitespaceCharacterSet()
-        var remainingWords = text.utf16.split { whitespaceChars.characterIsMember($0) }.flatMap(String.init)
+    func adjust(text: String, renderedWithFont font: UIFont, andMaxWidth maxWidth: CGFloat) -> String {
+        let whitespaceChars = CharacterSet.whitespaces
+        var remainingWords = text.utf16.split { whitespaceChars.contains(UnicodeScalar($0)!) }.flatMap(String.init)
         
         var processedString = ""
         
@@ -210,8 +210,8 @@ public class NTImageTextEffect: NTImageEffect {
             workingString = safeAppend(remainingWords[0], to: workingString, withSpacer: " ")
             
             // Calculate Current Size
-            let renderedSize = workingString.sizeWithAttributes([NSFontAttributeName: font])
-            let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
+            let renderedSize = workingString.size(attributes: [NSFontAttributeName: font])
+            let adjustedSize = CGSize(width: ceil(renderedSize.width), height: ceil(renderedSize.height))
             
             // Evaluate Width
             if adjustedSize.width < maxWidth {
@@ -234,7 +234,7 @@ public class NTImageTextEffect: NTImageEffect {
         return processedString
     }
     
-    func safeAppend(newString: String, to oldString: String, withSpacer spacer: String) -> String {
+    func safeAppend(_ newString: String, to oldString: String, withSpacer spacer: String) -> String {
         if oldString == "" {
             return newString
         } else {
@@ -244,11 +244,11 @@ public class NTImageTextEffect: NTImageEffect {
     
     // MARK: - Mock KVO System
     
-    override public func acceptedKeys() -> [String] {
+    override open func acceptedKeys() -> [String] {
         return ["anchor", "text", "font", "fontColor", "anchorPosition", "alignment", "maxWidth", "degreeAngle", "radianAngle", "alpha"]
     }
     
-    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+    override open func changeValueOf(_ key: String, to obj: Any) -> Bool {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return false
@@ -336,7 +336,7 @@ public class NTImageTextEffect: NTImageEffect {
         }
     }
     
-    override public func getValueOf(key: String) -> Any? {
+    override open func getValueOf(_ key: String) -> Any? {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return nil

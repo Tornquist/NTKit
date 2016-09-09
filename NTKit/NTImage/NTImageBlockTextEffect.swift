@@ -30,29 +30,29 @@
  be scaled to match the width given.  The anchor point and style can be configured, and the
  height will be determined based on the width and the line breaks in the text.
  */
-public class NTImageBlockTextEffect: NTImageEffect {
-    public var anchor: CGPoint = CGPointZero
-    public var anchorPosition: NTImageEffectAnchorPosition = .Center
-    public var width: CGFloat = 0
+open class NTImageBlockTextEffect: NTImageEffect {
+    open var anchor: CGPoint = CGPoint.zero
+    open var anchorPosition: NTImageEffectAnchorPosition = .Center
+    open var width: CGFloat = 0
     var _text: NSString = ""
-    public var rawText: NSString {
+    open var rawText: NSString {
         get {
             return _text
         }
     }
-    public var text: NSString {
+    open var text: NSString {
         get {
-            return capitalize ? _text.uppercaseString : _text
+            return capitalize ? _text.uppercased as NSString : _text
         }
         set {
             _text = newValue
         }
     }
-    public var font: UIFont = UIFont.systemFontOfSize(12)
-    public var fontColor: UIColor = UIColor.clearColor()
-    public var trailingTargetCharacterThreshold: Float = 0.33
-    public var capitalize: Bool = false
-    public var alpha: CGFloat = 1 {
+    open var font: UIFont = UIFont.systemFont(ofSize: 12)
+    open var fontColor: UIColor = UIColor.clear
+    open var trailingTargetCharacterThreshold: Float = 0.33
+    open var capitalize: Bool = false
+    open var alpha: CGFloat = 1 {
         didSet {
             if alpha < 0 { alpha = 0 }
             if alpha > 1 { alpha = 1 }
@@ -60,10 +60,10 @@ public class NTImageBlockTextEffect: NTImageEffect {
     }
     
     enum TextScaleDirection {
-        case None
-        case Equal
-        case GreaterThan
-        case LessThan
+        case none
+        case equal
+        case greaterThan
+        case lessThan
     }
     
     /**
@@ -108,7 +108,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
      - parameter capitalize: Used to decide if the input text should be automatically capitalized.
      */
     public convenience init(anchor: CGPoint, anchorPosition: NTImageEffectAnchorPosition, maxWidth: CGFloat, text: String, baseFont: UIFont, fontColor: UIColor, capitalize: Bool) {
-        let newText = capitalize ? text.uppercaseString : text
+        let newText = capitalize ? text.uppercased() : text
         self.init(anchor: anchor, anchorPosition: anchorPosition, maxWidth: maxWidth, text: newText, baseFont: baseFont, fontColor: fontColor)
         self.capitalize = capitalize
     }
@@ -134,45 +134,45 @@ public class NTImageBlockTextEffect: NTImageEffect {
         self.trailingTargetCharacterThreshold = trailingTargetCharacterThreshold
     }
     
-    public override func apply(onImage image: UIImage) -> UIImage {
+    open override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
-        image.drawAtPoint(CGPointZero)
+        image.draw(at: CGPoint.zero)
         
-        var basePosition = CGPointZero
+        var basePosition = CGPoint.zero
         
         var textFonts: [UIFont] = []
         var textRects: [CGRect] = []
         let textRows = generateTextRows()
         
         for row in textRows {
-            let calculatedFont = calculateFontFor(row, withBase: font)
+            let calculatedFont = calculateFontFor(row as NSString, withBase: font)
             
-            let renderedTextSize = row.sizeWithAttributes([NSFontAttributeName: calculatedFont])
-            let adjustedTextSize = CGSizeMake(ceil(renderedTextSize.width), ceil(renderedTextSize.height))
-            let textRect = CGRectMake(basePosition.x, basePosition.y, adjustedTextSize.width, adjustedTextSize.height)
+            let renderedTextSize = row.size(attributes: [NSFontAttributeName: calculatedFont])
+            let adjustedTextSize = CGSize(width: ceil(renderedTextSize.width), height: ceil(renderedTextSize.height))
+            let textRect = CGRect(x: basePosition.x, y: basePosition.y, width: adjustedTextSize.width, height: adjustedTextSize.height)
             
             textFonts.append(calculatedFont)
             textRects.append(textRect)
             
-            basePosition = CGPointMake(basePosition.x, basePosition.y + adjustedTextSize.height)
+            basePosition = CGPoint(x: basePosition.x, y: basePosition.y + adjustedTextSize.height)
         }
         
-        let totalHeight = textRects.reduce(0, combine: {$0 + $1.height})
-        let offset = calculateOffsetFrom(CGSizeMake(self.width, totalHeight))
+        let totalHeight = textRects.reduce(0, {$0 + $1.height})
+        let offset = calculateOffsetFrom(CGSize(width: self.width, height: totalHeight))
         
         for i in 0..<textRows.count {
             let textAttributes = [
                 NSFontAttributeName: textFonts[i],
-                NSForegroundColorAttributeName: self.fontColor.colorWithAlphaComponent(alpha)
-            ]
+                NSForegroundColorAttributeName: self.fontColor.withAlphaComponent(alpha)
+            ] as [String : Any]
             
-            textRows[i].drawInRect(textRects[i].offsetBy(dx: offset.x, dy: offset.y), withAttributes: textAttributes)
+            textRows[i].draw(in: textRects[i].offsetBy(dx: offset.x, dy: offset.y), withAttributes: textAttributes)
         }
         
         let processedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return processedImage
+        return processedImage!
     }
     
     //MARK: - Methods for Breaking Text into Rows
@@ -180,9 +180,9 @@ public class NTImageBlockTextEffect: NTImageEffect {
     func generateTextRows() -> [String] {
         let targetNumberOfCharacters = calculateTargetNumberOfCharacters(forFont: font, inWidth: self.width)
         
-        var baseRows = self.text.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
-        baseRows = baseRows.map({$0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())})
-        let cleanRows = baseRows.map({generateTextRows(fromString: $0, withTarget: targetNumberOfCharacters)}).reduce([], combine: +)
+        var baseRows = self.text.components(separatedBy: CharacterSet.newlines)
+        baseRows = baseRows.map({$0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)})
+        let cleanRows = baseRows.map({generateTextRows(fromString: $0, withTarget: targetNumberOfCharacters)}).reduce([], +)
         
         return cleanRows
     }
@@ -191,8 +191,8 @@ public class NTImageBlockTextEffect: NTImageEffect {
         var targetCharacterString = ""
         var generatedWidth: CGFloat = 0
         while (generatedWidth < width) {
-            let renderedTextSize = targetCharacterString.sizeWithAttributes([NSFontAttributeName: font])
-            let adjustedTextSize = CGSizeMake(ceil(renderedTextSize.width), ceil(renderedTextSize.height))
+            let renderedTextSize = targetCharacterString.size(attributes: [NSFontAttributeName: font])
+            let adjustedTextSize = CGSize(width: ceil(renderedTextSize.width), height: ceil(renderedTextSize.height))
             generatedWidth = adjustedTextSize.width
             targetCharacterString = targetCharacterString + "a"
         }
@@ -200,7 +200,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
     }
     
     func generateTextRows(fromString string: String, withTarget targetCharacters: Int) -> [String] {
-        let words = string.componentsSeparatedByString(" ")
+        let words = string.components(separatedBy: " ")
         var retVal: [String] = []
         
         var stringA = ""
@@ -246,7 +246,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
     
     //MARK: - Methods for Final Rendering
     
-    func calculateOffsetFrom(size: CGSize) -> CGPoint {
+    func calculateOffsetFrom(_ size: CGSize) -> CGPoint {
         let xLeft   = self.anchor.x
         let xCenter = self.anchor.x - size.width/2
         let xRight  = self.anchor.x - size.width
@@ -256,77 +256,77 @@ public class NTImageBlockTextEffect: NTImageEffect {
         
         switch anchorPosition {
         case .Center:
-            return CGPointMake(xCenter, yCenter)
+            return CGPoint(x: xCenter, y: yCenter)
         case .CenterLeft:
-            return CGPointMake(xLeft, yCenter)
+            return CGPoint(x: xLeft, y: yCenter)
         case .CenterRight:
-            return CGPointMake(xRight, yCenter)
+            return CGPoint(x: xRight, y: yCenter)
         case .CenterTop:
-            return CGPointMake(xCenter, yTop)
+            return CGPoint(x: xCenter, y: yTop)
         case .CenterBottom:
-            return CGPointMake(xCenter, yBottom)
+            return CGPoint(x: xCenter, y: yBottom)
         case .TopLeft:
-            return CGPointMake(xLeft, yTop)
+            return CGPoint(x: xLeft, y: yTop)
         case .TopRight:
-            return CGPointMake(xRight, yTop)
+            return CGPoint(x: xRight, y: yTop)
         case .BottomLeft:
-            return CGPointMake(xLeft, yBottom)
+            return CGPoint(x: xLeft, y: yBottom)
         case .BottomRight:
-            return CGPointMake(xRight, yBottom)
+            return CGPoint(x: xRight, y: yBottom)
         }
     }
     
     //MARK: - Methods for Scaling Font Sizes
     
-    func calculateFontFor(text: NSString, withBase font: UIFont) -> UIFont {
+    func calculateFontFor(_ text: NSString, withBase font: UIFont) -> UIFont {
         var adjustedFont = font
         var calculatedFont = adjustedFont
         var scaleDirection = self.compare(text, toWidthWithFont: adjustedFont)
-        var continueScaling = (scaleDirection != .Equal)
+        var continueScaling = (scaleDirection != .equal)
         
         while continueScaling {
             calculatedFont = adjustedFont
             
             switch scaleDirection {
-            case .GreaterThan:
-                adjustedFont = adjustedFont.fontWithSize(adjustedFont.pointSize * 0.99)
-            case .LessThan:
-                adjustedFont = adjustedFont.fontWithSize(adjustedFont.pointSize * 1.01)
+            case .greaterThan:
+                adjustedFont = adjustedFont.withSize(adjustedFont.pointSize * 0.99)
+            case .lessThan:
+                adjustedFont = adjustedFont.withSize(adjustedFont.pointSize * 1.01)
             default:
-                scaleDirection = .None
+                scaleDirection = .none
             }
             
             let newScaleDirection = self.compare(text, toWidthWithFont: adjustedFont)
             continueScaling = (newScaleDirection == scaleDirection)
         }
         
-        if (scaleDirection == .GreaterThan) {
+        if (scaleDirection == .greaterThan) {
             calculatedFont = adjustedFont
         }
         
         return calculatedFont
     }
     
-    func compare(text: NSString, toWidthWithFont font: UIFont) -> TextScaleDirection {
-        let renderedSize = text.sizeWithAttributes([NSFontAttributeName: font])
-        let adjustedSize = CGSizeMake(ceil(renderedSize.width), ceil(renderedSize.height))
+    func compare(_ text: NSString, toWidthWithFont font: UIFont) -> TextScaleDirection {
+        let renderedSize = text.size(attributes: [NSFontAttributeName: font])
+        let adjustedSize = CGSize(width: ceil(renderedSize.width), height: ceil(renderedSize.height))
         
         if adjustedSize.width > self.width {
-            return .GreaterThan
+            return .greaterThan
         } else if adjustedSize.width < self.width {
-            return .LessThan
+            return .lessThan
         }
-        return .Equal
+        return .equal
     }
     
     //MARK: - Mock KVO System
     
-    override public func acceptedKeys() -> [String] {
+    override open func acceptedKeys() -> [String] {
         return ["anchor", "anchorPosition", "width", "text", "font", "fontColor",
                 "trailingTargetCharacterThreshold", "capitalize", "alpha"]
     }
     
-    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+    override open func changeValueOf(_ key: String, to obj: Any) -> Bool {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return false
@@ -400,7 +400,7 @@ public class NTImageBlockTextEffect: NTImageEffect {
         }
     }
     
-    override public func getValueOf(key: String) -> Any? {
+    override open func getValueOf(_ key: String) -> Any? {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return nil

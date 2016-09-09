@@ -27,20 +27,20 @@
 
 import UIKit
 
-public class NTBasicTile: NTTile {
-    public class func build(inRect rect: CGRect) -> NTBasicTile {
-        let tile = NTBasicTile.init(nibName: "NTBasicTile", bundle: NSBundle(forClass: self))
-        tile.targetTileSize = CGSizeMake(rect.width, rect.height)
+open class NTBasicTile: NTTile {
+    open class func build(inRect rect: CGRect) -> NTBasicTile {
+        let tile = NTBasicTile.init(nibName: "NTBasicTile", bundle: Bundle(for: self))
+        tile.targetTileSize = CGSize(width: rect.width, height: rect.height)
         return tile
     }
     
-    @IBOutlet weak public var tileText: UILabel!
+    @IBOutlet weak open var tileText: UILabel!
     
-    public override func anchorPoint() -> CGPoint {
-        return CGPointMake(CGRectGetMidX(tileText.frame), CGRectGetMidY(tileText.frame))
+    open override func anchorPoint() -> CGPoint {
+        return CGPoint(x: tileText.frame.midX, y: tileText.frame.midY)
     }
     
-    @IBAction func closePressed(sender: AnyObject) {
+    @IBAction func closePressed(_ sender: AnyObject) {
         parentTileView?.collapseAllTiles()
     }
 }

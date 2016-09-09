@@ -46,10 +46,10 @@ public enum NTImageShadeEffectShadeShape: String {
 /**
  NTImageShadeEffect will tint a section of a provided UIImage.
  */
-public class NTImageShadeEffect: NTImageEffect {
-    public var shadeShape: NTImageShadeEffectShadeShape = .Full
-    public var color: UIColor = UIColor.clearColor()
-    public var alpha: CGFloat = 1 {
+open class NTImageShadeEffect: NTImageEffect {
+    open var shadeShape: NTImageShadeEffectShadeShape = .Full
+    open var color: UIColor = UIColor.clear
+    open var alpha: CGFloat = 1 {
         didSet {
             if alpha < 0 { alpha = 0 }
             if alpha > 1 { alpha = 1 }
@@ -68,23 +68,23 @@ public class NTImageShadeEffect: NTImageEffect {
         self.color = color
     }
     
-    public override func apply(onImage image: UIImage) -> UIImage {
+    open override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
-        image.drawAtPoint(CGPointZero)
+        image.draw(at: CGPoint.zero)
         let ctx = UIGraphicsGetCurrentContext()
-        color.colorWithAlphaComponent(alpha).setStroke()
-        color.colorWithAlphaComponent(alpha).setFill()
+        color.withAlphaComponent(alpha).setStroke()
+        color.withAlphaComponent(alpha).setFill()
         
         createPath(ctx, size: image.size)
-        CGContextDrawPath(ctx, .FillStroke)
+        ctx?.drawPath(using: .fillStroke)
         
         let processedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return processedImage
+        return processedImage!
     }
     
-    func createPath(ctx: CGContext?, size: CGSize) {
+    func createPath(_ ctx: CGContext?, size: CGSize) {
         guard ctx != nil else {
             return
         }
@@ -129,24 +129,24 @@ public class NTImageShadeEffect: NTImageEffect {
         }
     }
     
-    func pathFromPoints(ctx: CGContext?, points: [CGPoint]) {
+    func pathFromPoints(_ ctx: CGContext?, points: [CGPoint]) {
         guard points.count > 0 else {
             return
         }
-        CGContextMoveToPoint(ctx, points[0].x, points[0].y)
+        ctx?.move(to: CGPoint(x: points[0].x, y: points[0].y))
         for i in 1..<points.count {
-            CGContextAddLineToPoint(ctx, points[i].x, points[i].y)
+            ctx?.addLine(to: CGPoint(x: points[i].x, y: points[i].y))
         }
-        CGContextAddLineToPoint(ctx, points[0].x, points[0].y)
+        ctx?.addLine(to: CGPoint(x: points[0].x, y: points[0].y))
     }
     
     //MARK: - Mock KVO System
     
-    override public func acceptedKeys() -> [String] {
+    override open func acceptedKeys() -> [String] {
         return ["shadeShape", "color", "alpha"]
     }
     
-    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+    override open func changeValueOf(_ key: String, to obj: Any) -> Bool {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return false
@@ -180,7 +180,7 @@ public class NTImageShadeEffect: NTImageEffect {
         }
     }
     
-    override public func getValueOf(key: String) -> Any? {
+    override open func getValueOf(_ key: String) -> Any? {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return nil

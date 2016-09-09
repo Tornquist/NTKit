@@ -23,27 +23,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Table View Methods
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return demos.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("demoCell")!
-        cell.textLabel?.text = demos[indexPath.row].title
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "demoCell")!
+        cell.textLabel?.text = demos[(indexPath as NSIndexPath).row].title
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let demo = demos[indexPath.row]
-        let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(demo.storyboardViewName)
-        self.presentViewController(newVC, animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let demo = demos[(indexPath as NSIndexPath).row]
+        let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: demo.storyboardViewName)
+        self.present(newVC, animated: true, completion: nil)
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "NTKit Demos"
     }
 }

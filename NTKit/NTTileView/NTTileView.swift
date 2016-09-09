@@ -27,7 +27,7 @@
 
 import UIKit
 
-public class NTTileView: UIView {
+open class NTTileView: UIView {
     /**
      NTTileView Data Source.
      
@@ -37,7 +37,7 @@ public class NTTileView: UIView {
      refreshTiles() will be called on the tile view after setting
      a new data source.
      */
-    public var dataSource: NTTileViewDataSource? {
+    open var dataSource: NTTileViewDataSource? {
         didSet {
             //refreshTiles()
         }
@@ -54,7 +54,7 @@ public class NTTileView: UIView {
      refreshTiles() will be called on the tile view after setting
      a new data source.
      */
-    public var layout: NTTileViewLayoutProtocol? {
+    open var layout: NTTileViewLayoutProtocol? {
         didSet {
             //refreshTiles()
         }
@@ -88,7 +88,7 @@ public class NTTileView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    public func reloadTiles() {
+    open func reloadTiles() {
         guard dataSource != nil else {
             NSLog("NTTileView - nil data source, cannot refresh tiles")
             return
@@ -98,17 +98,17 @@ public class NTTileView: UIView {
         tiles.removeAll()
         views.removeAll()
         for i in 0..<numTiles {
-            let indexPath = NSIndexPath(forItem: i, inSection: 0)
+            let indexPath = IndexPath(item: i, section: 0)
             addTile(dataSource!.tileFor(tileView: self, atIndexPath: indexPath))
         }
         arrangeTiles()
     }
     
-    public func arrangeTiles() {
+    open func arrangeTiles() {
         layout?.resetTileLayout()
     }
     
-    func addTile(tile: NTTile) {
+    func addTile(_ tile: NTTile) {
         let newView = UIView()
         self.addSubview(newView)
         newView.addSubview(tile.view)
@@ -128,7 +128,7 @@ public class NTTileView: UIView {
      to focus on that tile.  The actual action performed will depend
      on the layouting engine used
      */
-    public func focus(onTileWithIndex tileIndex: Int) {
+    open func focus(onTileWithIndex tileIndex: Int) {
         layout?.focus(onTileWithIndex: tileIndex)
     }
     
@@ -136,7 +136,7 @@ public class NTTileView: UIView {
      Transition all tiles to a collapsed state, regardless of what the
      current arrangement or state is.
      */
-    public func collapseAllTiles() {
+    open func collapseAllTiles() {
         layout?.collapseAll()
     }
     
@@ -149,8 +149,8 @@ public class NTTileView: UIView {
      This index can be used to perform operations (such as expand)
      on a specific tile.
      */
-    public func getTileIndex(withTile tile: NTTile) -> Int? {
-        for (i, t) in tiles.enumerate() {
+    open func getTileIndex(withTile tile: NTTile) -> Int? {
+        for (i, t) in tiles.enumerated() {
             if t === tile {
                 return i
             }
@@ -160,8 +160,8 @@ public class NTTileView: UIView {
     
     // MARK: - Layout Events for monitoring frame change
     
-    public override func layoutSublayersOfLayer(layer: CALayer) {
-        super.layoutSublayersOfLayer(layer)
+    open override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
         layout?.updateForFrame()
     }
 }

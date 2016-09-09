@@ -27,17 +27,17 @@
 
 import UIKit
 
-public class NTImage: UIImage {
-    public var effects: [NTImageEffect] = []
+open class NTImage: UIImage {
+    open var effects: [NTImageEffect] = []
     
     public convenience init?(named name: String) {
-        guard let image = UIImage(named: name) where nil != image.CGImage else {
+        guard let image = UIImage(named: name) , nil != image.cgImage else {
             return nil
         }
-        self.init(CGImage: image.CGImage!)
+        self.init(cgImage: image.cgImage!)
     }
     
-    public func withEffects() -> UIImage {
+    open func withEffects() -> UIImage {
         var modifiedImage = self as UIImage
         for effect in effects {
             modifiedImage = effect.apply(onImage: modifiedImage)

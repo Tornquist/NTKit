@@ -27,7 +27,7 @@
 
 import UIKit
 
-public class NTCropView: UIView, NTCropScrollViewDelegate {
+open class NTCropView: UIView, NTCropScrollViewDelegate {
     var scrollView: NTCropScrollView! = nil
     var overlayView: NTCropOverlayView! = nil
     
@@ -37,7 +37,7 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
      The image to be cropped.  The size and shape do not matter,
      the image will be cropped using a scaled cropPath.
      */
-    public var image: UIImage? {
+    open var image: UIImage? {
         get {
             return scrollView.image
         }
@@ -54,7 +54,7 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
      be scaled (with aspect ratio maintained) to crop whatever image is
      passed in.
      */
-    public var cropPath: UIBezierPath? {
+    open var cropPath: UIBezierPath? {
         get {
             return overlayView.cropPath
         }
@@ -72,7 +72,7 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
      
      This color defaults to black with 80% opacity.
      */
-    public var exclusedRegionOverlayColor: UIColor {
+    open var exclusedRegionOverlayColor: UIColor {
         get {
             return overlayView.shadeColor
         }
@@ -88,7 +88,7 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
      
      This color defaults to clear.
      */
-    public var croppedRegionOverlayColor: UIColor {
+    open var croppedRegionOverlayColor: UIColor {
         get {
             return overlayView.cropPathColor
         }
@@ -121,26 +121,26 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
      that represents the outline and aspect ratio of the provided
      crop path.
      */
-    public func crop() -> UIImage? {
-        if let currentImage = image, cropFrame = overlayView.cropRect, path = cropPath {
-            let frameInImage = self.scrollView.imageView.convertRect(cropFrame, fromView: self.overlayView)
+    open func crop() -> UIImage? {
+        if let currentImage = image, let cropFrame = overlayView.cropRect, let path = cropPath {
+            let frameInImage = self.scrollView.imageView.convert(cropFrame, from: self.overlayView)
             
             // Map path to image
             let scaleFactor = frameInImage.width/path.bounds.width
-            let point = CGPointMake(frameInImage.minX, frameInImage.minY)
+            let point = CGPoint(x: frameInImage.minX, y: frameInImage.minY)
             let scaledPath = NTCropHelper.scale(path, toPoint: point, withScale: scaleFactor)
             
             // Mask original image
             UIGraphicsBeginImageContextWithOptions(currentImage.size, false, 0)
             scaledPath.addClip()
-            currentImage.drawAtPoint(CGPointZero)
+            currentImage.draw(at: CGPoint.zero)
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             
             // Crop masked image to size (visible at min and max positions, no extra whitespace)
             let boundingBox = scaledPath.bounds
             UIGraphicsBeginImageContext(boundingBox.size)
-            newImage.drawAtPoint(CGPointMake(-boundingBox.minX, -boundingBox.minY))
+            newImage?.draw(at: CGPoint(x: -boundingBox.minX, y: -boundingBox.minY))
             let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             
@@ -157,10 +157,10 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
         scrollView.autoresizesSubviews = true
         scrollView.cropRegionDelegate = self
         self.addSubview(scrollView)
-        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
-        let leftConstraint = NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
         self.addConstraint(topConstraint)
         self.addConstraint(bottomConstraint)
         self.addConstraint(leftConstraint)
@@ -172,10 +172,10 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
         overlayView.translatesAutoresizingMaskIntoConstraints = false
         overlayView.autoresizesSubviews = true
         self.addSubview(overlayView)
-        let topConstraint = NSLayoutConstraint(item: overlayView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: overlayView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
-        let leftConstraint = NSLayoutConstraint(item: overlayView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: overlayView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: overlayView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: overlayView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: overlayView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: overlayView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
         self.addConstraint(topConstraint)
         self.addConstraint(bottomConstraint)
         self.addConstraint(leftConstraint)
@@ -188,6 +188,6 @@ public class NTCropView: UIView, NTCropScrollViewDelegate {
         if let cropFrame = overlayView.cropRect {
             return cropFrame
         }
-        return CGRectMake(0, 0, self.frame.width, self.frame.height)
+        return CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
 }

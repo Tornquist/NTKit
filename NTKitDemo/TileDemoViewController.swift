@@ -43,56 +43,56 @@ class TileDemoViewController: UIViewController, NTTileViewDataSource {
     }
     
     func configureTileView() {
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[tileView]-0-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["tileView":tileView])
-        let horizontalConstrints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[tileView]-0-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["tileView":tileView])
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tileView]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["tileView":tileView])
+        let horizontalConstrints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tileView]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["tileView":tileView])
         self.view.addConstraints(verticalConstraints)
         self.view.addConstraints(horizontalConstrints)
         tileView.dataSource = self
         tileView.reloadTiles()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         tileView.arrangeTiles()
     }
     
     // MARK: - Tile View Data Source Methods
-    func numberOfTilesFor(tileView tileView: NTTileView) -> Int {
+    func numberOfTilesFor(tileView: NTTileView) -> Int {
         return 5
     }
 
-    func tileFor(tileView tileView: NTTileView, atIndexPath indexPath: NSIndexPath) -> NTTile {
-        switch indexPath.item {
+    func tileFor(tileView: NTTileView, atIndexPath indexPath: IndexPath) -> NTTile {
+        switch (indexPath as NSIndexPath).item {
         case 0:
-            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
-            newTile.view.backgroundColor = UIColor.redColor()
+            let newTile = NTBasicTile.build(inRect: UIScreen.main.bounds)
+            newTile.view.backgroundColor = UIColor.red
             newTile.tileText.text = "Centered Anchor"
             return newTile
         case 1:
-            let newTile = NTTitleDetailTile.build(inRect: UIScreen.mainScreen().bounds)
-            newTile.view.backgroundColor = UIColor.yellowColor()
+            let newTile = NTTitleDetailTile.build(inRect: UIScreen.main.bounds)
+            newTile.view.backgroundColor = UIColor.yellow
             newTile.titleText.text = "Anchor 1/3"
             return newTile
         case 2:
-            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
-            newTile.view.backgroundColor = UIColor.greenColor()
+            let newTile = NTBasicTile.build(inRect: UIScreen.main.bounds)
+            newTile.view.backgroundColor = UIColor.green
             newTile.tileText.text = "Centered Anchor"
             return newTile
         case 3: // NTImageViewTile with NTImage custom drawing
-            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
-            newTile.view.backgroundColor = UIColor.blueColor()
+            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.main.bounds)
+            newTile.view.backgroundColor = UIColor.blue
             newTile.imageView.image = NTImageExample()
-            newTile.imageView.backgroundColor = UIColor.clearColor()
+            newTile.imageView.backgroundColor = UIColor.clear
             newTile.titleText.text = "NTImage with NTImageEffects"
             return newTile
         case 4: // NTImageViewTile
-            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.mainScreen().bounds)
-            newTile.view.backgroundColor = UIColor.purpleColor()
+            let newTile = NTImageViewDemoTile.build(inRect: UIScreen.main.bounds)
+            newTile.view.backgroundColor = UIColor.purple
             newTile.imageView.image = UIImage(named: "Landscape")
-            newTile.imageView.backgroundColor = UIColor.clearColor()
+            newTile.imageView.backgroundColor = UIColor.clear
             return newTile
         default:
-            let newTile = NTBasicTile.build(inRect: UIScreen.mainScreen().bounds)
-            newTile.view.backgroundColor = UIColor.brownColor()
+            let newTile = NTBasicTile.build(inRect: UIScreen.main.bounds)
+            newTile.view.backgroundColor = UIColor.brown
             newTile.tileText.text = "Centered Anchor"
             return newTile
         }
@@ -105,11 +105,11 @@ class TileDemoViewController: UIViewController, NTTileViewDataSource {
         guard image != nil else {
             return nil
         }
-        let rectEffect = NTImageRectangleEffect(rect: CGRectMake(50, 50, 100, 100),
-                                                color: UIColor.redColor())
+        let rectEffect = NTImageRectangleEffect(rect: CGRect(x: 50, y: 50, width: 100, height: 100),
+                                                color: UIColor.red)
         let shadeEffect = NTImageShadeEffect(shape: .TriangleBottomRight,
                                              color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5))
-        let progressEffect = NTImageProgressCircleEffect(center: CGPointMake(image!.size.width/2, image!.size.height/2),
+        let progressEffect = NTImageProgressCircleEffect(center: CGPoint(x: image!.size.width/2, y: image!.size.height/2),
                                                          innerRadius: 100,
                                                          outerRadius: 200,
                                                          startAngle: 0,
@@ -117,34 +117,34 @@ class TileDemoViewController: UIViewController, NTTileViewDataSource {
                                                          color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.75),
                                                          strokeInnerCircle: true,
                                                          strokeOuterCircle: true)
-        let progressEffect2 = NTImageProgressCircleEffect(center: CGPointMake(image!.size.width/2 - 500, image!.size.height/2),
+        let progressEffect2 = NTImageProgressCircleEffect(center: CGPoint(x: image!.size.width/2 - 500, y: image!.size.height/2),
                                                           radius: 200,
                                                           percent: 0.66,
-                                                          color: UIColor.orangeColor(),
+                                                          color: UIColor.orange,
                                                           strokeCircle: false)
-        let textEffect = NTImageTextEffect(anchor: CGPointMake(100, 500),
+        let textEffect = NTImageTextEffect(anchor: CGPoint(x: 100, y: 500),
                                            text: "Hello World",
-                                           fontColor: UIColor.darkGrayColor())
-        let textEffect2 = NTImageTextEffect(anchor: CGPointMake(image!.size.width/2, image!.size.height/2),
+                                           fontColor: UIColor.darkGray)
+        let textEffect2 = NTImageTextEffect(anchor: CGPoint(x: image!.size.width/2, y: image!.size.height/2),
                                             anchorPosition: .Center,
                                             text: "This is a test of\nmultiline right\naligned text.",
-                                            textAlignment: .Right,
-                                            font: UIFont.systemFontOfSize(60),
-                                            fontColor: UIColor.blackColor())
-        let textEffect3 = NTImageBlockTextEffect(anchor: CGPointMake(image!.size.width, image!.size.height),
+                                            textAlignment: .right,
+                                            font: UIFont.systemFont(ofSize: 60),
+                                            fontColor: UIColor.black)
+        let textEffect3 = NTImageBlockTextEffect(anchor: CGPoint(x: image!.size.width, y: image!.size.height),
                                                  anchorPosition: .BottomRight,
                                                  maxWidth: 500,
                                                  text: "This will be a\ncomplicated string with multiple different\nlengths of lines.",
-                                                 baseFont: UIFont.systemFontOfSize(60),
-                                                 fontColor: UIColor.blackColor(),
+                                                 baseFont: UIFont.systemFont(ofSize: 60),
+                                                 fontColor: UIColor.black,
                                                  capitalize: true,
                                                  trailingTargetCharacterThreshold: 100)
-        let textEffect4 = NTImageBlockTextEffect(anchor: CGPointMake(image!.size.width, 0),
+        let textEffect4 = NTImageBlockTextEffect(anchor: CGPoint(x: image!.size.width, y: 0),
                                                  anchorPosition: .TopRight,
                                                  maxWidth: 1000,
                                                  text: "This will be a complicated string with multiple different lengths of lines.  As you type, more lines are added.",
-                                                 baseFont: UIFont.systemFontOfSize(60),
-                                                 fontColor: UIColor.blackColor(),
+                                                 baseFont: UIFont.systemFont(ofSize: 60),
+                                                 fontColor: UIColor.black,
                                                  capitalize: true)
         image!.effects.append(rectEffect)
         image!.effects.append(shadeEffect)
@@ -159,7 +159,7 @@ class TileDemoViewController: UIViewController, NTTileViewDataSource {
     
     // MARK: - Button Events
     
-    @IBAction func closePressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closePressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -48,15 +48,15 @@ class CropDemoViewController: UIViewController {
     
     // MARK: - Button Events
     
-    @IBAction func closePressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closePressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cropButtonPressed(sender: AnyObject) {
+    @IBAction func cropButtonPressed(_ sender: AnyObject) {
         bottomImageView.image = topImageView.crop()
     }
     
-    @IBAction func cyclePathPressed(sender: AnyObject) {
+    @IBAction func cyclePathPressed(_ sender: AnyObject) {
         self.topImageView.cropPath = nextPath()
     }
     
@@ -97,33 +97,33 @@ class CropDemoViewController: UIViewController {
         
         let resultPath = UIBezierPath()
         for path in paths {
-            resultPath.appendPath(path)
+            resultPath.append(path)
         }
         
         return resultPath
     }
     
-    func stripePath(startX: CGFloat) -> UIBezierPath {
+    func stripePath(_ startX: CGFloat) -> UIBezierPath {
         let points: [CGPoint] = [
-            CGPointMake(startX, 980),
-            CGPointMake(startX+900, 100),
-            CGPointMake(startX+1000, 100),
-            CGPointMake(startX+100, 980)
+            CGPoint(x: startX, y: 980),
+            CGPoint(x: startX+900, y: 100),
+            CGPoint(x: startX+1000, y: 100),
+            CGPoint(x: startX+100, y: 980)
         ]
         
         return makePathFromPoints(points)
     }
     
     func circlePath() -> UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRectMake(660, 240, 600, 600))
+        return UIBezierPath(ovalIn: CGRect(x: 660, y: 240, width: 600, height: 600))
     }
     
     func diamondPath() -> UIBezierPath {
         let points: [CGPoint] = [
-            CGPointMake(50, 0),
-            CGPointMake(100, 150),
-            CGPointMake(50, 300),
-            CGPointMake(0, 150)
+            CGPoint(x: 50, y: 0),
+            CGPoint(x: 100, y: 150),
+            CGPoint(x: 50, y: 300),
+            CGPoint(x: 0, y: 150)
         ]
         
         return makePathFromPoints(points)
@@ -131,10 +131,10 @@ class CropDemoViewController: UIViewController {
     
     func verticalRectanglePath() -> UIBezierPath {
         let points: [CGPoint] = [
-            CGPointMake(0, 0),
-            CGPointMake(100, 0),
-            CGPointMake(100, 50),
-            CGPointMake(0, 50)
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 100, y: 0),
+            CGPoint(x: 100, y: 50),
+            CGPoint(x: 0, y: 50)
         ]
         
         return makePathFromPoints(points)
@@ -142,10 +142,10 @@ class CropDemoViewController: UIViewController {
     
     func horizontalRectanglePath() -> UIBezierPath {
         let points: [CGPoint] = [
-            CGPointMake(0, 0),
-            CGPointMake(50, 0),
-            CGPointMake(50, 100),
-            CGPointMake(0, 100)
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 50, y: 0),
+            CGPoint(x: 50, y: 100),
+            CGPoint(x: 0, y: 100)
         ]
         
         return makePathFromPoints(points)
@@ -153,9 +153,9 @@ class CropDemoViewController: UIViewController {
     
     func trianglePath() -> UIBezierPath {
         let points: [CGPoint] = [
-            CGPointMake(0, 3),
-            CGPointMake(4, 3),
-            CGPointMake(2, 0)
+            CGPoint(x: 0, y: 3),
+            CGPoint(x: 4, y: 3),
+            CGPoint(x: 2, y: 0)
         ]
         
         return makePathFromPoints(points)
@@ -171,12 +171,12 @@ class CropDemoViewController: UIViewController {
         let triangleHeight: CGFloat = 0.866
         let triangleSideLength: CGFloat = 1
         
-        let pointA = CGPointMake(0, triangleHeight*2)
-        let pointB = CGPointMake(triangleSideLength, triangleHeight*2)
-        let pointC = CGPointMake(triangleSideLength*2, triangleHeight*2)
-        let pointD = CGPointMake(triangleSideLength/2, triangleHeight)
-        let pointE = CGPointMake(triangleSideLength*1.5, triangleHeight)
-        let pointF = CGPointMake(triangleSideLength, 0)
+        let pointA = CGPoint(x: 0, y: triangleHeight*2)
+        let pointB = CGPoint(x: triangleSideLength, y: triangleHeight*2)
+        let pointC = CGPoint(x: triangleSideLength*2, y: triangleHeight*2)
+        let pointD = CGPoint(x: triangleSideLength/2, y: triangleHeight)
+        let pointE = CGPoint(x: triangleSideLength*1.5, y: triangleHeight)
+        let pointF = CGPoint(x: triangleSideLength, y: 0)
         
         let points1: [CGPoint] = [
             pointA, pointB, pointD
@@ -195,7 +195,7 @@ class CropDemoViewController: UIViewController {
         
         let resultPath = UIBezierPath()
         for path in paths {
-            resultPath.appendPath(path)
+            resultPath.append(path)
         }
         
         return resultPath
@@ -203,16 +203,16 @@ class CropDemoViewController: UIViewController {
     
     // MARK: - Helper Methods
     
-    func makePathFromPoints(points: [CGPoint]) -> UIBezierPath {
+    func makePathFromPoints(_ points: [CGPoint]) -> UIBezierPath {
         let path = UIBezierPath()
-        for (index, point) in points.enumerate() {
+        for (index, point) in points.enumerated() {
             if index == 0 {
-                path.moveToPoint(point)
+                path.move(to: point)
             } else {
-                path.addLineToPoint(point)
+                path.addLine(to: point)
             }
         }
-        path.closePath()
+        path.close()
         return path
     }
 }

@@ -46,15 +46,15 @@ class NTCropOverlayView: UIView {
             
             let x = self.frame.width/2 - scaledCropWidth!/2
             let y = self.frame.height/2 - scaledCropHeight!/2
-            return CGRectMake(x, y, scaledCropWidth!, scaledCropHeight!)
+            return CGRect(x: x, y: y, width: scaledCropWidth!, height: scaledCropHeight!)
         }
     }
     
-    var shadeColor: UIColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
-    var cropPathColor: UIColor = UIColor.clearColor()
+    var shadeColor: UIColor = UIColor.black.withAlphaComponent(0.8)
+    var cropPathColor: UIColor = UIColor.clear
     
     var _cropPath: UIBezierPath? = nil
-    var oldFrame: CGRect = CGRectZero
+    var oldFrame: CGRect = CGRect.zero
     var cropPath: UIBezierPath? {
         get {
             return _cropPath
@@ -80,22 +80,22 @@ class NTCropOverlayView: UIView {
     }
     
     func configureView() {
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         shadeColor.setFill()
         UIRectFill(rect)
         if let path = scaledPathInFrame() {
-            CGContextSetBlendMode(UIGraphicsGetCurrentContext(), .Clear)
+            UIGraphicsGetCurrentContext()?.setBlendMode(.clear)
             path.fill()
-            CGContextSetBlendMode(UIGraphicsGetCurrentContext(), .Normal)
+            UIGraphicsGetCurrentContext()?.setBlendMode(.normal)
             cropPathColor.setFill()
             path.fill()
         }
     }
     
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         return false // Overlay ignores touchces
     }
     
@@ -126,8 +126,8 @@ class NTCropOverlayView: UIView {
         
         self.scaledCropWidth = widthMultiplier*self.frame.width
         self.scaledCropHeight = heightMultiplier*self.frame.height
-        self.scaledCropPath = NTCropHelper.scale(cropPath!, toPoint: CGPointZero, withScale: scaledCropWidth!/self.cropPath!.bounds.width)
-        dispatch_async(dispatch_get_main_queue(), {
+        self.scaledCropPath = NTCropHelper.scale(cropPath!, toPoint: CGPoint.zero, withScale: scaledCropWidth!/self.cropPath!.bounds.width)
+        DispatchQueue.main.async(execute: {
             //TODO: Make this animate smoother when rotating
             self.setNeedsDisplay()
         })
@@ -141,12 +141,12 @@ class NTCropOverlayView: UIView {
         let pointX = self.frame.width/2-self.scaledCropWidth!/2
         let pointY = self.frame.height/2-self.scaledCropHeight!/2
         
-        return NTCropHelper.scale(scaledCropPath!, toPoint: CGPointMake(pointX, pointY), withScale: 1)
+        return NTCropHelper.scale(scaledCropPath!, toPoint: CGPoint(x: pointX, y: pointY), withScale: 1)
     }
     
     // MARK: - Layout Views
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         if self.oldFrame != self.frame {

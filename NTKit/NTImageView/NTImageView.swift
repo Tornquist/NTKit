@@ -27,9 +27,9 @@
 
 import UIKit
 
-public class NTImageView: UIScrollView, UIScrollViewDelegate {
+open class NTImageView: UIScrollView, UIScrollViewDelegate {
     var _image: UIImage?
-    public var image: UIImage? {
+    open var image: UIImage? {
         get {
             return _image
         }
@@ -51,10 +51,10 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
     var rightConstraint: NSLayoutConstraint!
     var topConstraint: NSLayoutConstraint!
     var bottomConstraint: NSLayoutConstraint!
-    var oldFrame: CGRect = CGRectZero
+    var oldFrame: CGRect = CGRect.zero
     
-    public var defaultMinimumZoomScale: CGFloat = 0.5
-    public var defaultMaximumZoomScale: CGFloat = 2
+    open var defaultMinimumZoomScale: CGFloat = 0.5
+    open var defaultMaximumZoomScale: CGFloat = 2
     
     //MARK: - Initializers
     
@@ -74,7 +74,7 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
         // Configure Scroll View
         self.clipsToBounds = true
         self.delegate = self
-        self.contentOffset = CGPointZero
+        self.contentOffset = CGPoint.zero
         self.bounces = true
         self.bouncesZoom = true
         
@@ -82,10 +82,10 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
         self.imageView = UIImageView()
         self.addSubview(self.imageView)
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.topConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-        self.leftConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        self.bottomConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
-        self.rightConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
+        self.topConstraint = NSLayoutConstraint(item: self.imageView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        self.leftConstraint = NSLayoutConstraint(item: self.imageView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        self.bottomConstraint = NSLayoutConstraint(item: self.imageView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        self.rightConstraint = NSLayoutConstraint(item: self.imageView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
         self.addConstraint(topConstraint)
         self.addConstraint(bottomConstraint)
         self.addConstraint(rightConstraint)
@@ -153,12 +153,12 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
         guard self.image != nil else {
             return
         }
-        let newFrame = CGRectMake(0, 0, self.image!.size.width, self.image!.size.height)
+        let newFrame = CGRect(x: 0, y: 0, width: self.image!.size.width, height: self.image!.size.height)
         self.imageView.frame = newFrame
     }
     
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         if self.oldFrame != self.frame {
@@ -169,17 +169,17 @@ public class NTImageView: UIScrollView, UIScrollViewDelegate {
     
     //MARK: - External Control
     
-    public func zoomOut() {
+    open func zoomOut() {
         self.zoomScale = self.minimumZoomScale
     }
     
     //MARK: - UIScrollView Delegates
     
-    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    open func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    public func scrollViewDidZoom(scrollView: UIScrollView) {
+    open func scrollViewDidZoom(_ scrollView: UIScrollView) {
         updateImageConstraints()
     }
 }

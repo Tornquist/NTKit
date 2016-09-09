@@ -27,26 +27,27 @@
 
 import UIKit
 
-public class NTImageEffect {
-    public var name: String? = nil
+open class NTImageEffect {
+    open var name: String? = nil
     
     public init() {
     }
     
-    public func apply(onImage image: UIImage) -> UIImage {
+    open func apply(onImage image: UIImage) -> UIImage {
         return image
     }
     
     //MARK: Mock KVO System
-    public func acceptedKeys() -> [String] {
+    open func acceptedKeys() -> [String] {
         return []
     }
     
-    public func changeValueOf(key: String, to obj: Any) -> Bool {
+    @discardableResult
+    open func changeValueOf(_ key: String, to obj: Any) -> Bool {
         return false
     }
     
-    public func getValueOf(key: String) -> Any? {
+    open func getValueOf(_ key: String) -> Any? {
         return nil
     }
 }

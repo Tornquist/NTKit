@@ -27,11 +27,11 @@
 
 import UIKit
 
-public class NTTile: UIViewController {
-    public var parentTileView: NTTileView?
-    public var targetTileSize: CGSize?
+open class NTTile: UIViewController {
+    open var parentTileView: NTTileView?
+    open var targetTileSize: CGSize?
         
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
     }
     
@@ -39,11 +39,11 @@ public class NTTile: UIViewController {
      Returns the anchor point in local coordinates.  The value returned needs to be based on the top
      left corner of the tile being the origin (0,0).
     */
-    public func anchorPoint() -> CGPoint {
-        return CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))
+    open func anchorPoint() -> CGPoint {
+        return CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
     }
     
-    public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let tileIndex = parentTileView?.getTileIndex(withTile: self) {
             parentTileView?.focus(onTileWithIndex: tileIndex)
         }

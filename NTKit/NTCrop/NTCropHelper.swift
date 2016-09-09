@@ -28,17 +28,17 @@
 import Foundation
 
 class NTCropHelper {
-    static func scale(path: UIBezierPath, toPoint point: CGPoint, withScale scale: CGFloat) -> UIBezierPath {
+    static func scale(_ path: UIBezierPath, toPoint point: CGPoint, withScale scale: CGFloat) -> UIBezierPath {
         let pathCopy = path.copy() as! UIBezierPath
         let boundingBox = pathCopy.bounds
-        let originTranslation = CGAffineTransformMakeTranslation(-boundingBox.minX, -boundingBox.minY)
-        let newOriginTranslation = CGAffineTransformMakeTranslation(point.x, point.y)
+        let originTranslation = CGAffineTransform(translationX: -boundingBox.minX, y: -boundingBox.minY)
+        let newOriginTranslation = CGAffineTransform(translationX: point.x, y: point.y)
         
-        let sizeScale = CGAffineTransformMakeScale(scale, scale)
+        let sizeScale = CGAffineTransform(scaleX: scale, y: scale)
         
-        pathCopy.applyTransform(originTranslation)
-        pathCopy.applyTransform(sizeScale)
-        pathCopy.applyTransform(newOriginTranslation)
+        pathCopy.apply(originTranslation)
+        pathCopy.apply(sizeScale)
+        pathCopy.apply(newOriginTranslation)
         return pathCopy
     }
 }

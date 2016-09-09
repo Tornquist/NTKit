@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D85416671D825B250063DBAC /* NTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85416641D8259B10063DBAC /* NTKit.framework */; };
+		D85416681D825B250063DBAC /* NTKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D85416641D8259B10063DBAC /* NTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D87593BE1C7C25D500918AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87593BD1C7C25D500918AB4 /* Assets.xcassets */; };
 		D87593DF1C87F05B00918AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B61C7C25D500918AB4 /* AppDelegate.swift */; };
 		D87593E01C87F05B00918AB4 /* TileDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87593B81C7C25D500918AB4 /* TileDemoViewController.swift */; };
 		D87593E71C87F08200918AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BA1C7C25D500918AB4 /* Main.storyboard */; };
 		D87593E81C87F08200918AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87593BF1C7C25D500918AB4 /* LaunchScreen.storyboard */; };
-		D8B9C4861CF5CEAF00182BF9 /* NTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B9C4851CF5CEAF00182BF9 /* NTKit.framework */; };
-		D8B9C4871CF5CEAF00182BF9 /* NTKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8B9C4851CF5CEAF00182BF9 /* NTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8CC0E391CA3780B00C99D34 /* NTImageViewDemoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */; };
 		D8CC0E3B1CA3781900C99D34 /* NTImageViewDemoTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */; };
 		D8F506B21CF1EEE400B90A2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F506B11CF1EEE400B90A2B /* MainViewController.swift */; };
@@ -23,13 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D8B9C4881CF5CEB000182BF9 /* Embed Frameworks */ = {
+		D81F9A371D82594800FAFC11 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D8B9C4871CF5CEAF00182BF9 /* NTKit.framework in Embed Frameworks */,
+				D85416681D825B250063DBAC /* NTKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D85416641D8259B10063DBAC /* NTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NTKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87593B41C7C25D500918AB4 /* NTKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87593B61C7C25D500918AB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D87593B81C7C25D500918AB4 /* TileDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileDemoViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		D87593BD1C7C25D500918AB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D87593C01C7C25D500918AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D87593C21C7C25D500918AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8B9C4851CF5CEAF00182BF9 /* NTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NTKit.framework; path = "/Users/nathan/Library/Developer/Xcode/DerivedData/NTKit-eypnntdqyvtsnqahtdaitdpnprde/Build/Products/Debug-iphoneos/NTKit.framework"; sourceTree = "<absolute>"; };
 		D8CC0E381CA3780B00C99D34 /* NTImageViewDemoTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTImageViewDemoTile.swift; sourceTree = "<group>"; };
 		D8CC0E3A1CA3781900C99D34 /* NTImageViewDemoTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTImageViewDemoTile.xib; sourceTree = "<group>"; };
 		D8F506B11CF1EEE400B90A2B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8B9C4861CF5CEAF00182BF9 /* NTKit.framework in Frameworks */,
+				D85416671D825B250063DBAC /* NTKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +92,7 @@
 		D8DFD6451C76AEC70028B8A5 = {
 			isa = PBXGroup;
 			children = (
-				D8B9C4851CF5CEAF00182BF9 /* NTKit.framework */,
+				D85416641D8259B10063DBAC /* NTKit.framework */,
 				D87593B51C7C25D500918AB4 /* NTKitDemo */,
 				D8DFD64F1C76AEC70028B8A5 /* Products */,
 			);
@@ -128,7 +128,7 @@
 				D87593B11C7C25D500918AB4 /* Frameworks */,
 				D87593B21C7C25D500918AB4 /* Resources */,
 				D85CD2E41CB5C41700DB30D9 /* Additional Warnings */,
-				D8B9C4881CF5CEB000182BF9 /* Embed Frameworks */,
+				D81F9A371D82594800FAFC11 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +152,7 @@
 					D87593B31C7C25D500918AB4 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 99AECXNBFU;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -250,6 +251,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NathanKitDemo;
 				PRODUCT_NAME = NTKitDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -262,6 +264,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathantornquist.NathanKitDemo;
 				PRODUCT_NAME = NTKitDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -30,8 +30,8 @@ import UIKit
 /**
  NTImageRectangleEffect is used to draw a colored rectangle anywhere on a UIImage.
  */
-public class NTImageRectangleEffect: NTImageEffect {
-    public var rect: CGRect {
+open class NTImageRectangleEffect: NTImageEffect {
+    open var rect: CGRect {
         get {
             var x: CGFloat = 0
             var y: CGFloat = 0
@@ -64,21 +64,21 @@ public class NTImageRectangleEffect: NTImageEffect {
                 x = anchor.x - width
                 y = anchor.y - height
             }
-            return CGRectMake(x, y, width, height)
+            return CGRect(x: x, y: y, width: width, height: height)
         }
         set {
-            self.anchor = CGPointMake(newValue.origin.x, newValue.origin.y)
+            self.anchor = CGPoint(x: newValue.origin.x, y: newValue.origin.y)
             self.anchorPosition = .TopLeft
             self.width = newValue.width
             self.height = newValue.height
         }
     }
-    public var color: UIColor = UIColor.clearColor()
-    public var anchor: CGPoint = CGPointZero
-    public var anchorPosition: NTImageEffectAnchorPosition = .TopLeft
-    public var width: CGFloat = 0
-    public var height: CGFloat = 0
-    public var alpha: CGFloat = 1 {
+    open var color: UIColor = UIColor.clear
+    open var anchor: CGPoint = CGPoint.zero
+    open var anchorPosition: NTImageEffectAnchorPosition = .TopLeft
+    open var width: CGFloat = 0
+    open var height: CGFloat = 0
+    open var alpha: CGFloat = 1 {
         didSet {
             if alpha < 0 { alpha = 0 }
             if alpha > 1 { alpha = 1 }
@@ -94,7 +94,7 @@ public class NTImageRectangleEffect: NTImageEffect {
     public convenience init(rect: CGRect, color: UIColor) {
         self.init()
         self.color = color
-        self.anchor = CGPointMake(rect.origin.x, rect.origin.y)
+        self.anchor = CGPoint(x: rect.origin.x, y: rect.origin.y)
         self.anchorPosition = .TopLeft
         self.width = rect.width
         self.height = rect.height
@@ -109,29 +109,29 @@ public class NTImageRectangleEffect: NTImageEffect {
         self.color = color
     }
     
-    public override func apply(onImage image: UIImage) -> UIImage {
+    open override func apply(onImage image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
-        image.drawAtPoint(CGPointZero)
+        image.draw(at: CGPoint.zero)
         let ctx = UIGraphicsGetCurrentContext()
-        color.colorWithAlphaComponent(alpha).setStroke()
-        color.colorWithAlphaComponent(alpha).setFill()
+        color.withAlphaComponent(alpha).setStroke()
+        color.withAlphaComponent(alpha).setFill()
         
-        CGContextStrokeRect(ctx, rect)
-        CGContextFillRect(ctx, rect)
+        ctx?.stroke(rect)
+        ctx?.fill(rect)
         
         let processedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return processedImage
+        return processedImage!
     }
     
     //MARK: - Mock KVO System
     
-    override public func acceptedKeys() -> [String] {
+    override open func acceptedKeys() -> [String] {
         return ["rect", "color", "anchor", "anchorPosition", "width", "height", "alpha"]
     }
     
-    override public func changeValueOf(key: String, to obj: Any) -> Bool {
+    override open func changeValueOf(_ key: String, to obj: Any) -> Bool {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return false
@@ -197,7 +197,7 @@ public class NTImageRectangleEffect: NTImageEffect {
         }
     }
 
-    override public func getValueOf(key: String) -> Any? {
+    override open func getValueOf(_ key: String) -> Any? {
         let options = acceptedKeys()
         guard options.contains(key) else {
             return nil

@@ -27,21 +27,21 @@
 
 import UIKit
 
-public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
+open class NTTileViewRowLayout: NTTileViewLayoutProtocol {
 
-	weak public var tileView: NTTileView! 
+	weak open var tileView: NTTileView! 
 	//MARK: - Configuration Variables
     var expandAnimationDuration: Double = 0.5
     var collapseAnimationDuration: Double = 0.5
     
     enum LayoutActions {
-        case None
-        case Reset
-        case Focus
-        case Collapse
+        case none
+        case reset
+        case focus
+        case collapse
     }
     
-    var lastAction: LayoutActions = .None
+    var lastAction: LayoutActions = .none
     var lastActionIndex: Int = 0
 	
 	public convenience init(tileView: NTTileView) {
@@ -50,8 +50,8 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
 	}
 	
     //MARK: - NTTileViewLayoutProtocol Methods
-    public func resetTileLayout() {
-        lastAction = .Reset
+    open func resetTileLayout() {
+        lastAction = .reset
         
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
@@ -59,17 +59,17 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         let tileWidth = viewWidth
         let tileHeight = viewHeight / CGFloat(tileView.tiles.count)
         
-        for (index, view) in tileView.views.enumerate() {
+        for (index, view) in tileView.views.enumerated() {
             // Set View Position
-            view.frame = CGRectMake(0, CGFloat(index)*tileHeight, tileWidth, tileHeight)
+            view.frame = CGRect(x: 0, y: CGFloat(index)*tileHeight, width: tileWidth, height: tileHeight)
             // Adjust Tile based on anchor
             let tile = tileView.tiles[index]
             position(tile, inView: view)
         }
     }
     
-    public func focus(onTileWithIndex tileIndex: Int) {
-        lastAction = .Focus
+    open func focus(onTileWithIndex tileIndex: Int) {
+        lastAction = .focus
         lastActionIndex = tileIndex
         
         let viewWidth = tileView.frame.width
@@ -81,11 +81,11 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         
         var heightCounter: CGFloat = CGFloat(0)
         
-        UIView.animateWithDuration(expandAnimationDuration, animations: {
-            for (index, view) in self.tileView.views.enumerate() {
+        UIView.animate(withDuration: expandAnimationDuration, animations: {
+            for (index, view) in self.tileView.views.enumerated() {
                 let height = (index == tileIndex) ? expandedTileHeight : collapsedTileHeight
                 
-                let newFrame = CGRectMake(0, heightCounter, tileWidth, height)
+                let newFrame = CGRect(x: 0, y: heightCounter, width: tileWidth, height: height)
                 view.frame = newFrame
                 let tile = self.tileView.tiles[index]
                 self.position(tile, inView: view)
@@ -96,8 +96,8 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         })
     }
     
-    public func collapseAll() {
-        lastAction = .Collapse
+    open func collapseAll() {
+        lastAction = .collapse
         
         let viewWidth = tileView.frame.width
         let viewHeight = tileView.frame.height
@@ -105,10 +105,10 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         let tileWidth = viewWidth
         let tileHeight = viewHeight / CGFloat(tileView.tiles.count)
         
-        UIView.animateWithDuration(collapseAnimationDuration, animations: {
-            for (index, view) in self.tileView.views.enumerate() {
+        UIView.animate(withDuration: collapseAnimationDuration, animations: {
+            for (index, view) in self.tileView.views.enumerated() {
                 // Set View Position
-                view.frame = CGRectMake(0, CGFloat(index)*tileHeight, tileWidth, tileHeight)
+                view.frame = CGRect(x: 0, y: CGFloat(index)*tileHeight, width: tileWidth, height: tileHeight)
                 // Adjust Tile based on anchor
                 let tile = self.tileView.tiles[index]
                 self.position(tile, inView: view)
@@ -116,13 +116,13 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         })
     }
     
-    public func updateForFrame() {
+    open func updateForFrame() {
         switch lastAction {
-        case .Reset:
+        case .reset:
             self.resetTileLayout()
-        case .Collapse:
+        case .collapse:
             self.collapseAll()
-        case .Focus:
+        case .focus:
             self.focus(onTileWithIndex: lastActionIndex)
         default:
             break
@@ -131,10 +131,10 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
     
     // MARK: - Helper Methods for LayoutProtocol implementation
     
-    func position(tile: NTTile, inView view: UIView) {
+    func position(_ tile: NTTile, inView view: UIView) {
         // Base Positioning
         let anchor = tile.anchorPoint()
-        let viewCenter = CGPoint(x: CGRectGetMidX(view.frame), y: CGRectGetMidY(view.frame))
+        let viewCenter = CGPoint(x: view.frame.midX, y: view.frame.midY)
         var newX = viewCenter.x - anchor.x - view.frame.origin.x
         var newY = viewCenter.y - anchor.y - view.frame.origin.y
         let width = (tileView.frame.width > view.frame.width) ? tileView.frame.width : view.frame.width
@@ -149,7 +149,7 @@ public class NTTileViewRowLayout: NTTileViewLayoutProtocol {
         
         // Set New Frame
         var newFrame: CGRect!
-        newFrame = CGRectMake(newX, newY, width, height)
+        newFrame = CGRect(x: newX, y: newY, width: width, height: height)
         tile.view.frame = newFrame
     }
 }
