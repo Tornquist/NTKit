@@ -169,8 +169,7 @@ open class NTImageTextEffect: NTImageEffect {
             return string
         }
         
-        let newlineChars = CharacterSet.newlines
-        let lines = string.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init)
+        let lines = string.components(separatedBy: CharacterSet.newlines)
         
         var resultString: String = ""
         
@@ -190,8 +189,7 @@ open class NTImageTextEffect: NTImageEffect {
     // MARK: - Wrap Text Helper Methods
     
     func adjust(text: String, renderedWithFont font: UIFont, andMaxWidth maxWidth: CGFloat) -> String {
-        let whitespaceChars = CharacterSet.whitespaces
-        var remainingWords = text.utf16.split { whitespaceChars.contains(UnicodeScalar($0)!) }.flatMap(String.init)
+        var remainingWords = text.components(separatedBy: CharacterSet.whitespaces)
         
         var processedString = ""
         
