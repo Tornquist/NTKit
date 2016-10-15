@@ -182,6 +182,15 @@ open class NTCropView: UIView, NTCropScrollViewDelegate {
         self.addConstraint(rightConstraint)
     }
     
+    // MARK: - Layout on View Change
+    override open func layoutSubviews() {
+        // iOS 9.3 Runs layoutSubviews in a different order. This makes sure
+        // that the overlayView will always be set before the scrollView
+        self.overlayView.setNeedsLayout()
+        self.overlayView.layoutIfNeeded()
+        super.layoutSubviews()
+    }
+    
     // MARK: - NTCropScrollViewDelegate Methods
     
     func constrainScrollToRect() -> CGRect {

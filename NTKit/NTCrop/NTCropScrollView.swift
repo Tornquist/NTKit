@@ -55,6 +55,7 @@ class NTCropScrollView: UIScrollView, UIScrollViewDelegate {
     
     var imageView: UIImageView!
     var oldFrame: CGRect = CGRect.zero
+    var oldConstraintRect: CGRect = CGRect.zero
     
     var defaultMinimumZoomScale: CGFloat = 0.5
     var defaultMaximumZoomScale: CGFloat = 2
@@ -181,8 +182,9 @@ class NTCropScrollView: UIScrollView, UIScrollViewDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        if self.oldFrame != self.frame {
+        let conRect = constraintRect()
+        if self.oldFrame != self.frame || self.oldConstraintRect != conRect {
+            self.oldConstraintRect = conRect
             self.oldFrame = self.frame
             self.configureInitialScale()
         }
