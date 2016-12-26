@@ -328,6 +328,10 @@ open class NTImageTextEffect: NTImageEffect {
                 alpha = CGFloat(obj as! Float)
                 return true
             }
+            if obj is Bool {
+                alpha = (obj as! Bool) ? 1 : 0
+                return true
+            }
             return false
         default:
             return false
