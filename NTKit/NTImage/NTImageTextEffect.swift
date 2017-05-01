@@ -264,6 +264,14 @@ open class NTImageTextEffect: NTImageEffect {
                 text = obj as! String
                 return true
             }
+            if obj is Float {
+                text = "\(obj as! Float)"
+                return true
+            }
+            if obj is CGFloat {
+                text = "\(obj as! CGFloat)"
+                return true
+            }
             return false
         case "font":
             if obj is UIFont {
