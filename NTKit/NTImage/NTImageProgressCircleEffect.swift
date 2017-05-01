@@ -38,7 +38,7 @@ open class NTImageProgressCircleEffect: NTImageEffect {
     open var color: UIColor = UIColor.clear
     open var innerRadius: CGFloat = 0
     open var outerRadius: CGFloat = 0
-    open var startAngle: CGFloat = CGFloat(M_PI+M_PI_2)
+    open var startAngle: CGFloat = CGFloat(Double.pi+Double.pi/2)
     open var endAngle: CGFloat = 0
     open var strokeInnerCircle: Bool = false
     open var strokeOuterCircle: Bool = false
@@ -51,10 +51,10 @@ open class NTImageProgressCircleEffect: NTImageEffect {
     }
     open var percent: CGFloat {
         get {
-            return (endAngle - CGFloat(M_PI+M_PI_2))/CGFloat(M_PI*2)
+            return (endAngle - CGFloat(Double.pi + Double.pi/2)) / CGFloat(Double.pi*2)
         }
         set {
-            let angle = (newValue >= 1) ? CGFloat(3*M_PI+M_PI_2) : (CGFloat(M_PI+M_PI_2) + newValue*CGFloat(M_PI*2))
+            let angle = (newValue >= 1) ? CGFloat(3*Double.pi + Double.pi/2) : (CGFloat(Double.pi + Double.pi/2) + newValue*CGFloat(Double.pi*2))
             self.endAngle = angle
         }
     }
@@ -149,12 +149,12 @@ open class NTImageProgressCircleEffect: NTImageEffect {
      - parameter strokeCircle: A boolean used to decide if the inner and outer circle should be drawn.
      */
     public convenience init(center: CGPoint, radius: CGFloat, percent: CGFloat, color: UIColor, strokeCircle: Bool) {
-        let endAngle = (percent >= 1) ? CGFloat(3*M_PI+M_PI_2) : (CGFloat(M_PI+M_PI_2) + percent*CGFloat(M_PI*2))
+        let endAngle = (percent >= 1) ? CGFloat(3*Double.pi + Double.pi/2) : (CGFloat(Double.pi + Double.pi/2) + percent*CGFloat(Double.pi*2))
         
         self.init(center: center,
                   innerRadius: radius*0.33,
                   outerRadius: radius,
-                  startAngle: CGFloat(M_PI+M_PI_2),
+                  startAngle: CGFloat(Double.pi + Double.pi/2),
                   endAngle: endAngle,
                   color: color,
                   strokeInnerCircle: strokeCircle,
@@ -174,13 +174,13 @@ open class NTImageProgressCircleEffect: NTImageEffect {
         path.fill()
         
         if strokeInnerCircle {
-            let inner = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: true)
-            inner.addArc(withCenter: center, radius: innerRadius + strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
+            let inner = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: 0, endAngle: CGFloat(Double.pi)*2, clockwise: true)
+            inner.addArc(withCenter: center, radius: innerRadius + strokeWidth, startAngle: CGFloat(Double.pi)*2, endAngle: 0, clockwise: false)
             inner.fill()
         }
         if strokeOuterCircle {
-            let outer = UIBezierPath(arcCenter: center, radius: outerRadius, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: true)
-            outer.addArc(withCenter: center, radius: outerRadius - strokeWidth, startAngle: CGFloat(M_PI)*2, endAngle: 0, clockwise: false)
+            let outer = UIBezierPath(arcCenter: center, radius: outerRadius, startAngle: 0, endAngle: CGFloat(Double.pi)*2, clockwise: true)
+            outer.addArc(withCenter: center, radius: outerRadius - strokeWidth, startAngle: CGFloat(Double.pi)*2, endAngle: 0, clockwise: false)
             outer.fill()
         }
         
