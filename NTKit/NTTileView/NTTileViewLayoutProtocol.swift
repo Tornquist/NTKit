@@ -29,7 +29,7 @@ import Foundation
 
 public protocol NTTileViewLayoutProtocol {
 
-	weak var tileView: NTTileView! { get set }
+	var tileView: NTTileView! { get set }
 	
 	/**
      Reset Tile Layout is used to relayout all the tiles

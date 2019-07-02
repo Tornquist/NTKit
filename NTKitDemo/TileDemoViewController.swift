@@ -43,8 +43,8 @@ class TileDemoViewController: UIViewController, NTTileViewDataSource {
     }
     
     func configureTileView() {
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tileView]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["tileView":tileView])
-        let horizontalConstrints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tileView]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["tileView":tileView])
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tileView]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["tileView":tileView])
+        let horizontalConstrints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tileView]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["tileView":tileView])
         self.view.addConstraints(verticalConstraints)
         self.view.addConstraints(horizontalConstrints)
         tileView.dataSource = self

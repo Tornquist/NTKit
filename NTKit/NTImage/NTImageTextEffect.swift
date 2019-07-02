@@ -40,10 +40,10 @@ open class NTImageTextEffect: NTImageEffect {
     var angle: CGFloat = 0
     open var degreeAngle: CGFloat {
         get {
-            return self.angle*180/CGFloat(M_PI)
+            return self.angle*180 / CGFloat.pi
         }
         set {
-            self.angle = CGFloat(M_PI)/180*newValue
+            self.angle = CGFloat.pi / 180*newValue
         }
     }
     open var radianAngle: CGFloat {
@@ -103,9 +103,9 @@ open class NTImageTextEffect: NTImageEffect {
         paragraphStyle.alignment = self.alignment
         
         let textAttributes = [
-            NSFontAttributeName: self.font,
-            NSForegroundColorAttributeName: self.fontColor.withAlphaComponent(alpha),
-            NSParagraphStyleAttributeName: paragraphStyle
+            NSAttributedString.Key.font: self.font,
+            NSAttributedString.Key.foregroundColor: self.fontColor.withAlphaComponent(alpha),
+            NSAttributedString.Key.paragraphStyle: paragraphStyle
         ]
         
         let textToDraw = (maxWidth == nil) ? self.text : generateWrappedText(from: self.text)
@@ -130,7 +130,7 @@ open class NTImageTextEffect: NTImageEffect {
     }
     
     func generateTextRect(for text: String) -> CGRect {
-        let renderedSize = text.size(attributes: [NSFontAttributeName: font])
+        let renderedSize = text.size(withAttributes: [NSAttributedString.Key.font: font])
         let adjustedSize = CGSize(width: ceil(renderedSize.width), height: ceil(renderedSize.height))
         
         let xLeft   = self.anchor.x
@@ -208,7 +208,7 @@ open class NTImageTextEffect: NTImageEffect {
             workingString = safeAppend(remainingWords[0], to: workingString, withSpacer: " ")
             
             // Calculate Current Size
-            let renderedSize = workingString.size(attributes: [NSFontAttributeName: font])
+            let renderedSize = workingString.size(withAttributes: [NSAttributedString.Key.font: font])
             let adjustedSize = CGSize(width: ceil(renderedSize.width), height: ceil(renderedSize.height))
             
             // Evaluate Width
@@ -378,4 +378,3 @@ open class NTImageTextEffect: NTImageEffect {
         }
     }
 }
-
