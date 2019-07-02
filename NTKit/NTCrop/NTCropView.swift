@@ -152,15 +152,15 @@ open class NTCropView: UIView, NTCropScrollViewDelegate {
     // MARK: - View Configuration
     
     func addScrollView() {
-        scrollView = NTCropScrollView(frame: self.frame)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.autoresizesSubviews = true
-        scrollView.cropRegionDelegate = self
-        self.addSubview(scrollView)
-        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-        let leftConstraint = NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
+        self.scrollView = NTCropScrollView(frame: self.frame)
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.autoresizesSubviews = true
+        self.scrollView.cropRegionDelegate = self
+        self.addSubview(self.scrollView)
+        let topConstraint = NSLayoutConstraint(item: self.scrollView!, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: self.scrollView!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: self.scrollView!, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: self.scrollView!, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
         self.addConstraint(topConstraint)
         self.addConstraint(bottomConstraint)
         self.addConstraint(leftConstraint)
@@ -168,14 +168,14 @@ open class NTCropView: UIView, NTCropScrollViewDelegate {
     }
     
     func addOverlayView() {
-        overlayView = NTCropOverlayView(frame: self.frame)
-        overlayView.translatesAutoresizingMaskIntoConstraints = false
-        overlayView.autoresizesSubviews = true
-        self.addSubview(overlayView)
-        let topConstraint = NSLayoutConstraint(item: overlayView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: overlayView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-        let leftConstraint = NSLayoutConstraint(item: overlayView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: overlayView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
+        self.overlayView = NTCropOverlayView(frame: self.frame)
+        self.overlayView.translatesAutoresizingMaskIntoConstraints = false
+        self.overlayView.autoresizesSubviews = true
+        self.addSubview(self.overlayView)
+        let topConstraint = NSLayoutConstraint(item: self.overlayView!, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: self.overlayView!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: self.overlayView!, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: self.overlayView!, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
         self.addConstraint(topConstraint)
         self.addConstraint(bottomConstraint)
         self.addConstraint(leftConstraint)
