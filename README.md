@@ -1,6 +1,6 @@
 # NTKit
 
-NTKit is a collection of custom UI elements built in Swift 3.  These elements are designed as a starting place for other applications.
+NTKit is a collection of custom UI elements built in Swift 5.  These elements are designed as a starting place for other applications.
 
 # Contents
 

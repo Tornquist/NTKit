@@ -147,7 +147,7 @@ open class NTImageBlockTextEffect: NTImageEffect {
         for row in textRows {
             let calculatedFont = calculateFontFor(row as NSString, withBase: font)
             
-            let renderedTextSize = row.size(attributes: [NSFontAttributeName: calculatedFont])
+            let renderedTextSize = row.size(withAttributes: [NSAttributedString.Key.font: calculatedFont])
             let adjustedTextSize = CGSize(width: ceil(renderedTextSize.width), height: ceil(renderedTextSize.height))
             let textRect = CGRect(x: basePosition.x, y: basePosition.y, width: adjustedTextSize.width, height: adjustedTextSize.height)
             
@@ -162,9 +162,9 @@ open class NTImageBlockTextEffect: NTImageEffect {
         
         for i in 0..<textRows.count {
             let textAttributes = [
-                NSFontAttributeName: textFonts[i],
-                NSForegroundColorAttributeName: self.fontColor.withAlphaComponent(alpha)
-            ] as [String : Any]
+                NSAttributedString.Key.font: textFonts[i],
+                NSAttributedString.Key.foregroundColor: self.fontColor.withAlphaComponent(alpha)
+            ]
             
             textRows[i].draw(in: textRects[i].offsetBy(dx: offset.x, dy: offset.y), withAttributes: textAttributes)
         }
@@ -191,12 +191,12 @@ open class NTImageBlockTextEffect: NTImageEffect {
         var targetCharacterString = ""
         var generatedWidth: CGFloat = 0
         while (generatedWidth < width) {
-            let renderedTextSize = targetCharacterString.size(attributes: [NSFontAttributeName: font])
+            let renderedTextSize = targetCharacterString.size(withAttributes: [NSAttributedString.Key.font: font])
             let adjustedTextSize = CGSize(width: ceil(renderedTextSize.width), height: ceil(renderedTextSize.height))
             generatedWidth = adjustedTextSize.width
             targetCharacterString = targetCharacterString + "a"
         }
-        return targetCharacterString.characters.count - 1
+        return targetCharacterString.count - 1
     }
     
     func generateTextRows(fromString string: String, withTarget targetCharacters: Int) -> [String] {
@@ -213,9 +213,9 @@ open class NTImageBlockTextEffect: NTImageEffect {
             }
             stringB = stringB + words[wordIndex]
             
-            if stringB.characters.count > targetCharacters {
-                let aDiff = abs(stringA.characters.count - targetCharacters)
-                let bDiff = abs(stringB.characters.count - targetCharacters)
+            if stringB.count > targetCharacters {
+                let aDiff = abs(stringA.count - targetCharacters)
+                let bDiff = abs(stringB.count - targetCharacters)
                 if aDiff < bDiff {
                     retVal.append(stringA)
                     wordIndex = wordIndex - 1 //Account for later increment
@@ -234,7 +234,7 @@ open class NTImageBlockTextEffect: NTImageEffect {
         
         // Make sure no words are dropped
         if (stringB != "") {
-            if Float(stringB.characters.count) < Float(targetCharacters)*trailingTargetCharacterThreshold && retVal.count > 0 {
+            if Float(stringB.count) < Float(targetCharacters)*trailingTargetCharacterThreshold && retVal.count > 0 {
                 retVal[retVal.count-1] = retVal[retVal.count-1] + " " + stringB
             } else {
                 retVal.append(stringB)
@@ -308,7 +308,7 @@ open class NTImageBlockTextEffect: NTImageEffect {
     }
     
     func compare(_ text: NSString, toWidthWithFont font: UIFont) -> TextScaleDirection {
-        let renderedSize = text.size(attributes: [NSFontAttributeName: font])
+        let renderedSize = text.size(withAttributes: [NSAttributedString.Key.font: font])
         let adjustedSize = CGSize(width: ceil(renderedSize.width), height: ceil(renderedSize.height))
         
         if adjustedSize.width > self.width {

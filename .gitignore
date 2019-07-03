@@ -19,3 +19,5 @@ xcuserdata/
 *.xcscmblueprint
 
 .DS_Store
+*.xcodeproj/*
+!*.xcodeproj/xcshareddata/

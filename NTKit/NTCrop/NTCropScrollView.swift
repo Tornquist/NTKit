@@ -88,17 +88,17 @@ class NTCropScrollView: UIScrollView, UIScrollViewDelegate {
         self.enclosingView.clipsToBounds = true
         self.addSubview(enclosingView)
         self.enclosingView.translatesAutoresizingMaskIntoConstraints = false
-        let topConstraint = NSLayoutConstraint(item: self.enclosingView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let leftConstraint = NSLayoutConstraint(item: self.enclosingView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: self.enclosingView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: self.enclosingView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: self.enclosingView!, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: self.enclosingView!, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: self.enclosingView!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: self.enclosingView!, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
         self.addConstraint(topConstraint)
         self.addConstraint(bottomConstraint)
         self.addConstraint(rightConstraint)
         self.addConstraint(leftConstraint)
         
-        self.enclosingViewWidthConstraint = NSLayoutConstraint(item: self.enclosingView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
-        self.enclosingViewHeightConstraint = NSLayoutConstraint(item: self.enclosingView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+        self.enclosingViewWidthConstraint = NSLayoutConstraint(item: self.enclosingView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+        self.enclosingViewHeightConstraint = NSLayoutConstraint(item: self.enclosingView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         self.enclosingView.addConstraint(enclosingViewWidthConstraint)
         self.enclosingView.addConstraint(enclosingViewHeightConstraint)
         
@@ -106,8 +106,8 @@ class NTCropScrollView: UIScrollView, UIScrollViewDelegate {
         self.imageView = UIImageView()
         self.enclosingView.addSubview(self.imageView)
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
-        let centerX = NSLayoutConstraint(item: self.imageView, attribute: .centerX, relatedBy: .equal, toItem: self.enclosingView, attribute: .centerX, multiplier: 1, constant: 0)
-        let centerY = NSLayoutConstraint(item: self.imageView, attribute: .centerY, relatedBy: .equal, toItem: self.enclosingView, attribute: .centerY, multiplier: 1, constant: 0)
+        let centerX = NSLayoutConstraint(item: self.imageView!, attribute: .centerX, relatedBy: .equal, toItem: self.enclosingView, attribute: .centerX, multiplier: 1, constant: 0)
+        let centerY = NSLayoutConstraint(item: self.imageView!, attribute: .centerY, relatedBy: .equal, toItem: self.enclosingView, attribute: .centerY, multiplier: 1, constant: 0)
         self.enclosingView.addConstraint(centerX)
         self.enclosingView.addConstraint(centerY)
         
